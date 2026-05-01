@@ -730,7 +730,7 @@
     <div class="hero-visual">
       <div class="stat-card">
         <div class="stat-num">150+</div>
-        <div class="stat-label">150+ Hours Of Training</div>
+        <div class="stat-label">150+ Hours of training</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">3+</div>
@@ -739,13 +739,14 @@
       <div class="stat-card span2">
         <div class="stat-label" style="margin-bottom: 0.6rem;">Core Tools</div>
         <div class="tool-tags">
-          <span class="tool-tag">Power BI</span>
-          <span class="tool-tag">DAX</span>
-          <span class="tool-tag">Star Schema</span>
-          <span class="tool-tag">Power Query</span>
-          <span class="tool-tag">Excel</span>
-          <span class="tool-tag">ETL</span>
-          <span class="tool-tag">C++</span>
+            <span class="tool-tag">Power BI</span>
+            <span class="tool-tag">DAX</span>
+            <span class="tool-tag">Star Schema</span>
+            <span class="tool-tag">SQL</span>
+            <span class="tool-tag">Power Query</span>
+            <span class="tool-tag">Excel</span>
+            <span class="tool-tag">ETL</span>
+            <span class="tool-tag">C++</span>
         </div>
       </div>
     </div>
@@ -756,55 +757,162 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">What I bring</div>
-  <h2 class="section-title">Technical Skills</h2>
-  <p class="section-sub">A practical toolkit built through hands-on projects with industry data from Vodafone, Banque Misr, and Uber.</p>
+    <div class="section-label">What I bring</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <p class="section-sub">A practical toolkit built through hands-on projects with industry data from Vodafone, Banque Misr, and Uber.</p>
+    <div class="skills-grid">
 
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon green">📊</div>
-      <h3>Data Visualization & Reporting</h3>
-      <div class="skill-items">
-        <span class="skill-pill">Power BI</span>
-        <span class="skill-pill">DAX</span>
-        <span class="skill-pill">Star Schema</span>
-        <span class="skill-pill">Power Query</span>
-        <span class="skill-pill">KPI Dashboards</span>
-      </div>
+        <!-- Card 1: Data Visualization -->
+        <div class="skill-card">
+            <div class="skill-icon green">📊</div>
+            <h3>Data Visualization & Reporting</h3>
+            <div class="skill-items" style="display: flex; flex-direction: column; gap: 1rem;">
+
+                <div class="skill-progress-wrap">
+                    <div class="skill-info" style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>Power BI</span>
+                        <span style="color: var(--accent);">90%</span>
+                    </div>
+                    <div class="progress-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                        <div class="progress-fill" style="width: 90%; height: 100%; background: var(--accent); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-progress-wrap">
+                    <div class="skill-info" style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>DAX</span>
+                        <span style="color: var(--accent);">80%</span>
+                    </div>
+                    <div class="progress-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                        <div class="progress-fill" style="width: 80%; height: 100%; background: var(--accent); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Card 2: Advanced Excel -->
+        <div class="skill-card">
+            <div class="skill-icon blue">📈</div>
+            <h3>Advanced Excel</h3>
+            <div class="skill-items" style="display: flex; flex-direction: column; gap: 1rem;">
+
+                <div class="skill-progress-wrap">
+                    <div class="skill-info" style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>Excel</span>
+                        <span style="color: var(--accent);">90%</span>
+                    </div>
+                    <div class="progress-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                        <div class="progress-fill" style="width: 90%; height: 100%; background: var(--accent); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Card 3: Data Engineering -->
+        <div class="skill-card">
+            <div class="skill-icon orange">⚙️</div>
+            <h3>Data Engineering</h3>
+            <div class="skill-items" style="display: flex; flex-direction: column; gap: 1rem;">
+
+                <div class="skill-progress-wrap">
+                    <div class="skill-info" style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>Power Query</span>
+                        <span style="color: var(--accent);">85%</span>
+                    </div>
+                    <div class="progress-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                        <div class="progress-fill" style="width: 85%; height: 100%; background: var(--accent); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-progress-wrap">
+                    <div class="skill-info" style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>Star Schema</span>
+                        <span style="color: var(--accent);">85%</span>
+                    </div>
+                    <div class="progress-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                        <div class="progress-fill" style="width: 85%; height: 100%; background: var(--accent); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-progress-wrap">
+                    <div class="skill-info" style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>ETL</span>
+                        <span style="color: var(--accent);">90%</span>
+                    </div>
+                    <div class="progress-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                        <div class="progress-fill" style="width: 90%; height: 100%; background: var(--accent); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+                    </div>
+                    <!-- إضافة الـ SQL -->
+                    <div class="skill-progress-wrap">
+                        <div class="skill-info" style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; font-weight: 500;">
+                            <span>SQL</span>
+                            <span style="color: var(--accent);">5%</span>
+                        </div>
+                        <div class="progress-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                            <div class="progress-fill" style="width: 5%; height: 100%; background: var(--accent); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Card 4: Computer Science -->
+        <div class="skill-card">
+            <div class="skill-icon purple">💻</div>
+            <h3>Computer Science</h3>
+            <div class="skill-items" style="display: flex; flex-direction: column; gap: 1rem;">
+
+                <div class="skill-progress-wrap">
+                    <div class="skill-info" style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; font-weight: 500;">
+                        <span>C++</span>
+                        <span style="color: var(--accent);">80%</span>
+                    </div>
+                    <div class="progress-bg" style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                        <div class="progress-fill" style="width: 80%; height: 100%; background: var(--accent); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon blue">📈</div>
-      <h3>Advanced Excel</h3>
-      <div class="skill-items">
-        <span class="skill-pill">Advanced Formulas</span>
-        <span class="skill-pill">Pivot Tables</span>
-        <span class="skill-pill">Charts</span>
-        <span class="skill-pill">Dynamic Dashboards</span>
-      </div>
+        <div class="skill-icon blue">📈</div>
+        <h3>Advanced Excel</h3>
+        <div class="skill-items">
+            <span class="skill-pill">Advanced Formulas</span>
+            <span class="skill-pill">Pivot Tables</span>
+            <span class="skill-pill">Charts</span>
+            <span class="skill-pill">Dynamic Dashboards</span>
+        </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon orange">⚙️</div>
-      <h3>Data Engineering</h3>
-      <div class="skill-items">
-        <span class="skill-pill">ETL Processes</span>
-        <span class="skill-pill">Data Modeling</span>
-        <span class="skill-pill">Data Cleaning</span>
-        <span class="skill-pill">Star Schema Design</span>
-      </div>
+        <div class="skill-icon orange">⚙️</div>
+        <h3>Data Engineering</h3>
+        <div class="skill-items">
+            <span class="skill-pill">ETL Processes</span>
+            <span class="skill-pill">Data Modeling</span>
+            <span class="skill-pill">Data Cleaning</span>
+            <span class="skill-pill">Star Schema Design</span>
+        </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon purple">💻</div>
-      <h3>Computer Science</h3>
-      <div class="skill-items">
-        <span class="skill-pill">C++</span>
-        <span class="skill-pill">OOP</span>
-        <span class="skill-pill">Algorithms</span>
-        <span class="skill-pill">Data Structures</span>
-        <span class="skill-pill">Systems Analysis</span>
-        <span class="skill-pill">Statistical Analytics</span>
-      </div>
+        <div class="skill-icon purple">💻</div>
+        <h3>Computer Science</h3>
+        <div class="skill-items">
+            <span class="skill-pill">C++</span>
+            <span class="skill-pill">OOP</span>
+            <span class="skill-pill">Algorithms</span>
+            <span class="skill-pill">Data Structures</span>
+            <span class="skill-pill">Systems Analysis</span>
+            <span class="skill-pill">Statistical Analytics</span>
+        </div>
     </div>
-  </div>
+    </div>
 </section>
 
 <div class="divider"></div>
@@ -1106,11 +1214,11 @@
           <div class="contact-link-icon phone">📞</div>
           <div class="contact-link-text">
             <span class="contact-link-label">Phone</span>
-            <span class="contact-link-value">+20 011 4112 9696</span>
+            <span class="contact-link-value">+20 1141129696</span>
           </div>
           <span style="color: var(--muted); font-size: 1.2rem;">→</span>
         </a>
-        <a href="https://www.linkedin.com/in/sherif-ayman-523109347/" target="_blank" class="contact-link">
+        <a href="https://www.linkedin.com/in/sherifAzb/" target="_blank" class="contact-link">
           <div class="contact-link-icon linkedin">in</div>
           <div class="contact-link-text">
             <span class="contact-link-label">LinkedIn</span>
