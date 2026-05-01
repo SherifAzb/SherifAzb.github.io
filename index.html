@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="https://github.com/SherifAzb/SherifAzb.github.io/blob/main/lol1.png">
+  <link rel="icon" type="image/png" href="https://github.com/SherifAzb/SherifAzb.github.io/edit/main/mysite-logo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sherif Ayman | Data Analyst</title>
@@ -596,6 +596,83 @@
       .contact-inner { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    /* ── Language Dropdown in Navbar ──────────────────────────────────────── */
+    .lang-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    .lang-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.3s;
+    }
+    .lang-trigger:hover { color: var(--text-main); }
+    .lang-trigger .lang-globe { font-size: 1rem; }
+    .lang-trigger .lang-caret {
+      font-size: 0.6rem;
+      transition: transform 0.25s;
+      opacity: 0.6;
+    }
+    .lang-dropdown.open .lang-caret { transform: rotate(180deg); }
+
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 14px);
+      right: 0;
+      min-width: 160px;
+      background: rgba(12,12,16,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 6px;
+      z-index: 300;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      animation: menu-in 0.18s ease;
+    }
+    @keyframes menu-in {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .lang-dropdown.open .lang-menu { display: block; }
+
+    .lang-opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 9px 14px;
+      border-radius: 9px;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.18s, color 0.18s;
+    }
+    .lang-opt:hover { background: rgba(255,255,255,0.06); color: var(--text-main); }
+    .lang-opt.active {
+      background: linear-gradient(to right, rgba(59,130,246,0.15), rgba(139,92,246,0.15));
+      color: #fff;
+    }
+    .lang-opt .opt-flag { font-size: 1rem; flex-shrink: 0; }
+    .lang-opt .opt-check { margin-left: auto; color: #60a5fa; font-size: 0.75rem; opacity: 0; }
+    .lang-opt.active .opt-check { opacity: 1; }
   </style>
 </head>
 <body>
@@ -619,6 +696,20 @@
     <a href="#projects">Projects</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-trigger" id="langTrigger">
+        <span class="lang-globe">🌐</span>
+        <span id="langLabel">EN</span>
+        <span class="lang-caret">▼</span>
+      </button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-opt active" data-lang="en"><span class="opt-flag">🇺🇸</span> English<span class="opt-check">✓</span></button>
+        <button class="lang-opt" data-lang="ar"><span class="opt-flag">🇪🇬</span> العربية<span class="opt-check">✓</span></button>
+        <button class="lang-opt" data-lang="fr"><span class="opt-flag">🇫🇷</span> Français<span class="opt-check">✓</span></button>
+        <button class="lang-opt" data-lang="de"><span class="opt-flag">🇩🇪</span> Deutsch<span class="opt-check">✓</span></button>
+        <button class="lang-opt" data-lang="ru"><span class="opt-flag">🇷🇺</span> Русский<span class="opt-check">✓</span></button>
+      </div>
+    </div>
   </nav>
 
   <!-- Hero Section -->
@@ -1343,5 +1434,335 @@
     });
   </script>
 
+  <!-- Language Switcher Script -->
+  <script>
+  const translations = {
+    en: {
+      dir: 'ltr',
+      navHome: 'Home', navSkills: 'Skills', navProjects: 'Projects', navEducation: 'Education', navContact: 'Contact',
+      badge: 'Available for opportunities',
+      heroTitle: 'Turning data into<br><span class="text-gradient">decisions</span>',
+      heroP: "I'm Sherif Ayman — a Computer Science & AI student and data analyst from Benha, Egypt. I build end-to-end analytics solutions using Power BI, Excel, and ETL pipelines for real organizations.",
+      statHours: 'Hours of Training', statProjects: 'Industry Projects',
+      btnWork: 'View My Work', btnContact: 'Get in Touch', btnCV: 'Download CV',
+      sectionSkillsLabel: 'What I bring', sectionSkillsTitle: 'Technical <span class="text-gradient">Skills</span>',
+      sectionSkillsSub: 'A practical toolkit built through hands-on projects with industry data from Vodafone, Banque Misr, and Uber.',
+      skillCard1: 'Data Visualization & Reporting', skillCard2: 'Advanced Excel', skillCard3: 'Data Engineering', skillCard4: 'Computer Science',
+      sectionProjLabel: 'Case Studies', sectionProjTitle: 'Featured <span class="text-gradient">Projects</span>',
+      sectionProjSub: 'End-to-end data analytics solutions built for real industry datasets — from raw unstructured data to interactive dashboards.',
+      sectionEduLabel: 'Academic Background', sectionEduTitle: '<span class="text-gradient">Education</span>',
+      sectionEduSub: 'Strong academic foundation in computer science, algorithms, and AI alongside practical data analytics work.',
+      degree: 'B.Sc. Computer Science & Artificial Intelligence',
+      expectedGrad: 'Expected 2028', yearCompleted: '2nd Year Completed',
+      availTitle: 'Open to Work', availSub1: 'Internships & Junior Roles', availSub2: 'Data Analytics · BI · Python',
+      courseLabel: 'Relevant Coursework',
+      contactLabel: "Let's connect", contactTitle: 'Get in <span class="text-gradient">Touch</span>',
+      contactP: "I'm actively looking for data analyst internships and opportunities. Whether you have a project or just want to connect — my inbox is open.",
+      formLabel: 'Send a message',
+      formName: 'Your Name', formEmail: 'Your Email', formSubject: 'Subject', formMsg: 'Message',
+      placeholderSubject: 'Data Analyst opportunity / Project inquiry',
+      placeholderMsg: "Hi Sherif, I'd like to discuss...",
+      btnSend: 'Send Message',
+      successMsg: "✅ Message sent! I'll get back to you soon.",
+      footer: '© 2025 Sherif Ayman · Data Analyst · Benha, Egypt',
+      badgeWork: '🟢 Open to Work', badgeAnalyst: '📊 Data Analyst',
+    },
+    ar: {
+      dir: 'rtl',
+      navHome: 'الرئيسية', navSkills: 'المهارات', navProjects: 'المشاريع', navEducation: 'التعليم', navContact: 'التواصل',
+      badge: 'متاح للفرص الوظيفية',
+      heroTitle: 'تحويل البيانات إلى<br><span class="text-gradient">قرارات</span>',
+      heroP: 'أنا شريف أيمن — طالب في علوم الحاسب والذكاء الاصطناعي ومحلل بيانات من بنها، مصر. أبني حلول تحليلية متكاملة باستخدام Power BI وExcel وETL للمؤسسات الحقيقية.',
+      statHours: 'ساعة تدريب', statProjects: 'مشاريع احترافية',
+      btnWork: 'عرض أعمالي', btnContact: 'تواصل معي', btnCV: 'تحميل السيرة الذاتية',
+      sectionSkillsLabel: 'ما أقدمه', sectionSkillsTitle: 'المهارات <span class="text-gradient">التقنية</span>',
+      sectionSkillsSub: 'مجموعة أدوات عملية مبنية على مشاريع حقيقية مع بيانات من فودافون وبنك مصر وأوبر.',
+      skillCard1: 'تصور البيانات والتقارير', skillCard2: 'Excel المتقدم', skillCard3: 'هندسة البيانات', skillCard4: 'علوم الحاسب',
+      sectionProjLabel: 'دراسات حالة', sectionProjTitle: 'المشاريع <span class="text-gradient">المميزة</span>',
+      sectionProjSub: 'حلول تحليلية متكاملة مبنية على بيانات صناعية حقيقية — من البيانات الخام إلى لوحات المعلومات التفاعلية.',
+      sectionEduLabel: 'الخلفية الأكاديمية', sectionEduTitle: '<span class="text-gradient">التعليم</span>',
+      sectionEduSub: 'أساس أكاديمي قوي في علوم الحاسب والخوارزميات والذكاء الاصطناعي إلى جانب العمل العملي في تحليل البيانات.',
+      degree: 'بكالوريوس علوم الحاسب والذكاء الاصطناعي',
+      expectedGrad: 'تخرج متوقع 2028', yearCompleted: 'السنة الثانية مكتملة',
+      availTitle: 'متاح للعمل', availSub1: 'التدريب والوظائف المبتدئة', availSub2: 'تحليل البيانات · BI · Python',
+      courseLabel: 'المواد الدراسية ذات الصلة',
+      contactLabel: 'لنتواصل', contactTitle: 'تواصل <span class="text-gradient">معي</span>',
+      contactP: 'أبحث بنشاط عن فرص تدريبية ووظائف لمحلل البيانات. سواء كان لديك مشروع أو تريد التواصل فقط — صندوق بريدي مفتوح.',
+      formLabel: 'أرسل رسالة',
+      formName: 'اسمك', formEmail: 'بريدك الإلكتروني', formSubject: 'الموضوع', formMsg: 'الرسالة',
+      placeholderSubject: 'فرصة عمل / استفسار عن مشروع',
+      placeholderMsg: 'مرحباً شريف، أود مناقشة...',
+      btnSend: 'إرسال الرسالة',
+      successMsg: '✅ تم إرسال الرسالة! سأرد عليك قريباً.',
+      footer: '© 2025 شريف أيمن · محلل بيانات · بنها، مصر',
+      badgeWork: '🟢 متاح للعمل', badgeAnalyst: '📊 محلل بيانات',
+    },
+    fr: {
+      dir: 'ltr',
+      navHome: 'Accueil', navSkills: 'Compétences', navProjects: 'Projets', navEducation: 'Formation', navContact: 'Contact',
+      badge: 'Disponible pour des opportunités',
+      heroTitle: 'Transformer les données en<br><span class="text-gradient">décisions</span>',
+      heroP: "Je suis Sherif Ayman — étudiant en informatique & IA et analyste de données de Benha, Égypte. Je construis des solutions analytiques de bout en bout avec Power BI, Excel et des pipelines ETL pour de vraies organisations.",
+      statHours: 'Heures de formation', statProjects: 'Projets industriels',
+      btnWork: 'Voir mon travail', btnContact: 'Me contacter', btnCV: 'Télécharger CV',
+      sectionSkillsLabel: 'Ce que j\'apporte', sectionSkillsTitle: 'Compétences <span class="text-gradient">Techniques</span>',
+      sectionSkillsSub: 'Une boîte à outils pratique construite grâce à des projets concrets avec des données de Vodafone, Banque Misr et Uber.',
+      skillCard1: 'Visualisation & Rapports', skillCard2: 'Excel Avancé', skillCard3: 'Ingénierie des Données', skillCard4: 'Informatique',
+      sectionProjLabel: 'Études de cas', sectionProjTitle: 'Projets <span class="text-gradient">Phares</span>',
+      sectionProjSub: 'Solutions analytiques complètes pour des jeux de données industriels réels — des données brutes aux tableaux de bord interactifs.',
+      sectionEduLabel: 'Parcours académique', sectionEduTitle: '<span class="text-gradient">Formation</span>',
+      sectionEduSub: 'Solide base académique en informatique, algorithmique et IA, complétée par une pratique de l\'analyse de données.',
+      degree: 'Licence Informatique & Intelligence Artificielle',
+      expectedGrad: 'Diplôme prévu 2028', yearCompleted: '2ème année terminée',
+      availTitle: 'Disponible', availSub1: 'Stages & postes juniors', availSub2: 'Data Analytics · BI · Python',
+      courseLabel: 'Cours pertinents',
+      contactLabel: 'Connectons-nous', contactTitle: 'Prendre <span class="text-gradient">Contact</span>',
+      contactP: 'Je recherche activement des stages et opportunités d\'analyste de données. Que vous ayez un projet ou souhaitiez simplement échanger — ma boîte mail est ouverte.',
+      formLabel: 'Envoyer un message',
+      formName: 'Votre nom', formEmail: 'Votre email', formSubject: 'Sujet', formMsg: 'Message',
+      placeholderSubject: 'Opportunité analyste / Demande de projet',
+      placeholderMsg: 'Bonjour Sherif, je souhaite discuter...',
+      btnSend: 'Envoyer le message',
+      successMsg: '✅ Message envoyé ! Je vous répondrai bientôt.',
+      footer: '© 2025 Sherif Ayman · Analyste de Données · Benha, Égypte',
+      badgeWork: '🟢 Disponible', badgeAnalyst: '📊 Analyste de Données',
+    },
+    de: {
+      dir: 'ltr',
+      navHome: 'Start', navSkills: 'Fähigkeiten', navProjects: 'Projekte', navEducation: 'Bildung', navContact: 'Kontakt',
+      badge: 'Offen für Möglichkeiten',
+      heroTitle: 'Daten in <br><span class="text-gradient">Entscheidungen</span> verwandeln',
+      heroP: 'Ich bin Sherif Ayman — Student der Informatik & KI und Datenanalyst aus Benha, Ägypten. Ich baue End-to-End-Analyselösungen mit Power BI, Excel und ETL-Pipelines für echte Organisationen.',
+      statHours: 'Trainingsstunden', statProjects: 'Industrieprojekte',
+      btnWork: 'Meine Arbeit ansehen', btnContact: 'Kontakt aufnehmen', btnCV: 'CV herunterladen',
+      sectionSkillsLabel: 'Was ich mitbringe', sectionSkillsTitle: 'Technische <span class="text-gradient">Fähigkeiten</span>',
+      sectionSkillsSub: 'Ein praktisches Toolkit aus praxisnahen Projekten mit Branchendaten von Vodafone, Banque Misr und Uber.',
+      skillCard1: 'Datenvisualisierung & Reporting', skillCard2: 'Erweitertes Excel', skillCard3: 'Datentechnik', skillCard4: 'Informatik',
+      sectionProjLabel: 'Fallstudien', sectionProjTitle: 'Ausgewählte <span class="text-gradient">Projekte</span>',
+      sectionProjSub: 'End-to-End-Datenanalyselösungen für reale Branchendatensätze — von Rohdaten bis zu interaktiven Dashboards.',
+      sectionEduLabel: 'Akademischer Hintergrund', sectionEduTitle: '<span class="text-gradient">Bildung</span>',
+      sectionEduSub: 'Starke akademische Grundlage in Informatik, Algorithmen und KI neben praktischer Datenanalytik.',
+      degree: 'B.Sc. Informatik & Künstliche Intelligenz',
+      expectedGrad: 'Abschluss 2028 erwartet', yearCompleted: '2. Jahr abgeschlossen',
+      availTitle: 'Offen für Arbeit', availSub1: 'Praktika & Einstiegsstellen', availSub2: 'Data Analytics · BI · Python',
+      courseLabel: 'Relevante Kurse',
+      contactLabel: 'Lass uns verbinden', contactTitle: 'Kontakt <span class="text-gradient">aufnehmen</span>',
+      contactP: 'Ich suche aktiv nach Praktika und Stellen als Datenanalyst. Egal ob Projekt oder Gespräch — mein Postfach ist offen.',
+      formLabel: 'Nachricht senden',
+      formName: 'Ihr Name', formEmail: 'Ihre E-Mail', formSubject: 'Betreff', formMsg: 'Nachricht',
+      placeholderSubject: 'Datenanalyst-Stelle / Projektanfrage',
+      placeholderMsg: 'Hallo Sherif, ich möchte über ... sprechen.',
+      btnSend: 'Nachricht senden',
+      successMsg: '✅ Nachricht gesendet! Ich melde mich bald bei Ihnen.',
+      footer: '© 2025 Sherif Ayman · Datenanalyst · Benha, Ägypten',
+      badgeWork: '🟢 Offen für Arbeit', badgeAnalyst: '📊 Datenanalyst',
+    },
+    ru: {
+      dir: 'ltr',
+      navHome: 'Главная', navSkills: 'Навыки', navProjects: 'Проекты', navEducation: 'Образование', navContact: 'Контакт',
+      badge: 'Открыт для предложений',
+      heroTitle: 'Превращаю данные в<br><span class="text-gradient">решения</span>',
+      heroP: 'Я Шериф Айман — студент направления «Информатика & ИИ» и аналитик данных из Бенхи, Египет. Строю аналитические решения «от данных до дашборда» с Power BI, Excel и ETL-пайплайнами для реальных организаций.',
+      statHours: 'Часов обучения', statProjects: 'Отраслевых проектов',
+      btnWork: 'Мои работы', btnContact: 'Написать мне', btnCV: 'Скачать резюме',
+      sectionSkillsLabel: 'Что я предлагаю', sectionSkillsTitle: 'Технические <span class="text-gradient">Навыки</span>',
+      sectionSkillsSub: 'Практический инструментарий, созданный в ходе реальных проектов с данными Vodafone, Banque Misr и Uber.',
+      skillCard1: 'Визуализация данных и отчётность', skillCard2: 'Продвинутый Excel', skillCard3: 'Инженерия данных', skillCard4: 'Информатика',
+      sectionProjLabel: 'Кейсы', sectionProjTitle: 'Ключевые <span class="text-gradient">Проекты</span>',
+      sectionProjSub: 'Полноцикловые аналитические решения для реальных отраслевых данных — от сырых данных до интерактивных дашбордов.',
+      sectionEduLabel: 'Академическое образование', sectionEduTitle: '<span class="text-gradient">Образование</span>',
+      sectionEduSub: 'Глубокая академическая база в информатике, алгоритмах и ИИ в сочетании с практическим анализом данных.',
+      degree: 'Бакалавр: Информатика и Искусственный интеллект',
+      expectedGrad: 'Окончание 2028', yearCompleted: '2-й курс завершён',
+      availTitle: 'Открыт к работе', availSub1: 'Стажировки и junior-позиции', availSub2: 'Data Analytics · BI · Python',
+      courseLabel: 'Ключевые курсы',
+      contactLabel: 'Свяжитесь со мной', contactTitle: 'Написать <span class="text-gradient">мне</span>',
+      contactP: 'Активно ищу стажировки и позиции аналитика данных. Есть проект или просто хотите пообщаться — мой ящик открыт.',
+      formLabel: 'Отправить сообщение',
+      formName: 'Ваше имя', formEmail: 'Ваш email', formSubject: 'Тема', formMsg: 'Сообщение',
+      placeholderSubject: 'Вакансия аналитика / Вопрос по проекту',
+      placeholderMsg: 'Привет, Шериф! Хочу обсудить...',
+      btnSend: 'Отправить сообщение',
+      successMsg: '✅ Сообщение отправлено! Скоро отвечу.',
+      footer: '© 2025 Шериф Айман · Аналитик данных · Бенха, Египет',
+      badgeWork: '🟢 Открыт к работе', badgeAnalyst: '📊 Аналитик данных',
+    }
+  };
+
+  function applyLang(lang) {
+    const t = translations[lang];
+    if (!t) return;
+
+    // Direction
+    document.documentElement.lang = lang;
+    document.documentElement.dir = t.dir;
+
+    // Nav
+    const navLinks = document.querySelectorAll('nav a');
+    const navKeys = ['navHome','navSkills','navProjects','navEducation','navContact'];
+    navLinks.forEach((a, i) => { if (navKeys[i]) a.textContent = t[navKeys[i]]; });
+
+    // Hero badge
+    const heroBadge = document.querySelector('.hero-badge');
+    if (heroBadge) heroBadge.innerHTML = '<span></span> ' + t.badge;
+
+    // Hero title (keep span)
+    const h1 = document.querySelector('.hero h1');
+    if (h1) h1.innerHTML = t.heroTitle;
+
+    // Re-attach typing effect target
+    const gradientSpan = document.querySelector('.text-gradient');
+
+    // Hero paragraph
+    const heroP = document.querySelector('.hero-content > p');
+    if (heroP) heroP.textContent = t.heroP;
+
+    // Hero stat labels
+    const statLabels = document.querySelectorAll('.hero-stat-label');
+    if (statLabels[0]) statLabels[0].textContent = t.statHours;
+    if (statLabels[1]) statLabels[1].textContent = t.statProjects;
+
+    // Buttons
+    const btnWork = document.querySelector('a[href="#projects"].btn-glow');
+    if (btnWork) btnWork.textContent = t.btnWork;
+    const btnContact = document.querySelector('a[href="#contact"].btn-ghost');
+    if (btnContact) btnContact.textContent = t.btnContact;
+    const btnCV = document.querySelector('.btn-download');
+    if (btnCV) btnCV.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> ${t.btnCV}`;
+
+    // Skills section
+    const skillsLabel = document.querySelector('#skills .section-label');
+    if (skillsLabel) skillsLabel.textContent = t.sectionSkillsLabel;
+    const skillsTitle = document.querySelector('#skills .section-title');
+    if (skillsTitle) skillsTitle.innerHTML = t.sectionSkillsTitle;
+    const skillsSub = document.querySelector('#skills .section-subtitle');
+    if (skillsSub) skillsSub.textContent = t.sectionSkillsSub;
+    const skillCards = document.querySelectorAll('.skill-card-new h3');
+    const skillCardKeys = ['skillCard1','skillCard2','skillCard3','skillCard4'];
+    skillCards.forEach((h, i) => { if (skillCardKeys[i]) h.textContent = t[skillCardKeys[i]]; });
+
+    // Projects section
+    const projLabel = document.querySelector('#projects .section-label');
+    if (projLabel) projLabel.textContent = t.sectionProjLabel;
+    const projTitle = document.querySelector('#projects .section-title');
+    if (projTitle) projTitle.innerHTML = t.sectionProjTitle;
+    const projSub = document.querySelector('#projects .section-subtitle');
+    if (projSub) projSub.textContent = t.sectionProjSub;
+
+    // Education section
+    const eduLabel = document.querySelector('#education .section-label');
+    if (eduLabel) eduLabel.textContent = t.sectionEduLabel;
+    const eduTitle = document.querySelector('#education .section-title');
+    if (eduTitle) eduTitle.innerHTML = t.sectionEduTitle;
+    const eduSub = document.querySelector('#education .section-subtitle');
+    if (eduSub) eduSub.textContent = t.sectionEduSub;
+    const eduDegree = document.querySelector('.edu-degree');
+    if (eduDegree) eduDegree.textContent = t.degree;
+    const eduChips = document.querySelectorAll('.edu-chip');
+    if (eduChips[0]) eduChips[0].textContent = t.expectedGrad;
+    if (eduChips[1]) eduChips[1].textContent = t.yearCompleted;
+    const availTitle = document.querySelector('.avail-title');
+    if (availTitle) availTitle.textContent = t.availTitle;
+    const availSubs = document.querySelectorAll('.avail-sub');
+    if (availSubs[0]) availSubs[0].textContent = t.availSub1;
+    if (availSubs[1]) availSubs[1].textContent = t.availSub2;
+    const courseLabel = document.querySelector('.coursework-label');
+    if (courseLabel) courseLabel.textContent = t.courseLabel;
+
+    // Contact section
+    const contactLabel = document.querySelector('.contact-section .section-label');
+    if (contactLabel) contactLabel.textContent = t.contactLabel;
+    const contactTitle = document.querySelector('.contact-section .section-title');
+    if (contactTitle) contactTitle.innerHTML = t.contactTitle;
+    const contactP = document.querySelector('.contact-section > .contact-inner > div > p');
+    if (contactP) contactP.textContent = t.contactP;
+    const formSectionLabel = document.querySelector('.email-form-wrap .section-label');
+    if (formSectionLabel) formSectionLabel.textContent = t.formLabel;
+
+    // Form labels
+    const formLabels = document.querySelectorAll('.form-label');
+    const formLabelKeys = ['formName','formEmail','formSubject','formMsg'];
+    formLabels.forEach((l, i) => { if (formLabelKeys[i]) l.textContent = t[formLabelKeys[i]]; });
+
+    // Form placeholders
+    const inputs = document.querySelectorAll('.form-input');
+    if (inputs[2]) inputs[2].placeholder = t.placeholderSubject;
+    const textarea = document.querySelector('.form-textarea');
+    if (textarea) textarea.placeholder = t.placeholderMsg;
+
+    // Send button
+    const btnText = document.getElementById('btn-text');
+    if (btnText) btnText.textContent = t.btnSend;
+
+    // Success message
+    const successEl = document.getElementById('form-success');
+    if (successEl) successEl.textContent = t.successMsg;
+
+    // Footer
+    const footer = document.querySelector('footer p');
+    if (footer) footer.textContent = t.footer;
+
+    // Photo badges
+    const badge1 = document.querySelector('.photo-badge-1');
+    if (badge1) badge1.innerHTML = t.badgeWork;
+    const badge2 = document.querySelector('.photo-badge-2');
+    if (badge2) badge2.innerHTML = t.badgeAnalyst;
+
+    // Contact link labels
+    const clLabels = document.querySelectorAll('.contact-link-label');
+    const clKeys = ['Email','Phone','LinkedIn','GitHub'];
+    clLabels.forEach((l, i) => {
+      if (lang === 'ar') {
+        const arLabels = ['البريد الإلكتروني','الهاتف','لينكدإن','جيت هاب'];
+        l.textContent = arLabels[i] || clKeys[i];
+      } else if (lang === 'fr') {
+        const frLabels = ['E-mail','Téléphone','LinkedIn','GitHub'];
+        l.textContent = frLabels[i] || clKeys[i];
+      } else if (lang === 'de') {
+        const deLabels = ['E-Mail','Telefon','LinkedIn','GitHub'];
+        l.textContent = deLabels[i] || clKeys[i];
+      } else if (lang === 'ru') {
+        const ruLabels = ['Эл. почта','Телефон','LinkedIn','GitHub'];
+        l.textContent = ruLabels[i] || clKeys[i];
+      } else {
+        l.textContent = clKeys[i];
+      }
+    });
+
+    // Update active option & trigger label
+    const shortLabels = { en:'EN', ar:'AR', fr:'FR', de:'DE', ru:'RU' };
+    document.querySelectorAll('.lang-opt').forEach(b => b.classList.remove('active'));
+    const activeOpt = document.querySelector(`.lang-opt[data-lang="${lang}"]`);
+    if (activeOpt) activeOpt.classList.add('active');
+    const labelEl = document.getElementById('langLabel');
+    if (labelEl) labelEl.textContent = shortLabels[lang] || lang.toUpperCase();
+
+    // Save preference
+    localStorage.setItem('preferred-lang', lang);
+  }
+
+  // ── Dropdown toggle ────────────────────────────────────────────────────────
+  const dropdown = document.getElementById('langDropdown');
+  const trigger  = document.getElementById('langTrigger');
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+  });
+
+  document.addEventListener('click', () => dropdown.classList.remove('open'));
+
+  // Attach click handlers to options
+  document.querySelectorAll('.lang-opt').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      applyLang(btn.dataset.lang);
+      dropdown.classList.remove('open');
+    });
+  });
+
+  // Load saved preference
+  const saved = localStorage.getItem('preferred-lang');
+  if (saved && translations[saved]) applyLang(saved);
+  </script>
 </body>
-</html>
