@@ -1581,40 +1581,231 @@
     /* Sparkline */
     .rm-sparkline { margin-top: 8px; }
 
-    @media (max-width: 900px) {
-      .rm-kpis { grid-template-columns: repeat(3, 1fr); }
-      .rm-kpi:nth-child(3) { border-right: none; }
-      .rm-body { grid-template-columns: 1fr; }
-      .rm-panel { border-right: none; }
-      .rm-header, .rm-title-row { padding-left: 24px; padding-right: 24px; }
-      .rm-panel { padding: 24px; }
-      .recruiter-mode-btn .rm-label { display: none; }
+    /* ══ HAMBURGER MENU ══ */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 600;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--sand);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s, background .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15,12,41,.97);
+      backdrop-filter: blur(20px);
+      z-index: 450;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 300;
+      color: var(--sand); text-decoration: none;
+      letter-spacing: -.01em;
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--glow); }
+    .mobile-menu-footer {
+      position: absolute;
+      bottom: 40px;
+      display: flex; gap: 16px; align-items: center;
     }
 
-    /* ══ RESPONSIVE ══ */
+    /* ══ TABLET (max 900px) ══ */
     @media (max-width: 900px) {
-      nav { padding: 14px 24px; }
+      /* Cursor — hide on touch */
+      .cursor-dot, .cursor-ring { display: none; }
+      body { cursor: auto; }
+      .btn-ocean, .btn-ghost, .dark-toggle, .lang-btn,
+      .proj-study-btn, .recruiter-mode-btn,
+      .rm-close, .modal-close, .rm-contact-item,
+      .rm-tooltip-cta, .rm-tooltip-dismiss { cursor: pointer; }
+
+      /* Nav */
+      nav { padding: 14px 20px; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 140px 24px 80px; gap: 60px; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+
+      /* Nav right — compact */
+      .nav-right { gap: 8px; }
+      .nav-status { display: none; }
+      .rm-label { display: none; }
+      .recruiter-mode-btn { padding: 7px 10px; }
+
+      /* Lang panel — full width on mobile */
+      .lang-panel { width: min(260px, 90vw); right: 0; }
+
+      /* Hero */
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 120px 20px 60px;
+        gap: 40px;
+        text-align: center;
+      }
       .hero-left { padding-right: 0; }
       .hero-vline { display: none; }
-      .hero-right { align-items: flex-start; }
-      .hero-photo-wrap { width: 240px; height: 300px; }
-      .hero-stats { max-width: 100%; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-name { font-size: clamp(3.2rem, 14vw, 5rem); }
+      .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-cta { justify-content: center; }
+      .hero-recruiter-whisper { justify-content: center; }
+
+      /* Hero right — centre align */
+      .hero-right { align-items: center; gap: 24px; }
+      .hero-photo-wrap { width: min(220px, 60vw); height: auto; aspect-ratio: 4/5; }
+      .hero-stats {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 12px; width: 100%; max-width: 320px;
+      }
+      .stat-card { padding: 14px; }
+      .stat-num { font-size: 2rem; }
       .scroll-cue { display: none; }
-      .skills-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 56px; }
+
+      /* Skills */
+      .skills-section {
+        grid-template-columns: 1fr;
+        padding: 64px 20px;
+        gap: 40px;
+      }
       .section-sticky { position: static; }
-      .projects-section { padding: 80px 24px; }
-      .projects-grid { grid-template-columns: 1fr; }
+      .skill-cat { display: none; }
+      .skill-name { width: 120px; font-size: .82rem; }
+      .skill-pct { width: 30px; font-size: .62rem; }
+
+      /* Projects */
+      .projects-section { padding: 64px 20px; }
+      .projects-header { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .projects-grid { grid-template-columns: 1fr; gap: 1px; }
       .proj-card.featured .proj-inner { flex-direction: column; }
       .proj-card.featured .proj-img-wrap { width: 100%; }
-      .education-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 56px; }
-      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-      .contact-section { padding: 80px 24px; }
-      .modal-box { padding: 32px 24px; }
-      .modal-metrics { grid-template-columns: 1fr 1fr; }
-      footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
-      .skill-cat { display: none; }
+      .proj-card.featured img { height: 200px !important; }
+      .proj-card:not(.featured) img { height: 160px; }
+      .proj-body { padding: 20px; }
+      .proj-title { font-size: 1.4rem; }
+      .proj-card.featured .proj-title { font-size: 1.6rem; }
+      .proj-links { flex-wrap: wrap; gap: 8px; }
+      .proj-link, .proj-study-btn { font-size: .58rem; padding: 6px 10px; }
+
+      /* Education */
+      .education-section {
+        grid-template-columns: 1fr;
+        padding: 64px 20px;
+        gap: 40px;
+      }
+      .edu-card { padding: 28px 20px; }
+
+      /* Contact */
+      .contact-section { padding: 64px 20px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .contact-link { padding: 14px 16px; }
+
+      /* Form */
+      .form-row { grid-template-columns: 1fr; }
+
+      /* Modal */
+      .modal-box { padding: 24px 18px; width: 96vw; max-height: 92vh; }
+      .modal-title { font-size: 1.6rem; }
+      .modal-metrics { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .modal-metric { padding: 14px 10px; }
+      .modal-metric-val { font-size: 1.5rem; }
+
+      /* Footer */
+      footer { padding: 20px; flex-direction: column; gap: 12px; text-align: center; }
+      footer p:last-child { display: none; }
+
+      /* Recruiter mode overlay */
+      .rm-overlay { overflow-y: auto; }
+      .rm-header { padding: 20px; }
+      .rm-title-row { padding: 16px 20px 20px; }
+      .rm-name { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+      .rm-badge { font-size: .5rem; }
+      .rm-kpis {
+        grid-template-columns: repeat(2, 1fr);
+        overflow-x: auto;
+      }
+      .rm-kpi { padding: 16px 14px; }
+      .rm-kpi:nth-child(2n) { border-right: none; }
+      .rm-kpi:nth-child(5) { grid-column: 1 / -1; border-right: none; border-top: 1px solid rgba(255,107,53,.08); }
+      .rm-kpi-val { font-size: 1.8rem; }
+      .rm-body { grid-template-columns: 1fr; }
+      .rm-panel { border-right: none; padding: 20px; }
+      .rm-radar-wrap svg { width: 100%; height: auto; }
+      .rm-donut-wrap { flex-wrap: wrap; gap: 12px; }
+
+      /* Recruiter tooltip — reposition on mobile */
+      .rm-tooltip {
+        position: fixed;
+        top: auto;
+        bottom: 80px;
+        right: 12px;
+        left: 12px;
+        width: auto;
+        transform: translateY(10px) scale(.97);
+      }
+      .rm-tooltip.visible { transform: translateY(0) scale(1); }
+      .rm-tooltip::before { display: none; }
+    }
+
+    /* ══ SMALL PHONE (max 480px) ══ */
+    @media (max-width: 480px) {
+      .nav-right { gap: 6px; }
+      .dark-toggle { width: 36px; height: 18px; }
+      .dark-toggle::before { width: 12px; height: 12px; }
+      body.dark-mode .dark-toggle::before { transform: translateX(18px); }
+      .lang-btn { padding: 5px 8px 5px 7px; }
+      #langCode { display: none; }
+      .recruiter-mode-btn { padding: 6px 8px; }
+      .rm-notif-dot { top: -3px; right: -3px; width: 8px; height: 8px; }
+
+      .hero { padding: 110px 16px 50px; }
+      .hero-name { font-size: clamp(2.8rem, 17vw, 4rem); }
+      .hero-tagline { font-size: .9rem; }
+      .hero-desc { font-size: .7rem; }
+      .btn-ocean, .btn-ghost { font-size: .75rem; padding: 13px 20px; }
+
+      .skills-section { padding: 48px 16px; }
+      .skill-row { padding: 14px 10px; gap: 12px; }
+      .skill-name { width: 100px; font-size: .78rem; }
+
+      .projects-section { padding: 48px 16px; }
+      .projects-title { font-size: clamp(2rem, 10vw, 2.8rem); }
+
+      .education-section { padding: 48px 16px; }
+      .contact-section { padding: 48px 16px; }
+      .contact-heading { font-size: clamp(2rem, 10vw, 2.8rem); }
+
+      .modal-box { padding: 20px 14px; }
+      .modal-metrics { grid-template-columns: 1fr; }
+
+      .rm-kpis { grid-template-columns: 1fr 1fr; }
+      .rm-kpi-val { font-size: 1.5rem; }
+      .rm-panel { padding: 16px; }
+
+      .hero-stats { max-width: 280px; }
+      .stat-num { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -1667,6 +1858,20 @@
   </div>
 
   <!-- Nav -->
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+    <a href="#projects" onclick="closeMobileMenu()">Work</a>
+    <a href="#education" onclick="closeMobileMenu()">About</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+    <div class="mobile-menu-footer">
+      <div class="nav-status" style="display:flex;">
+        <div class="status-dot"></div>
+        <span>Open to Work</span>
+      </div>
+    </div>
+  </div>
+
   <nav id="mainNav">
     <a href="#home" class="nav-logo">S<em>A</em></a>
     <div class="nav-links">
@@ -1703,6 +1908,9 @@
         </div>
       </div>
       <button class="dark-toggle" id="darkToggle" title="Toggle dark mode"></button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
       <!-- Lang Switcher -->
       <div class="lang-switcher" id="langSwitcher">
         <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
@@ -3162,6 +3370,42 @@
   });
 
   applyLang(currentLang, false);
+  /* ══════════════════════════
+     MOBILE HAMBURGER MENU
+  ══════════════════════════ */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+
+  function openMobileMenu() {
+    menuOpen = true;
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    mobileMenu.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    menuOpen = false;
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    setTimeout(() => {
+      if (!menuOpen) mobileMenu.style.display = 'none';
+    }, 300);
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    menuOpen ? closeMobileMenu() : openMobileMenu();
+  });
+
+  // Hide cursor elements on touch devices
+  if ('ontouchstart' in window) {
+    document.getElementById('cursorDot').style.display = 'none';
+    document.getElementById('cursorRing').style.display = 'none';
+    document.body.style.cursor = 'auto';
+  }
+
   </script>
 </body>
 </html>
