@@ -2101,6 +2101,12 @@
           <div class="skill-pct">80%</div>
         </div>
         <div class="skill-row">
+          <div class="skill-name">Python</div>
+          <div class="skill-cat">Programming</div>
+          <div class="skill-track"><div class="skill-fill teal" data-width="70%"></div></div>
+          <div class="skill-pct">70%</div>
+        </div>
+        <div class="skill-row">
           <div class="skill-name">ETL Pipelines</div>
           <div class="skill-cat">Engineering</div>
           <div class="skill-track"><div class="skill-fill teal" data-width="85%"></div></div>
@@ -2129,7 +2135,7 @@
   <section id="projects" class="projects-section">
     <div class="projects-header">
       <h2 class="projects-title" data-proj-heading>Selected<br><em>Work</em></h2>
-      <div class="projects-meta" data-proj-count>07 Projects · 2024–2025</div>
+      <div class="projects-meta" data-proj-count>08 Projects · 2024–2026</div>
     </div>
 
     <div class="projects-grid">
@@ -2321,6 +2327,33 @@
             <a href="https://github.com/SherifAzb/Samsung" target="_blank" class="proj-link">GitHub ↗</a>
             <a href="https://www.linkedin.com/posts/sherifazb_dataanalysis-powerbi-businessintelligence-ugcPost-7454645919540600832-TnJH" target="_blank" class="proj-link li">LinkedIn ↗</a>
             <button class="proj-study-btn" data-modal="samsung">Case Study ↗</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- World Cup -->
+      <div class="proj-card reveal reveal-delay-1">
+        <img src="https://raw.githubusercontent.com/SherifAzb/SherifAzb.github.io/main/project_8" alt="FIFA World Cup 2026 Analytics Dashboard">
+        <div class="proj-body">
+          <div class="proj-meta-row">
+            <div class="proj-cat">Sports Analytics · Power BI</div>
+            <div class="proj-num">08</div>
+          </div>
+          <div class="proj-title">FIFA World Cup 2026<br>Analytics Dashboard</div>
+          <div class="proj-metric">
+            <span class="metric-big">205</span>
+            <span class="metric-label">goals tracked across 48 teams & 73 matches</span>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Power BI</span>
+            <span class="proj-tag">DAX</span>
+            <span class="proj-tag">Data Modeling</span>
+            <span class="proj-tag">Sports Analytics</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://github.com/SherifAzb/WorldCupDataSet" target="_blank" class="proj-link">GitHub ↗</a>
+            <a href="https://www.linkedin.com/posts/sherifazb_dataanalytics-powerbi-dax-ugcPost-7477565026745217024-NB1r" target="_blank" class="proj-link li">LinkedIn ↗</a>
+            <button class="proj-study-btn" data-modal="worldcup">Case Study ↗</button>
           </div>
         </div>
       </div>
@@ -2933,6 +2966,18 @@
       ],
       body: `<h4>Business Problem</h4>Samsung needed an executive-level two-page Power BI dashboard to monitor global revenue, product category performance, supplier risk, and carrier efficiency across FY 2023–2024.\n\n<h4>My Approach</h4>Built a two-page Power BI report covering executive KPIs and supply chain operations. Modelled data across 5 product categories, multiple suppliers, and carrier partners. Used DAX for YoY growth calculations, margin analysis, and risk scoring.\n\n<h4>Key Findings</h4>Smartphones lead revenue at 56% share while Appliances & TVs yield the highest margins (31%+). Flagged BOE Technology as highest-risk vendor (95.6 quality score) — recommended sourcing diversification. Kuehne+Nagel ranked most reliable carrier (6.41% delay rate) vs Maersk at 10.39%. Identified critical inventory shortages for Galaxy S24 Ultra, Galaxy Z Fold5, and OLED 65" 4K across global DCs.\n\n<h4>Impact</h4>Delivered a boardroom-ready executive dashboard with $48.56M profit tracked, supplier risk mitigation recommendations, and carrier efficiency benchmarks — enabling data-driven supply chain decisions.`,
       tags: ['Power BI', 'Supply Chain', 'Executive Reporting', 'KPI Analysis', 'DAX', 'Data Modeling'],
+    },
+    worldcup: {
+      eyebrow: 'Power BI · Sports Analytics',
+      title: 'FIFA World Cup 2026\nAnalytics Dashboard',
+      img: 'https://raw.githubusercontent.com/SherifAzb/SherifAzb.github.io/main/project_8',
+      metrics: [
+        { val: '205', lbl: 'Total Goals' },
+        { val: '48', lbl: 'Teams Tracked' },
+        { val: '73', lbl: 'Matches Analysed' },
+      ],
+      body: `<h4>Business Problem</h4>Built a multi-page Power BI dashboard to track and analyse player and team performance across the FIFA World Cup 2026 group stage and knockout rounds (through Round 32) — covering attacking output, defensive solidity, discipline, and a dedicated Egypt National Team breakdown.\n\n<h4>My Approach</h4>Modelled two related fact tables — player statistics (1,248 player records) and match statistics (73 matches) — into a connected schema. Built DAX measures for goals/assists, conversion rate, clean sheets, cards per match, and minutes-played efficiency. Designed 5 report pages: Home, Overview, Player Performance, Team Intelligence, and a dedicated Egypt NT Analysis page with scatter, combo, and pivot visuals plus an interactive country map.\n\n<h4>Key Findings</h4>Lionel Messi led the tournament with 6 goals, while Germany, the Netherlands, and France each topped the goal-scoring charts with 10 goals; France posted the best overall goal difference. Forwards accounted for the largest single share of goals, with midfielders close behind. Mexico and Spain led on clean sheets, and the average player age across the tournament sat at 27.5. On the Egypt NT page, Mohamed Salah emerged as the team's top contributor with a goal and 2 assists, ahead of teammates Mostafa Ziko and Trézéguet.\n\n<h4>Impact</h4>Delivered a tournament-wide analytics tool that lets scouts, analysts, or fans drill from a global overview down into individual player efficiency and a focused national-team lens — all driven by reusable DAX measures rather than hardcoded values.`,
+      tags: ['Power BI', 'DAX', 'Data Modeling', 'Sports Analytics', 'Data Visualization'],
     },
   };
 
