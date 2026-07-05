@@ -491,6 +491,54 @@
       text-transform: uppercase; color: rgba(245,237,224,.4);
     }
 
+    /* LinkedIn latest-posts widget */
+    .li-widget {
+      width: 100%; max-width: 290px;
+      background: rgba(245,237,224,.05);
+      border: 1px solid rgba(255,107,53,.15);
+      border-radius: 8px; padding: 16px 18px;
+    }
+    .li-widget-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .li-widget-title {
+      display: flex; align-items: center; gap: 7px;
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(245,237,224,.55);
+    }
+    .li-widget-title svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .li-widget-see {
+      font-family: 'Space Mono', monospace;
+      font-size: .56rem; color: var(--glow); text-decoration: none;
+      letter-spacing: .05em; opacity: .85; transition: opacity .2s;
+    }
+    .li-widget-see:hover { opacity: 1; }
+    .li-widget-list { display: flex; flex-direction: column; gap: 10px; }
+    .li-post {
+      display: block; text-decoration: none;
+      padding: 9px 10px; border-radius: 6px;
+      background: rgba(245,237,224,.04);
+      border: 1px solid rgba(245,237,224,.08);
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .li-post:hover {
+      background: rgba(255,107,53,.08);
+      border-color: rgba(255,107,53,.3);
+      transform: translateX(-2px);
+    }
+    [dir="ltr"] .li-post:hover { transform: translateX(2px); }
+    .li-post-title {
+      font-family: 'Outfit', sans-serif; font-size: .78rem; font-weight: 500;
+      color: var(--sand); line-height: 1.35; margin-bottom: 4px;
+    }
+    .li-post-date {
+      font-family: 'Space Mono', monospace; font-size: .56rem;
+      color: rgba(245,237,224,.4); letter-spacing: .05em;
+    }
+    @media (max-width: 900px) { .li-widget { max-width: 100%; } }
+
     /* Scroll indicator */
     .scroll-cue {
       position: absolute; bottom: 40px; left: 56px;
@@ -2039,6 +2087,20 @@
           <div class="stat-label" data-stat2-label>Industry projects</div>
         </div>
       </div>
+
+      <!-- LinkedIn latest posts widget: to add a new post, just add one
+           object at the TOP of the LINKEDIN_POSTS array near the bottom
+           of this file (search for "LINKEDIN_POSTS"). -->
+      <div class="li-widget">
+        <div class="li-widget-head">
+          <div class="li-widget-title">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            <span data-i18n="liLabel">Latest on LinkedIn</span>
+          </div>
+          <a href="https://www.linkedin.com/in/sherifazb/" target="_blank" class="li-widget-see" data-i18n="liSeeAll">View profile ↗</a>
+        </div>
+        <div class="li-widget-list" id="liWidgetList"></div>
+      </div>
     </div>
 
     <div class="scroll-cue">
@@ -3231,6 +3293,29 @@
   /* ══════════════════════════
      I18N
   ══════════════════════════ */
+  // ═══════════════════════════════════════════════════════
+  // LINKEDIN_POSTS — عايز تضيف بوست جديد؟
+  // بس ضيف object جديد فوق (أول عنصر في الـ array) بنفس الشكل،
+  // وهو هيظهر أوتوماتيك في المربع. مفيش داعي تعمل حاجة تانية.
+  // date: اكتبها زي ما تحب (مثلاً "يوليو 2026")
+  // ═══════════════════════════════════════════════════════
+  const LINKEDIN_POSTS = [
+    { title: 'RFM Customer Segmentation — تحليل شرائح العملاء بالـ DAX', date: 'يوليو 2026', url: 'https://www.linkedin.com/posts/sherifazb_datascience-python-rfm-ugcPost-7478663725214887938-M1cd' },
+    { title: 'Data Analytics & DAX Measures Deep Dive', date: 'يونيو 2026', url: 'https://www.linkedin.com/posts/sherifazb_dataanalytics-powerbi-dax-ugcPost-7477565026745217024-NB1r' },
+    { title: 'Data Analysis · Business Intelligence Project', date: 'يونيو 2026', url: 'https://www.linkedin.com/posts/sherifazb_dataanalysis-powerbi-businessintelligence-ugcPost-7454645919540600832-TnJH' },
+  ];
+
+  function renderLinkedInWidget() {
+    const box = document.getElementById('liWidgetList');
+    if (!box) return;
+    box.innerHTML = LINKEDIN_POSTS.slice(0, 3).map(p => `
+      <a class="li-post" href="${p.url}" target="_blank" rel="noopener">
+        <div class="li-post-title">${p.title}</div>
+        <div class="li-post-date">${p.date}</div>
+      </a>
+    `).join('');
+  }
+
   const T = {
     en: {
       dir:'ltr', flag:'🇺🇸', code:'EN',
@@ -3259,6 +3344,7 @@
       btnSend:'Send Message →',
       successMsg:'✅ Message sent! I\'ll get back to you shortly.',
       footerRight:'CS & AI Student · Open to Work',
+      liLabel:'Latest on LinkedIn', liSeeAll:'View profile ↗',
     },
     ar: {
       dir:'rtl', flag:'🇪🇬', code:'AR',
@@ -3287,6 +3373,7 @@
       btnSend:'إرسال الرسالة →',
       successMsg:'✅ تم الإرسال! سأرد عليك قريباً.',
       footerRight:'طالب CS & AI · متاح للعمل',
+      liLabel:'آخر منشوراتي على لينكدإن', liSeeAll:'عرض البروفايل ↗',
     },
     fr: {
       dir:'ltr', flag:'🇫🇷', code:'FR',
@@ -3315,6 +3402,7 @@
       btnSend:'Envoyer →',
       successMsg:'✅ Message envoyé ! Je vous répondrai bientôt.',
       footerRight:'Étudiant CS & IA · Disponible',
+      liLabel:'Derniers posts LinkedIn', liSeeAll:'Voir le profil ↗',
     },
     de: {
       dir:'ltr', flag:'🇩🇪', code:'DE',
@@ -3343,6 +3431,7 @@
       btnSend:'Nachricht senden →',
       successMsg:'✅ Nachricht gesendet!',
       footerRight:'CS & KI Student · Verfügbar',
+      liLabel:'Neueste auf LinkedIn', liSeeAll:'Profil ansehen ↗',
     },
     ru: {
       dir:'ltr', flag:'🇷🇺', code:'RU',
@@ -3371,6 +3460,7 @@
       btnSend:'Отправить →',
       successMsg:'✅ Сообщение отправлено!',
       footerRight:'Студент CS & ИИ · Открыт к работе',
+      liLabel:'Последние записи в LinkedIn', liSeeAll:'Смотреть профиль ↗',
     }
   };
 
@@ -3485,6 +3575,7 @@
   });
 
   applyLang(currentLang, false);
+  renderLinkedInWidget();
   /* ══════════════════════════
      MOBILE HAMBURGER MENU
   ══════════════════════════ */
