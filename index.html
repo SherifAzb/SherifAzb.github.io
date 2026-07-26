@@ -407,6 +407,23 @@
       max-width: 400px; margin-bottom: 52px;
     }
 
+    .hero-offer-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+    .hero-offer-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .64rem; letter-spacing: .02em;
+      color: rgba(245,237,224,.75);
+      background: rgba(14,163,148,.08);
+      border: 1px solid rgba(14,163,148,.25);
+      border-radius: 20px;
+      padding: 7px 14px;
+      white-space: nowrap;
+    }
+    .hero-offer-chip.emph {
+      color: var(--coral);
+      border-color: rgba(232,113,90,.35);
+      background: rgba(232,113,90,.08);
+    }
+
     .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
     .btn-ocean {
       display: inline-flex; align-items: center; gap: 10px;
@@ -1626,6 +1643,8 @@
       margin-bottom: 8px;
     }
     .rm-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .rm-legend-name { flex: 1; }
+    .rm-legend-count { color: rgba(245,237,224,.85); font-weight: 600; }
 
     /* Sparkline */
     .rm-sparkline { margin-top: 8px; }
@@ -1720,6 +1739,7 @@
       .hero-name { font-size: clamp(3.2rem, 14vw, 5rem); }
       .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
       .hero-cta { justify-content: center; }
+      .hero-offer-row { justify-content: center; }
       .hero-recruiter-whisper { justify-content: center; }
 
       /* Hero right — centre align */
@@ -2160,6 +2180,12 @@
       </h1>
       <div class="hero-tagline" data-hero-role>Turning raw data into clear decisions</div>
       <p class="hero-desc" data-hero-desc>I'm a Computer Science & AI student from Benha, Egypt — building end-to-end analytics solutions with Power BI, Excel, and ETL pipelines for real organizations like Vodafone and Banque Misr.</p>
+      <div class="hero-offer-row">
+        <span class="hero-offer-chip" data-hero-offer1>Power BI Dashboards</span>
+        <span class="hero-offer-chip" data-hero-offer2>Data Cleaning & ETL</span>
+        <span class="hero-offer-chip" data-hero-offer3>Churn & Retention Analysis</span>
+        <span class="hero-offer-chip emph" data-hero-offer4>Open to Internships & Freelance</span>
+      </div>
       <div class="hero-cta">
         <a href="#projects" class="btn-ocean"><span data-btn-work>View My Work</span></a>
         <a href="https://github.com/SherifAzb/SherifAzb.github.io/raw/main/Sherif_Ayman_CV.pdf" class="btn-ghost" download><span data-btn-cv>Download CV ↓</span></a>
@@ -2642,7 +2668,7 @@
         <div class="edu-degree" data-edu-degree>Bachelor of Science<br>Computer Science & Artificial Intelligence<br>Faculty of Computer Science & AI</div>
         <div class="edu-chips">
           <span class="edu-chip" data-chip>Expected Graduation 2028</span>
-          <span class="edu-chip" data-chip>Year 2 Completed</span>
+          <span class="edu-chip" data-chip>Year 3 Ongoing</span>
           <span class="edu-chip warm" data-chip>Active Learner</span>
         </div>
       </div>
@@ -2661,9 +2687,9 @@
         <div class="timeline-item">
           <div class="tl-dot active">🎓</div>
           <div class="tl-content">
-            <div class="tl-year">2022 – Present</div>
+            <div class="tl-year">2024 – Present</div>
             <div class="tl-label">B.Sc. Computer Science & AI</div>
-            <div class="tl-desc">Benha University, Egypt · Year 2 completed · Expected 2028</div>
+            <div class="tl-desc">Benha University, Egypt · Year 3 Ongoing · Expected 2028</div>
           </div>
         </div>
         <div class="timeline-item">
@@ -2816,7 +2842,7 @@
       <div class="rm-kpi">
         <div class="rm-kpi-lbl">Expected Graduation</div>
         <div class="rm-kpi-val" style="font-size:1.5rem;padding-top:4px;">2028</div>
-        <div class="rm-kpi-trend neutral">Year 2 · Benha Uni</div>
+        <div class="rm-kpi-trend neutral">Year 3 · Benha Uni</div>
       </div>
     </div>
 
@@ -2933,16 +2959,18 @@
               stroke-dasharray="25.12 251" stroke-dashoffset="-226.08" transform="rotate(-90 55 55)"/>
             <text x="55" y="51" text-anchor="middle" font-family="Fraunces,serif" font-size="14" fill="#F2F5F9">10</text>
             <text x="55" y="64" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(245,237,224,.4)" letter-spacing="1">PROJECTS</text>
+            <text x="93" y="43" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#F2F5F9" paint-order="stroke" stroke="rgba(0,0,0,.45)" stroke-width="2">2</text>
+            <text x="31" y="87" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#F2F5F9" paint-order="stroke" stroke="rgba(0,0,0,.45)" stroke-width="2">2</text>
           </svg>
           <div class="rm-donut-legend">
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#06b6d4"></div>E-commerce</div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#0EA394"></div>Telecom</div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#C98A2C"></div>Banking</div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#5FC9BC"></div>Ride-Sharing</div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#1C5D8C"></div>HR / Health</div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#3b82f6"></div>Automotive / Retail</div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#7b2d8b"></div>Supply Chain</div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#16a34a"></div>Sports Analytics</div>
+            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#06b6d4"></div><span class="rm-legend-name">E-commerce</span><span class="rm-legend-count">1</span></div>
+            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#0EA394"></div><span class="rm-legend-name">Telecom</span><span class="rm-legend-count">2</span></div>
+            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#C98A2C"></div><span class="rm-legend-name">Banking</span><span class="rm-legend-count">1</span></div>
+            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#5FC9BC"></div><span class="rm-legend-name">Ride-Sharing</span><span class="rm-legend-count">1</span></div>
+            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#1C5D8C"></div><span class="rm-legend-name">HR / Health</span><span class="rm-legend-count">2</span></div>
+            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#3b82f6"></div><span class="rm-legend-name">Automotive / Retail</span><span class="rm-legend-count">1</span></div>
+            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#7b2d8b"></div><span class="rm-legend-name">Supply Chain</span><span class="rm-legend-count">1</span></div>
+            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#16a34a"></div><span class="rm-legend-name">Sports Analytics</span><span class="rm-legend-count">1</span></div>
           </div>
         </div>
 
@@ -2970,9 +2998,9 @@
         <div class="rm-timeline">
           <div class="rm-tl-item">
             <div class="rm-tl-dot"></div>
-            <div class="rm-tl-year">2022 — Present</div>
+            <div class="rm-tl-year">2024 — Present</div>
             <div class="rm-tl-label">B.Sc. Computer Science & AI</div>
-            <div class="rm-tl-sub">Benha University · Year 2 Completed · Expected 2028</div>
+            <div class="rm-tl-sub">Benha University · Year 3 Ongoing · Expected 2028</div>
           </div>
           <div class="rm-tl-item">
             <div class="rm-tl-dot"></div>
@@ -3520,8 +3548,9 @@
       navSkills:'Skills', navProjects:'Work', navEducation:'About', navContact:'Contact', navAvail:'Open to Work',
       heroEyebrow:'Data Analyst · CS & AI Student',
       heroName1:'Sherif', heroName2:'Ayman',
-      heroRole:'Turning raw data into clear decisions',
-      heroDesc:"I'm a Computer Science & AI student from Benha, Egypt — building end-to-end analytics solutions with Power BI, Excel, and ETL pipelines for real organizations like Vodafone and Banque Misr.",
+      heroRole:'I build Power BI dashboards that turn raw data into clear business decisions',
+      heroDesc:"Data Analyst & CS/AI student from Benha, Egypt. I clean, model, and visualize data end-to-end — Power Query, star-schema DAX models, stakeholder-ready dashboards — for real organizations like Vodafone and Banque Misr, and for freelance clients on Khamsat.",
+      heroOffer1:'Power BI Dashboards', heroOffer2:'Data Cleaning & ETL', heroOffer3:'Churn & Retention Analysis', heroOffer4:'Open to Internships & Freelance',
       btnWork:'View My Work', btnCV:'Download CV ↓',
       stat1Label:'Hours of training', stat2Label:'Industry projects',
       skillsNum:'01 — Skills', skillsH:'Technical', skillsH2:'Arsenal',
@@ -3531,7 +3560,7 @@
       eduSub:'Deep academic foundation in CS, algorithms, and AI paired with practical data analytics.',
       eduUni:'Benha University',
       eduDegree:'Bachelor of Science\nComputer Science & Artificial Intelligence\nFaculty of Computer Science & AI',
-      chip1:'Expected Graduation 2028', chip2:'Year 2 Completed', chip3:'Active Learner',
+      chip1:'Expected Graduation 2028', chip2:'Year 3 Ongoing', chip3:'Active Learner',
       availTitle:'Open to Opportunities', availSub:'Internships · Junior Roles · Data Analytics · BI · Python',
       coursesLabel:'Key Coursework',
       contactH:'Let\'s', contactH2:'work together',
@@ -3549,8 +3578,9 @@
       navSkills:'المهارات', navProjects:'أعمالي', navEducation:'عني', navContact:'تواصل', navAvail:'متاح للعمل',
       heroEyebrow:'محلل بيانات · طالب CS & AI',
       heroName1:'شريف', heroName2:'أيمن',
-      heroRole:'أحوّل البيانات الخام إلى قرارات واضحة',
-      heroDesc:'طالب علوم الحاسب والذكاء الاصطناعي من بنها، مصر — أبني حلول تحليلية متكاملة باستخدام Power BI وExcel ومسارات ETL لمنظمات حقيقية.',
+      heroRole:'أبني لوحات Power BI تحوّل البيانات الخام إلى قرارات عمل واضحة',
+      heroDesc:'محلل بيانات وطالب علوم حاسب وذكاء اصطناعي من بنها، مصر. أنظّف وأنمذج وأعرض البيانات من الألف للياء — Power Query، نماذج Star Schema بـ DAX، ولوحات جاهزة لأصحاب القرار — لمنظمات حقيقية زي Vodafone وBanque Misr، وعملاء فريلانس على خمسات.',
+      heroOffer1:'لوحات Power BI', heroOffer2:'تنظيف البيانات و ETL', heroOffer3:'تحليل تسرب العملاء', heroOffer4:'متاح للتدريب والعمل الحر',
       btnWork:'عرض أعمالي', btnCV:'تحميل السيرة الذاتية ↓',
       stat1Label:'ساعات تدريب', stat2Label:'مشاريع صناعية',
       skillsNum:'01 — المهارات', skillsH:'الترسانة', skillsH2:'التقنية',
@@ -3578,8 +3608,9 @@
       navSkills:'Compétences', navProjects:'Travaux', navEducation:'À propos', navContact:'Contact', navAvail:'Disponible',
       heroEyebrow:'Analyste de données · Étudiant CS & IA',
       heroName1:'Sherif', heroName2:'Ayman',
-      heroRole:'Transformer les données brutes en décisions claires',
-      heroDesc:"Étudiant en Informatique & IA de Benha, Égypte — je construis des solutions analytiques de bout en bout avec Power BI, Excel et des pipelines ETL.",
+      heroRole:'Je construis des tableaux de bord Power BI qui transforment les données brutes en décisions claires',
+      heroDesc:"Analyste de données & étudiant CS/IA de Benha, Égypte. Je nettoie, modélise et visualise les données de bout en bout — Power Query, modèles en étoile DAX, tableaux de bord prêts pour les décideurs — pour des organisations réelles comme Vodafone et Banque Misr, et pour des clients freelance sur Khamsat.",
+      heroOffer1:'Tableaux de bord Power BI', heroOffer2:'Nettoyage de données & ETL', heroOffer3:"Analyse de l'attrition", heroOffer4:'Ouvert aux stages & freelance',
       btnWork:'Voir mes travaux', btnCV:'Télécharger le CV ↓',
       stat1Label:"Heures de formation", stat2Label:'Projets industriels',
       skillsNum:'01 — Compétences', skillsH:'Arsenal', skillsH2:'Technique',
@@ -3607,8 +3638,9 @@
       navSkills:'Fähigkeiten', navProjects:'Arbeiten', navEducation:'Über mich', navContact:'Kontakt', navAvail:'Verfügbar',
       heroEyebrow:'Datenanalyst · CS & KI-Student',
       heroName1:'Sherif', heroName2:'Ayman',
-      heroRole:'Rohdaten in klare Entscheidungen verwandeln',
-      heroDesc:'Informatik & KI-Student aus Benha, Ägypten — ich baue End-to-End-Analyselösungen mit Power BI, Excel und ETL-Pipelines.',
+      heroRole:'Ich baue Power BI Dashboards, die Rohdaten in klare Geschäftsentscheidungen verwandeln',
+      heroDesc:'Datenanalyst & CS/KI-Student aus Benha, Ägypten. Ich bereinige, modelliere und visualisiere Daten Ende-zu-Ende — Power Query, Star-Schema-DAX-Modelle, entscheidungsreife Dashboards — für echte Organisationen wie Vodafone und Banque Misr sowie für Freelance-Kunden auf Khamsat.',
+      heroOffer1:'Power BI Dashboards', heroOffer2:'Datenbereinigung & ETL', heroOffer3:'Abwanderungsanalyse', heroOffer4:'Offen für Praktika & Freelance',
       btnWork:'Meine Arbeit ansehen', btnCV:'CV herunterladen ↓',
       stat1Label:'Trainingsstunden', stat2Label:'Industrieprojekte',
       skillsNum:'01 — Fähigkeiten', skillsH:'Technisches', skillsH2:'Arsenal',
@@ -3636,8 +3668,9 @@
       navSkills:'Навыки', navProjects:'Работы', navEducation:'Обо мне', navContact:'Контакт', navAvail:'Открыт к работе',
       heroEyebrow:'Аналитик данных · Студент CS & ИИ',
       heroName1:'Шериф', heroName2:'Айман',
-      heroRole:'Превращаю сырые данные в чёткие решения',
-      heroDesc:'Студент направления «Информатика & ИИ» из Бенхи, Египет — строю аналитические решения с Power BI, Excel и ETL-пайплайнами.',
+      heroRole:'Создаю дашборды Power BI, которые превращают сырые данные в чёткие бизнес-решения',
+      heroDesc:'Аналитик данных и студент CS/ИИ из Бенхи, Египет. Очищаю, моделирую и визуализирую данные от и до — Power Query, звёздные схемы на DAX, дашборды, готовые для принятия решений — для реальных организаций вроде Vodafone и Banque Misr, а также для фриланс-клиентов на Khamsat.',
+      heroOffer1:'Дашборды Power BI', heroOffer2:'Очистка данных и ETL', heroOffer3:'Анализ оттока клиентов', heroOffer4:'Открыт к стажировкам и фрилансу',
       btnWork:'Мои работы', btnCV:'Скачать резюме ↓',
       stat1Label:'Часов обучения', stat2Label:'Отраслевых проектов',
       skillsNum:'01 — Навыки', skillsH:'Технический', skillsH2:'Арсенал',
@@ -3705,6 +3738,8 @@
       ss('[data-i18n-hero="eyebrow"]', t.heroEyebrow);
       ss('[data-hero-name1]', t.heroName1); ss('[data-hero-name2]', t.heroName2);
       ss('[data-hero-role]', t.heroRole); ss('[data-hero-desc]', t.heroDesc);
+      ss('[data-hero-offer1]', t.heroOffer1); ss('[data-hero-offer2]', t.heroOffer2);
+      ss('[data-hero-offer3]', t.heroOffer3); ss('[data-hero-offer4]', t.heroOffer4);
       ss('[data-btn-work]', t.btnWork); ss('[data-btn-cv]', t.btnCV);
       ss('[data-stat1-label]', t.stat1Label); ss('[data-stat2-label]', t.stat2Label);
 
