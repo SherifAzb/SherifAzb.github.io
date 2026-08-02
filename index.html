@@ -941,6 +941,147 @@
     .tl-label { font-weight: 600; font-size: .88rem; color: var(--text); margin-bottom: 3px; }
     .tl-desc { font-family: 'JetBrains Mono', monospace; font-size: .67rem; color: var(--text-muted); line-height: 1.6; }
 
+    /* ══ CERTIFICATIONS SECTION ══ */
+    .certifications-section {
+      padding: 130px 56px;
+      display: grid; grid-template-columns: 300px 1fr;
+      gap: 100px; align-items: start;
+      background: var(--surface2);
+      position: relative; overflow: hidden;
+    }
+    .certifications-section::before {
+      content: '';
+      position: absolute; top: -120px; right: -120px;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(28,93,140,.06), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cert-card {
+      position: relative;
+      display: grid; grid-template-columns: 240px 1fr;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    /* perforated ticket-stub divider between visual and info panels */
+    .cert-card::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; left: 240px;
+      width: 1px;
+      background-image: radial-gradient(circle, var(--border-md) 1.5px, transparent 1.6px);
+      background-size: 1px 14px;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .cert-card::before {
+      content: '';
+      position: absolute; top: -30%; left: -60%;
+      width: 60%; height: 160%;
+      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 45%, rgba(255,255,255,.55) 50%, rgba(255,255,255,.35) 55%, transparent 70%);
+      transform: rotate(8deg);
+      pointer-events: none;
+      z-index: 3;
+      animation: certShine 5.5s ease-in-out infinite;
+    }
+    body.dark-mode .cert-card::before { opacity: .5; }
+    @keyframes certShine {
+      0%, 15% { left: -60%; }
+      45%, 100% { left: 130%; }
+    }
+
+    .cert-visual {
+      position: relative;
+      background: var(--grad-ocean);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .cert-img-wrap {
+      position: relative; display: block;
+      width: 100%; border-radius: 4px; overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      transform: rotate(-3deg);
+      transition: transform .3s ease;
+    }
+    .cert-card:hover .cert-img-wrap { transform: rotate(0deg) scale(1.03); }
+    .cert-img-wrap img { display: block; width: 100%; height: auto; }
+    .cert-verified-stamp {
+      position: absolute; top: 10px; right: -28px;
+      background: rgba(14,163,148,.92);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem; font-weight: 700; letter-spacing: .1em;
+      padding: 4px 34px;
+      transform: rotate(35deg);
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+
+    .cert-info {
+      padding: 40px 44px 40px 48px;
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .cert-issuer-row {
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent2);
+    }
+    .cert-year {
+      background: rgba(14,163,148,.1);
+      border: 1px solid rgba(14,163,148,.25);
+      color: var(--accent2);
+      padding: 3px 10px; border-radius: 100px;
+      font-size: .6rem;
+    }
+    .cert-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.7rem; font-weight: 400;
+      color: var(--text); line-height: 1.15;
+    }
+    .cert-hours {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem; color: var(--text-muted);
+      letter-spacing: .03em;
+    }
+    .cert-serial {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 6px; padding: 10px 14px;
+      background: var(--surface2);
+      border: 1px dashed var(--border-md);
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .cert-serial-label {
+      font-size: .56rem; letter-spacing: .12em;
+      color: var(--text-muted); flex-shrink: 0;
+    }
+    .cert-serial-value {
+      font-size: .62rem; color: var(--text);
+      word-break: break-all;
+    }
+    .cert-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .cert-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .66rem; font-weight: 600; letter-spacing: .04em;
+      padding: 11px 18px; border-radius: 6px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .cert-btn-primary {
+      background: var(--accent2); color: #fff;
+    }
+    .cert-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14,163,148,.35); }
+    .cert-btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border-md);
+    }
+    .cert-btn-secondary:hover { transform: translateY(-2px); border-color: var(--accent2); color: var(--accent2); }
+
     /* ══ CONTACT SECTION ══ */
     .contact-section {
       padding: 130px 56px;
@@ -1786,6 +1927,19 @@
       }
       .edu-card { padding: 28px 20px; }
 
+      /* Certifications */
+      .certifications-section {
+        grid-template-columns: 1fr;
+        padding: 64px 20px;
+        gap: 40px;
+      }
+      .cert-card { grid-template-columns: 1fr; }
+      .cert-card::after { display: none; }
+      .cert-info { padding: 28px 22px; }
+      .cert-title { font-size: 1.4rem; }
+      .cert-img-wrap { transform: rotate(0deg); max-width: 220px; margin: 0 auto; }
+      .cert-card:hover .cert-img-wrap { transform: scale(1.02); }
+
       /* Contact */
       .contact-section { padding: 64px 20px; }
       .contact-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -1863,6 +2017,8 @@
       .projects-title { font-size: clamp(2rem, 10vw, 2.8rem); }
 
       .education-section { padding: 48px 16px; }
+      .certifications-section { padding: 48px 16px; }
+      .cert-serial-value { font-size: .56rem; }
       .contact-section { padding: 48px 16px; }
       .contact-heading { font-size: clamp(2rem, 10vw, 2.8rem); }
 
@@ -2034,6 +2190,7 @@
     <a href="#skills" onclick="closeMobileMenu()">Skills</a>
     <a href="#projects" onclick="closeMobileMenu()">Work</a>
     <a href="#education" onclick="closeMobileMenu()">About</a>
+    <a href="#certifications" onclick="closeMobileMenu()">Certifications</a>
     <a href="#contact" onclick="closeMobileMenu()">Contact</a>
     <div class="mobile-menu-footer">
       <div class="nav-status" style="display:flex;">
@@ -2050,6 +2207,7 @@
       <a href="#skills" data-i18n="navSkills">Skills</a>
       <a href="#projects" data-i18n="navProjects">Work</a>
       <a href="#education" data-i18n="navEducation">About</a>
+      <a href="#certifications" data-i18n="navCerts">Certifications</a>
       <a href="#contact" data-i18n="navContact">Contact</a>
     </div>
     <div class="nav-right">
@@ -2723,6 +2881,42 @@
           <span class="course-tag">AI Principles</span>
           <span class="course-tag">Linear Algebra</span>
           <span class="course-tag">Computer Architecture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="certifications-section">
+    <div class="section-sticky">
+      <div class="section-eyebrow" data-cert-num>03 — Certifications</div>
+      <h2 class="section-title" data-cert-heading>Verified<br><em>Credentials</em></h2>
+      <p class="section-sub" data-cert-sub>Industry-issued certifications, independently verifiable through the issuer's official authentication system.</p>
+    </div>
+
+    <div>
+      <div class="cert-card reveal">
+        <div class="cert-visual">
+          <a href="https://raw.githubusercontent.com/SherifAzb/SherifAzb.github.io/main/IMG_1640.png" target="_blank" rel="noopener" class="cert-img-wrap">
+            <img src="https://raw.githubusercontent.com/SherifAzb/SherifAzb.github.io/main/IMG_1640.png" alt="Data Analysis Diploma Certificate — Instant Software Solutions" loading="lazy">
+            <span class="cert-verified-stamp" data-cert-stamp>✓ VERIFIED</span>
+          </a>
+        </div>
+        <div class="cert-info">
+          <div class="cert-issuer-row">
+            <span data-cert-issuer>Instant Software Solutions</span>
+            <span class="cert-year">2026</span>
+          </div>
+          <div class="cert-title" data-cert-title>Data Analysis Diploma</div>
+          <div class="cert-hours" data-cert-hours>130 Training Hours · Data Analysis & Power BI</div>
+          <div class="cert-serial">
+            <span class="cert-serial-label" data-cert-serial-label>SERIAL</span>
+            <span class="cert-serial-value">0A584ABE-C92C-43E5-8CB8-36B54E85BA82</span>
+          </div>
+          <div class="cert-actions">
+            <a href="https://certification.instanteg.com/certificates/check/0a584abe-c92c-43e5-8cb8-36b54e85ba82" target="_blank" rel="noopener" class="cert-btn cert-btn-primary" data-cert-verify>🔒 Verify Authenticity</a>
+            <a href="https://www.linkedin.com/posts/sherifazb_dataanalysis-powerbi-instant-activity-7489038933356441600-Lpwz?utm_source=share&utm_medium=member_ios&rcm=ACoAAFaw-6sBoNmsNGRgLjvZC5mN8dfPAUW_iTQ" target="_blank" rel="noopener" class="cert-btn cert-btn-secondary" data-cert-linkedin">💼 View LinkedIn Post</a>
+          </div>
         </div>
       </div>
     </div>
@@ -3526,6 +3720,9 @@
   // date: اكتبها زي ما تحب (مثلاً "يوليو 2026")
   // ═══════════════════════════════════════════════════════
   const LINKEDIN_POSTS = [
+    { title: 'رحلة الـ Data Analysis Diploma كاملة — Instant Software Solutions', date: 'أغسطس 2026', url: 'https://www.linkedin.com/posts/sherifazb_dataanalysis-powerbi-instant-ugcPost-7489038932182024192-tEJC' },
+    { title: 'تحليل نتائج الثانوية العامة بالأرقام (Python)', date: 'يوليو 2026', url: 'https://www.linkedin.com/posts/sherifazb_aesaevaesaeyaesabraepaesaeqaeyaepaeuaepaes-ugcPost-7488092648537518080-HJfk' },
+    { title: 'المركز الأول في Data Analysis Challenge', date: 'يوليو 2026', url: 'https://www.linkedin.com/posts/sherifazb_dataanalysis-datascience-instantsoftwaresolutions-share-7484689582769307648-M1xd' },
     { title: 'RFM Customer Segmentation — تحليل شرائح العملاء بالـ DAX', date: 'يوليو 2026', url: 'https://www.linkedin.com/posts/sherifazb_datascience-python-rfm-ugcPost-7478663725214887938-M1cd' },
     { title: 'Data Analytics & DAX Measures Deep Dive', date: 'يونيو 2026', url: 'https://www.linkedin.com/posts/sherifazb_dataanalytics-powerbi-dax-ugcPost-7477565026745217024-NB1r' },
     { title: 'Data Analysis · Business Intelligence Project', date: 'يونيو 2026', url: 'https://www.linkedin.com/posts/sherifazb_dataanalysis-powerbi-businessintelligence-ugcPost-7454645919540600832-TnJH' },
@@ -3545,7 +3742,12 @@
   const T = {
     en: {
       dir:'ltr', flag:'🇺🇸', code:'EN',
-      navSkills:'Skills', navProjects:'Work', navEducation:'About', navContact:'Contact', navAvail:'Open to Work',
+      navSkills:'Skills', navProjects:'Work', navEducation:'About', navCerts:'Certifications', navContact:'Contact', navAvail:'Open to Work',
+      certNum:'03 — Certifications', certH:'Verified', certH2:'Credentials',
+      certSub:"Industry-issued certifications, independently verifiable through the issuer's official authentication system.",
+      certStamp:'✓ VERIFIED', certIssuer:'Instant Software Solutions', certTitle:'Data Analysis Diploma',
+      certHours:'130 Training Hours · Data Analysis & Power BI', certSerialLabel:'SERIAL',
+      certVerify:'🔒 Verify Authenticity', certLinkedin:'💼 View LinkedIn Post',
       heroEyebrow:'Data Analyst · CS & AI Student',
       heroName1:'Sherif', heroName2:'Ayman',
       heroRole:'I build Power BI dashboards that turn raw data into clear business decisions',
@@ -3575,7 +3777,12 @@
     },
     ar: {
       dir:'rtl', flag:'🇪🇬', code:'AR',
-      navSkills:'المهارات', navProjects:'أعمالي', navEducation:'عني', navContact:'تواصل', navAvail:'متاح للعمل',
+      navSkills:'المهارات', navProjects:'أعمالي', navEducation:'عني', navCerts:'الشهادات', navContact:'تواصل', navAvail:'متاح للعمل',
+      certNum:'٠٣ — الشهادات', certH:'شهادات', certH2:'موثّقة',
+      certSub:'شهادات صادرة من جهات معتمدة، يمكن التحقق منها مباشرة عبر نظام التوثيق الرسمي للجهة المانحة.',
+      certStamp:'✓ موثّقة', certIssuer:'Instant Software Solutions', certTitle:'دبلومة تحليل البيانات',
+      certHours:'130 ساعة تدريبية · تحليل البيانات و Power BI', certSerialLabel:'الرقم التسلسلي',
+      certVerify:'🔒 التحقق من الشهادة', certLinkedin:'💼 عرض منشور لينكدإن',
       heroEyebrow:'محلل بيانات · طالب CS & AI',
       heroName1:'شريف', heroName2:'أيمن',
       heroRole:'أبني لوحات Power BI تحوّل البيانات الخام إلى قرارات عمل واضحة',
@@ -3605,7 +3812,12 @@
     },
     fr: {
       dir:'ltr', flag:'🇫🇷', code:'FR',
-      navSkills:'Compétences', navProjects:'Travaux', navEducation:'À propos', navContact:'Contact', navAvail:'Disponible',
+      navSkills:'Compétences', navProjects:'Travaux', navEducation:'À propos', navCerts:'Certifications', navContact:'Contact', navAvail:'Disponible',
+      certNum:'03 — Certifications', certH:'Identifiants', certH2:'Vérifiés',
+      certSub:"Certifications délivrées par l'industrie, vérifiables indépendamment via le système d'authentification officiel de l'organisme émetteur.",
+      certStamp:'✓ VÉRIFIÉ', certIssuer:'Instant Software Solutions', certTitle:'Diplôme en analyse de données',
+      certHours:'130 heures de formation · Analyse de données & Power BI', certSerialLabel:'N° DE SÉRIE',
+      certVerify:"🔒 Vérifier l'authenticité", certLinkedin:'💼 Voir le post LinkedIn',
       heroEyebrow:'Analyste de données · Étudiant CS & IA',
       heroName1:'Sherif', heroName2:'Ayman',
       heroRole:'Je construis des tableaux de bord Power BI qui transforment les données brutes en décisions claires',
@@ -3635,7 +3847,12 @@
     },
     de: {
       dir:'ltr', flag:'🇩🇪', code:'DE',
-      navSkills:'Fähigkeiten', navProjects:'Arbeiten', navEducation:'Über mich', navContact:'Kontakt', navAvail:'Verfügbar',
+      navSkills:'Fähigkeiten', navProjects:'Arbeiten', navEducation:'Über mich', navCerts:'Zertifikate', navContact:'Kontakt', navAvail:'Verfügbar',
+      certNum:'03 — Zertifikate', certH:'Verifizierte', certH2:'Nachweise',
+      certSub:'Von der Branche ausgestellte Zertifikate, unabhängig überprüfbar über das offizielle Authentifizierungssystem des Ausstellers.',
+      certStamp:'✓ VERIFIZIERT', certIssuer:'Instant Software Solutions', certTitle:'Diplom in Datenanalyse',
+      certHours:'130 Trainingsstunden · Datenanalyse & Power BI', certSerialLabel:'SERIENNUMMER',
+      certVerify:'🔒 Echtheit prüfen', certLinkedin:'💼 LinkedIn-Beitrag ansehen',
       heroEyebrow:'Datenanalyst · CS & KI-Student',
       heroName1:'Sherif', heroName2:'Ayman',
       heroRole:'Ich baue Power BI Dashboards, die Rohdaten in klare Geschäftsentscheidungen verwandeln',
@@ -3665,7 +3882,12 @@
     },
     ru: {
       dir:'ltr', flag:'🇷🇺', code:'RU',
-      navSkills:'Навыки', navProjects:'Работы', navEducation:'Обо мне', navContact:'Контакт', navAvail:'Открыт к работе',
+      navSkills:'Навыки', navProjects:'Работы', navEducation:'Обо мне', navCerts:'Сертификаты', navContact:'Контакт', navAvail:'Открыт к работе',
+      certNum:'03 — Сертификаты', certH:'Подтверждённые', certH2:'Квалификации',
+      certSub:'Сертификаты, выданные отраслевыми организациями и проверяемые через официальную систему аутентификации эмитента.',
+      certStamp:'✓ ПОДТВЕРЖДЕНО', certIssuer:'Instant Software Solutions', certTitle:'Диплом по анализу данных',
+      certHours:'130 часов обучения · Анализ данных & Power BI', certSerialLabel:'СЕРИЙНЫЙ №',
+      certVerify:'🔒 Проверить подлинность', certLinkedin:'💼 Смотреть пост в LinkedIn',
       heroEyebrow:'Аналитик данных · Студент CS & ИИ',
       heroName1:'Шериф', heroName2:'Айман',
       heroRole:'Создаю дашборды Power BI, которые превращают сырые данные в чёткие бизнес-решения',
@@ -3768,6 +3990,19 @@
       if (chips[2]) chips[2].textContent = t.chip3;
       ss('[data-avail-title]', t.availTitle); ss('[data-avail-sub]', t.availSub);
       ss('[data-courses-label]', t.coursesLabel);
+
+      // Certifications
+      ss('[data-cert-num]', t.certNum);
+      const certH_ = document.querySelector('[data-cert-heading]');
+      if (certH_) certH_.innerHTML = t.certH + '<br><em>' + t.certH2 + '</em>';
+      ss('[data-cert-sub]', t.certSub);
+      ss('[data-cert-stamp]', t.certStamp);
+      ss('[data-cert-issuer]', t.certIssuer);
+      ss('[data-cert-title]', t.certTitle);
+      ss('[data-cert-hours]', t.certHours);
+      ss('[data-cert-serial-label]', t.certSerialLabel);
+      ss('[data-cert-verify]', t.certVerify);
+      ss('[data-cert-linkedin]', t.certLinkedin);
 
       // Contact
       const ch = document.querySelector('[data-contact-heading]');
