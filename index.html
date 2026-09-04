@@ -2464,7 +2464,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 </style>
 
 </head>
-<body>
+<body class="dark-mode">
 
   <!-- Cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
@@ -2582,7 +2582,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
           <button class="rm-tooltip-dismiss" id="rmTooltipDismiss">maybe later</button>
         </div>
       </div>
-      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode"></button>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -3822,16 +3821,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   /* ══════════════════════════
      DARK MODE
   ══════════════════════════ */
-  const darkBtn = document.getElementById('darkToggle');
-  let dark = localStorage.getItem('darkMode') !== null
-    ? localStorage.getItem('darkMode') === 'true'
-    : true; // default: dark mode ON for first-time visitors
-  function applyDark() {
-    document.body.classList.toggle('dark-mode', dark);
-    localStorage.setItem('darkMode', dark);
-  }
-  applyDark();
-  darkBtn.addEventListener('click', () => { dark = !dark; applyDark(); });
+  document.body.classList.add('dark-mode'); // dark mode only, always on
+  localStorage.removeItem('darkMode');
 
   /* ══════════════════════════
      COUNTER ANIMATION
