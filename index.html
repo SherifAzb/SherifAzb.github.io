@@ -3823,7 +3823,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
      DARK MODE
   ══════════════════════════ */
   const darkBtn = document.getElementById('darkToggle');
-  let dark = localStorage.getItem('darkMode') === 'true';
+  let dark = localStorage.getItem('darkMode') !== null
+    ? localStorage.getItem('darkMode') === 'true'
+    : true; // default: dark mode ON for first-time visitors
   function applyDark() {
     document.body.classList.toggle('dark-mode', dark);
     localStorage.setItem('darkMode', dark);
