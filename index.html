@@ -299,13 +299,19 @@
 
     /* ══ HERO ══ */
     .hero {
-      min-height: 100vh;
+      min-height: 0;
       background: var(--grad-ocean);
       position: relative; overflow: hidden;
-      display: grid; grid-template-columns: 1fr 1fr;
+      padding: 108px 32px 40px;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.05fr .95fr;
       align-items: center;
-      padding: 160px 56px 100px;
-      gap: 0;
+      gap: 40px;
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     /* Animated ocean wave background */
@@ -374,40 +380,43 @@
       background: rgba(14,163,148,.06);
     }
 
-    .hero-left { padding-right: 80px; }
+    .hero-left { padding-right: 0; }
     .hero-eyebrow {
       display: flex; align-items: center; gap: 12px;
       font-family: 'JetBrains Mono', monospace;
       font-size: .66rem; letter-spacing: .16em;
       text-transform: uppercase;
-      color: var(--glow); margin-bottom: 32px;
+      color: var(--glow); margin-bottom: 12px;
     }
     .hero-eyebrow-line { width: 28px; height: 1px; background: var(--glow); }
 
     .hero-name {
       font-family: 'Fraunces', serif;
-      font-size: clamp(4.5rem, 8vw, 8rem);
-      font-weight: 300; line-height: .92;
-      letter-spacing: -.02em;
-      color: var(--sand); margin-bottom: 16px;
+      font-size: clamp(2.4rem, 3.6vw, 3.4rem);
+      font-weight: 400; line-height: 1.04;
+      letter-spacing: -.01em;
+      color: var(--sand); margin-bottom: 10px;
+      display: flex; flex-wrap: wrap; gap: 0 .32em;
     }
+    .hero-name br { display: none; }
     .hero-name strong { font-weight: 600; color: #fff; }
     .hero-name em { font-style: italic; color: var(--coral); }
 
     .hero-tagline {
-      font-size: clamp(.95rem, 1.8vw, 1.2rem);
-      font-weight: 500; letter-spacing: .02em;
-      color: rgba(245,237,224,.6); margin-bottom: 28px;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+      font-weight: 500; letter-spacing: -.005em; line-height: 1.28;
+      color: #fff; max-width: 480px; margin-bottom: 14px;
     }
 
     .hero-desc {
       font-family: 'JetBrains Mono', monospace;
-      font-size: .76rem; line-height: 1.9;
+      font-size: .74rem; line-height: 1.7;
       color: rgba(245,237,224,.45);
-      max-width: 400px; margin-bottom: 52px;
+      max-width: 460px; margin-bottom: 18px;
     }
 
-    .hero-offer-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+    .hero-offer-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
     .hero-offer-chip {
       font-family: 'JetBrains Mono', monospace;
       font-size: .64rem; letter-spacing: .02em;
@@ -463,11 +472,11 @@
     /* Hero right */
     .hero-right {
       display: flex; flex-direction: column;
-      align-items: flex-end; gap: 40px;
+      align-items: flex-end; gap: 16px;
     }
 
     .hero-photo-wrap {
-      position: relative; width: 290px; height: 360px;
+      position: relative; width: 280px; height: 336px;
     }
     .hero-photo-bg {
       position: absolute; inset: 12px 12px -12px -12px;
@@ -489,19 +498,19 @@
     /* Stats row */
     .hero-stats {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 16px; width: 100%; max-width: 290px;
+      gap: 10px; width: 100%; max-width: 280px;
     }
     .stat-card {
       background: rgba(245,237,224,.05);
       border: 1px solid rgba(14,163,148,.15);
-      border-radius: 8px; padding: 20px;
+      border-radius: 8px; padding: 10px;
       text-align: center;
     }
     .stat-num {
       font-family: 'Fraunces', serif;
-      font-size: 2.4rem; font-weight: 300;
+      font-size: 1.5rem; font-weight: 300;
       color: var(--glow); line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 3px;
     }
     .stat-label {
       font-family: 'JetBrains Mono', monospace;
@@ -511,14 +520,14 @@
 
     /* LinkedIn latest-posts widget */
     .li-widget {
-      width: 100%; max-width: 290px;
+      width: 100%; max-width: 280px;
       background: rgba(245,237,224,.05);
       border: 1px solid rgba(14,163,148,.15);
-      border-radius: 8px; padding: 16px 18px;
+      border-radius: 8px; padding: 11px 14px;
     }
     .li-widget-head {
       display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .li-widget-title {
       display: flex; align-items: center; gap: 7px;
@@ -533,10 +542,10 @@
       letter-spacing: .05em; opacity: .85; transition: opacity .2s;
     }
     .li-widget-see:hover { opacity: 1; }
-    .li-widget-list { display: flex; flex-direction: column; gap: 10px; }
+    .li-widget-list { display: flex; flex-direction: column; gap: 6px; }
     .li-post {
       display: block; text-decoration: none;
-      padding: 9px 10px; border-radius: 6px;
+      padding: 7px 9px; border-radius: 6px;
       background: rgba(245,237,224,.04);
       border: 1px solid rgba(245,237,224,.08);
       transition: background .2s, border-color .2s, transform .2s;
@@ -548,8 +557,8 @@
     }
     [dir="ltr"] .li-post:hover { transform: translateX(2px); }
     .li-post-title {
-      font-family: 'Inter', sans-serif; font-size: .78rem; font-weight: 500;
-      color: var(--sand); line-height: 1.35; margin-bottom: 4px;
+      font-family: 'Inter', sans-serif; font-size: .74rem; font-weight: 500;
+      color: var(--sand); line-height: 1.3; margin-bottom: 2px;
     }
     .li-post-date {
       font-family: 'JetBrains Mono', monospace; font-size: .56rem;
@@ -1525,270 +1534,370 @@
       50% { opacity: .2; }
     }
 
-    /* ══ RECRUITER MODE OVERLAY ══ */
+    /* ══════════════════════════════════════
+       RECRUITER MODE — CANDIDATE INTELLIGENCE DASHBOARD
+       (redesigned shell: layout, panels, charts, motion)
+    ══════════════════════════════════════ */
     .rm-overlay {
       position: fixed; inset: 0; z-index: 8000;
-      background: rgba(15,12,41,.97);
-      backdrop-filter: blur(12px);
+      background:
+        radial-gradient(900px 520px at 78% -10%, rgba(28,93,140,.30), transparent 60%),
+        radial-gradient(760px 480px at 8% 4%, rgba(14,163,148,.18), transparent 62%),
+        #080D14;
       display: flex; flex-direction: column;
-      overflow-y: auto;
       opacity: 0; pointer-events: none;
-      transition: opacity .4s;
+      transition: opacity .34s ease;
+      --rm-line: rgba(255,255,255,.075);
+      --rm-line-2: rgba(255,255,255,.13);
+      --rm-txt: #EAF1F7;
+      --rm-dim: rgba(234,241,247,.52);
+      --rm-faint: rgba(234,241,247,.34);
+      --rm-teal: #0EA394;
+      --rm-blue: #1C5D8C;
+      --rm-amber: #C98A2C;
+      color: var(--rm-txt);
     }
     .rm-overlay.open { opacity: 1; pointer-events: all; }
 
-    .rm-header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 28px 48px 0;
+    .rm-shell {
+      display: flex; flex-direction: column;
+      height: 100%; width: 100%;
+      opacity: 0; transform: translateY(18px) scale(.985);
+      transition: opacity .5s cubic-bezier(.22,1,.36,1) .06s, transform .55s cubic-bezier(.22,1,.36,1) .06s;
+    }
+    .rm-overlay.open .rm-shell { opacity: 1; transform: none; }
+
+    /* ── Top bar ── */
+    .rm-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; padding: 14px clamp(16px, 4vw, 40px);
+      border-bottom: 1px solid var(--rm-line);
+      background: rgba(8,13,20,.72);
+      backdrop-filter: blur(14px);
+      flex-shrink: 0;
     }
     .rm-logo {
-      font-family: 'Fraunces', serif;
-      font-size: 1.1rem; color: var(--sand);
-      letter-spacing: .1em;
+      font-family: 'Fraunces', serif; font-size: .95rem; letter-spacing: -.01em;
+      color: var(--rm-txt); min-width: 0;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
-    .rm-logo em { color: var(--glow); font-style: italic; }
+    .rm-logo em { color: var(--rm-teal); font-style: italic; }
+    .rm-topbar-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .rm-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .58rem; letter-spacing: .16em;
-      text-transform: uppercase;
-      background: var(--grad-glow);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      border: 1px solid rgba(14,163,148,.3); padding: 5px 14px;
-      border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace; font-size: .55rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 6px 10px; border-radius: 999px;
+      border: 1px solid rgba(14,163,148,.32);
+      background: rgba(14,163,148,.10); color: #8FE3D8;
+      white-space: nowrap;
     }
     .rm-close {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: rgba(14,163,148,.1); border: 1px solid rgba(14,163,148,.2);
-      color: var(--glow); font-size: 1rem;
-      cursor: none; display: flex; align-items: center; justify-content: center;
-      transition: background .2s;
+      width: 34px; height: 34px; flex-shrink: 0;
+      display: grid; place-items: center;
+      border-radius: 10px; font-size: .8rem;
+      border: 1px solid var(--rm-line-2);
+      background: rgba(255,255,255,.04); color: var(--rm-txt);
+      transition: background .2s, border-color .2s, transform .2s;
     }
-    .rm-close:hover { background: rgba(14,163,148,.2); }
+    .rm-close:hover { background: rgba(14,163,148,.18); border-color: rgba(14,163,148,.4); transform: rotate(90deg); }
 
-    .rm-title-row {
-      padding: 20px 48px 32px;
-      border-bottom: 1px solid rgba(14,163,148,.08);
+    /* ── Section nav ── */
+    .rm-overlay .rm-nav {
+      position: relative; top: auto; left: auto; right: auto; width: auto;
+      display: flex; gap: 4px; flex-shrink: 0;
+      padding: 8px clamp(12px, 4vw, 40px);
+      border-bottom: 1px solid var(--rm-line);
+      background: rgba(8,13,20,.6);
+      backdrop-filter: blur(14px);
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .rm-nav::-webkit-scrollbar { display: none; }
+    .rm-nav-link {
+      font-family: 'JetBrains Mono', monospace; font-size: .58rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 8px 12px; border-radius: 8px; white-space: nowrap;
+      color: var(--rm-faint); background: none; border: none;
+      transition: color .2s, background .2s;
+    }
+    .rm-nav-link:hover { color: var(--rm-txt); background: rgba(255,255,255,.04); }
+    .rm-nav-link.active { color: #8FE3D8; background: rgba(14,163,148,.12); }
+
+    /* ── Scroll region ── */
+    .rm-scroll {
+      flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
+      scroll-behavior: smooth;
+      padding: clamp(20px, 3.4vw, 38px) clamp(14px, 4vw, 40px) 80px;
+    }
+    .rm-section { max-width: 1320px; margin: 0 auto 34px; }
+    .rm-section:last-child { margin-bottom: 0; }
+    .rm-sec-head {
+      display: flex; align-items: baseline; gap: 12px;
+      margin-bottom: 14px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--rm-line);
+    }
+    .rm-sec-title {
+      font-family: 'JetBrains Mono', monospace; font-size: .6rem;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--rm-dim);
+    }
+    .rm-sec-note {
+      font-family: 'JetBrains Mono', monospace; font-size: .55rem;
+      letter-spacing: .1em; color: var(--rm-faint); margin-left: auto;
+      white-space: nowrap;
+    }
+
+    /* ── Reveal motion ── */
+    .rm-reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1); }
+    .rm-reveal.in { opacity: 1; transform: none; }
+
+    /* ── Identity header ── */
+    .rm-identity {
+      position: relative; overflow: hidden;
+      border: 1px solid var(--rm-line); border-radius: 18px;
+      background: linear-gradient(135deg, rgba(22,50,79,.55), rgba(16,27,45,.35));
+      padding: clamp(20px, 3.2vw, 34px);
+      display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 20px; align-items: center;
+    }
+    .rm-identity::after {
+      content: ''; position: absolute; right: -80px; top: -120px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,163,148,.20), transparent 70%);
+      pointer-events: none;
+    }
+    .rm-id-main { min-width: 0; }
+    .rm-eyebrow {
+      font-family: 'JetBrains Mono', monospace; font-size: .55rem;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--rm-teal);
+      margin-bottom: 10px;
     }
     .rm-name {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 300; color: var(--sand);
-      line-height: 1;
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(2.1rem, 5.2vw, 3.6rem); line-height: 1.02;
+      letter-spacing: -.03em; margin-bottom: 12px;
     }
-    .rm-name em { font-style: italic; color: var(--glow); }
-    .rm-role {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .7rem; letter-spacing: .16em;
-      text-transform: uppercase;
-      color: rgba(245,237,224,.4);
-      margin-top: 8px;
+    .rm-name em { font-style: italic; color: var(--rm-teal); }
+    .rm-role { font-size: .82rem; color: var(--rm-dim); line-height: 1.65; max-width: 62ch; }
+    .rm-status {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-top: 16px; padding: 9px 15px; border-radius: 999px;
+      border: 1px solid rgba(74,222,128,.28); background: rgba(74,222,128,.08);
+      font-family: 'JetBrains Mono', monospace; font-size: .58rem;
+      letter-spacing: .1em; color: #9BE8B5;
     }
+    .rm-status-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #4ade80;
+      box-shadow: 0 0 10px rgba(74,222,128,.8); animation: blink-dot 1.8s ease-in-out infinite;
+    }
+    .rm-id-cta { display: flex; flex-direction: column; gap: 8px; }
 
-    /* KPI Row */
+    /* ── KPI grid ── */
     .rm-kpis {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      border-bottom: 1px solid rgba(14,163,148,.08);
+      display: grid; grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 12px; margin-top: 14px;
     }
     .rm-kpi {
-      padding: 28px 24px;
-      border-right: 1px solid rgba(14,163,148,.08);
-      position: relative;
+      position: relative; overflow: hidden;
+      border: 1px solid var(--rm-line); border-radius: 14px;
+      background: rgba(255,255,255,.025);
+      padding: 16px 16px 14px;
+      transition: border-color .25s, transform .25s, background .25s;
     }
-    .rm-kpi:last-child { border-right: none; }
-    .rm-kpi-val {
-      font-family: 'Fraunces', serif;
-      font-size: 2.4rem; font-weight: 300;
-      color: var(--glow); line-height: 1;
-      margin-bottom: 6px;
-    }
+    .rm-kpi:hover { border-color: rgba(14,163,148,.34); background: rgba(14,163,148,.055); transform: translateY(-3px); }
     .rm-kpi-lbl {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .56rem; letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(245,237,224,.3);
-      margin-bottom: 4px;
+      font-family: 'JetBrains Mono', monospace; font-size: .52rem;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--rm-faint);
     }
-    .rm-kpi-trend {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .62rem; font-weight: 700;
+    .rm-kpi-val {
+      font-family: 'Fraunces', serif; font-size: clamp(1.7rem, 3vw, 2.3rem);
+      line-height: 1.1; margin: 10px 0 6px; letter-spacing: -.02em;
     }
-    .rm-kpi-trend.up { color: #4ade80; }
-    .rm-kpi-trend.neutral { color: rgba(245,237,224,.3); }
-
-    /* Main grid */
-    .rm-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
-      flex: 1;
-    }
-    .rm-panel {
-      padding: 28px 32px;
-      border-right: 1px solid rgba(14,163,148,.08);
-      border-bottom: 1px solid rgba(14,163,148,.08);
-    }
-    .rm-panel:nth-child(3n) { border-right: none; }
-    .rm-panel-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .58rem; letter-spacing: .2em;
-      text-transform: uppercase;
-      color: rgba(245,237,224,.25);
-      margin-bottom: 20px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .rm-panel-title span {
-      font-size: .54rem; color: var(--glow);
-      background: rgba(14,163,148,.1);
-      padding: 2px 8px; border-radius: 100px;
+    .rm-kpi-val.sm { font-size: clamp(1.1rem, 2vw, 1.35rem); padding-top: 8px; }
+    .rm-kpi-trend { font-family: 'JetBrains Mono', monospace; font-size: .53rem; letter-spacing: .05em; }
+    .rm-kpi-trend.up { color: #6ee7c8; }
+    .rm-kpi-trend.neutral { color: var(--rm-faint); }
+    .rm-kpi-meter { height: 2px; border-radius: 2px; background: rgba(255,255,255,.07); margin-top: 12px; overflow: hidden; }
+    .rm-kpi-meter i {
+      display: block; height: 100%; width: 0;
+      background: linear-gradient(90deg, var(--rm-blue), var(--rm-teal));
+      transition: width 1.1s cubic-bezier(.22,1,.36,1);
     }
 
-    /* Skill bars in RM */
-    .rm-skill { margin-bottom: 16px; }
+    /* ── Generic grids/cards ── */
+    .rm-grid-2 { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr); gap: 14px; }
+    .rm-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .rm-card {
+      border: 1px solid var(--rm-line); border-radius: 16px;
+      background: rgba(255,255,255,.022);
+      padding: clamp(16px, 2.2vw, 22px);
+      transition: border-color .25s, background .25s;
+    }
+    .rm-card:hover { border-color: var(--rm-line-2); }
+    .rm-card-title {
+      font-family: 'JetBrains Mono', monospace; font-size: .58rem;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--rm-dim);
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .rm-card-title span { color: var(--rm-teal); font-size: .55rem; letter-spacing: .08em; }
+
+    /* ── Skills ── */
+    .rm-skill { margin-bottom: 15px; }
     .rm-skill:last-child { margin-bottom: 0; }
     .rm-skill-top {
-      display: flex; justify-content: space-between;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .62rem; margin-bottom: 6px;
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 10px; margin-bottom: 7px;
+      font-family: 'JetBrains Mono', monospace; font-size: .62rem;
     }
-    .rm-skill-name { color: rgba(245,237,224,.7); }
-    .rm-skill-pct { color: var(--glow); font-weight: 700; }
-    .rm-bar-bg { height: 4px; background: rgba(255,255,255,.06); border-radius: 10px; overflow: hidden; }
+    .rm-skill-name { color: rgba(234,241,247,.78); min-width: 0; }
+    .rm-skill-pct { color: #8FE3D8; font-weight: 700; flex-shrink: 0; }
+    .rm-bar-bg { height: 5px; background: rgba(255,255,255,.06); border-radius: 10px; overflow: hidden; }
     .rm-bar-fill {
-      height: 100%;
-      background: var(--grad-glow);
-      border-radius: 10px;
-      width: 0;
-      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+      height: 100%; width: 0; border-radius: 10px;
+      background: linear-gradient(90deg, var(--rm-blue), var(--rm-teal) 70%, #5FC9BC);
+      box-shadow: 0 0 12px rgba(14,163,148,.35);
+      transition: width 1.15s cubic-bezier(.22,1,.36,1);
     }
 
-    /* Radar chart */
-    .rm-radar-wrap { display: flex; justify-content: center; padding: 8px 0; }
-
-    /* Project list in RM */
-    .rm-proj-item {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(14,163,148,.06);
+    /* ── Projects ── */
+    .rm-proj-list { display: flex; flex-direction: column; gap: 8px; }
+    .rm-proj {
+      width: 100%; text-align: left;
+      border: 1px solid var(--rm-line); border-radius: 13px;
+      background: rgba(255,255,255,.022);
+      padding: 14px 16px; color: inherit;
+      display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 14px; align-items: center;
+      transition: border-color .22s, background .22s, transform .22s;
     }
-    .rm-proj-item:last-child { border-bottom: none; }
+    .rm-proj:hover { border-color: rgba(14,163,148,.35); background: rgba(14,163,148,.05); transform: translateX(3px); }
+    .rm-proj[aria-expanded="true"] { border-color: rgba(14,163,148,.45); background: rgba(14,163,148,.07); }
     .rm-proj-num {
-      font-family: 'Fraunces', serif;
-      font-size: 1.4rem; color: rgba(14,163,148,.25);
-      line-height: 1; flex-shrink: 0; min-width: 28px;
+      font-family: 'JetBrains Mono', monospace; font-size: .62rem;
+      color: var(--rm-teal); opacity: .75; flex-shrink: 0;
     }
-    .rm-proj-name {
-      font-family: 'Inter', sans-serif;
-      font-size: .78rem; font-weight: 600;
-      color: var(--sand); margin-bottom: 2px;
-    }
+    .rm-proj-name { display: block; font-size: .84rem; font-weight: 600; line-height: 1.4; }
     .rm-proj-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .56rem; color: rgba(245,237,224,.3);
-      letter-spacing: .06em;
+      display: block;
+      font-family: 'JetBrains Mono', monospace; font-size: .55rem;
+      color: var(--rm-faint); margin-top: 5px; letter-spacing: .04em;
+    }
+    .rm-proj-chev { color: var(--rm-faint); font-size: .7rem; transition: transform .25s; }
+    .rm-proj[aria-expanded="true"] .rm-proj-chev { transform: rotate(90deg); color: var(--rm-teal); }
+    .rm-proj-panel {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .32s cubic-bezier(.22,1,.36,1);
+    }
+    .rm-proj-panel.open { grid-template-rows: 1fr; }
+    .rm-proj-panel > div { overflow: hidden; }
+    .rm-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 16px 4px 46px; }
+    .rm-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: .53rem;
+      padding: 4px 10px; border-radius: 999px;
+      border: 1px solid rgba(14,163,148,.22); color: rgba(234,241,247,.6);
+      background: rgba(14,163,148,.05);
     }
 
-    /* Timeline dots */
-    .rm-timeline { position: relative; padding-left: 20px; }
+    /* ── Domain coverage ── */
+    .rm-donut-wrap { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+    .rm-donut-wrap svg { flex-shrink: 0; }
+    .rm-donut-ring circle[data-arc] {
+      transition: stroke-dashoffset 1.1s cubic-bezier(.22,1,.36,1), opacity .2s;
+    }
+    .rm-donut-legend { flex: 1; min-width: 180px; display: flex; flex-direction: column; gap: 7px; }
+    .rm-legend-item {
+      display: flex; align-items: center; gap: 9px;
+      font-family: 'JetBrains Mono', monospace; font-size: .58rem;
+      color: var(--rm-dim); padding: 3px 0;
+      transition: color .2s;
+    }
+    .rm-legend-item:hover { color: var(--rm-txt); }
+    .rm-legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+    .rm-legend-name { flex: 1; min-width: 0; }
+    .rm-legend-count { color: rgba(234,241,247,.9); font-weight: 700; }
+    .rm-sparkline { margin-top: 6px; width: 100%; }
+    .rm-spark-line { stroke-dasharray: 340; stroke-dashoffset: 340; transition: stroke-dashoffset 1.6s ease; }
+    .rm-overlay.rm-anim .rm-spark-line { stroke-dashoffset: 0; }
+
+    /* ── Timeline ── */
+    .rm-timeline { position: relative; padding-left: 22px; }
     .rm-timeline::before {
-      content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px;
-      width: 1px; background: rgba(14,163,148,.15);
+      content: ''; position: absolute; left: 5px; top: 4px; bottom: 4px; width: 1px;
+      background: linear-gradient(180deg, rgba(14,163,148,.55), rgba(14,163,148,.06));
     }
     .rm-tl-item { position: relative; margin-bottom: 18px; }
     .rm-tl-item:last-child { margin-bottom: 0; }
     .rm-tl-dot {
-      position: absolute; left: -16px; top: 4px;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--glow);
-      box-shadow: 0 0 8px rgba(14,163,148,.6);
+      position: absolute; left: -21px; top: 5px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--rm-teal); box-shadow: 0 0 0 3px rgba(14,163,148,.12);
     }
     .rm-tl-year {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .54rem; color: var(--glow); letter-spacing: .1em;
-      margin-bottom: 2px;
+      font-family: 'JetBrains Mono', monospace; font-size: .53rem;
+      letter-spacing: .12em; color: var(--rm-teal); margin-bottom: 4px;
     }
-    .rm-tl-label {
-      font-family: 'Inter', sans-serif;
-      font-size: .8rem; font-weight: 600; color: var(--sand);
-      margin-bottom: 2px;
-    }
-    .rm-tl-sub {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .58rem; color: rgba(245,237,224,.3);
-    }
-
-    /* Availability badge */
+    .rm-tl-label { font-size: .78rem; font-weight: 600; line-height: 1.4; }
+    .rm-tl-sub { font-size: .68rem; color: var(--rm-faint); margin-top: 4px; line-height: 1.55; }
     .rm-avail {
-      display: flex; align-items: center; gap: 10px;
-      margin-top: 16px;
-      padding: 14px 18px;
-      background: rgba(74,222,128,.07);
-      border: 1px solid rgba(74,222,128,.2);
-      border-radius: 6px;
+      display: flex; align-items: center; gap: 12px; margin-top: 18px;
+      padding: 14px 16px; border-radius: 13px;
+      border: 1px solid rgba(74,222,128,.22); background: rgba(74,222,128,.06);
     }
     .rm-avail-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 10px rgba(74,222,128,.7);
-      animation: pulse 2s infinite;
-      flex-shrink: 0;
+      width: 9px; height: 9px; border-radius: 50%; background: #4ade80; flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(74,222,128,.7); animation: blink-dot 1.8s ease-in-out infinite;
     }
-    .rm-avail-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .62rem; letter-spacing: .1em;
-      text-transform: uppercase; color: #4ade80;
-    }
-    .rm-avail-sub {
-      font-size: .56rem; color: rgba(74,222,128,.6);
-      margin-top: 2px; text-transform: none; letter-spacing: 0;
-    }
+    .rm-avail-text { font-size: .76rem; font-weight: 600; color: #C9F5D8; }
+    .rm-avail-sub { font-family: 'JetBrains Mono', monospace; font-size: .54rem; color: var(--rm-faint); margin-top: 4px; }
 
-    /* Contact in RM */
+    /* ── Coursework ── */
+    .rm-course-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    /* ── Contact ── */
+    .rm-contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
     .rm-contact-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 12px; border-radius: 6px;
-      margin-bottom: 8px;
-      background: rgba(14,163,148,.04);
-      border: 1px solid rgba(14,163,148,.08);
-      text-decoration: none; transition: background .2s;
-      cursor: none;
+      display: flex; align-items: center; gap: 12px; min-width: 0;
+      padding: 13px 15px; border-radius: 13px;
+      border: 1px solid var(--rm-line); background: rgba(255,255,255,.022);
+      text-decoration: none; color: inherit;
+      transition: border-color .22s, background .22s, transform .22s;
     }
-    .rm-contact-item:hover { background: rgba(14,163,148,.1); }
+    .rm-contact-item:hover { border-color: rgba(14,163,148,.4); background: rgba(14,163,148,.08); transform: translateY(-2px); }
     .rm-contact-icon {
-      font-size: .8rem;
-      width: 28px; height: 28px;
-      background: rgba(14,163,148,.1);
-      border-radius: 4px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      width: 34px; height: 34px; flex-shrink: 0; border-radius: 10px;
+      display: grid; place-items: center; font-size: .78rem;
+      background: rgba(14,163,148,.12); color: #8FE3D8;
     }
     .rm-contact-lbl {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .55rem; letter-spacing: .08em;
-      text-transform: uppercase; color: rgba(245,237,224,.3);
-      display: block;
+      display: block; font-family: 'JetBrains Mono', monospace; font-size: .5rem;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--rm-faint);
     }
     .rm-contact-val {
-      font-family: 'Inter', sans-serif;
-      font-size: .78rem; font-weight: 600; color: var(--sand);
+      display: block; font-size: .74rem; margin-top: 3px; color: rgba(234,241,247,.85);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
-
-    /* Donut chart */
-    .rm-donut-wrap { display: flex; gap: 16px; align-items: center; }
-    .rm-donut-legend { flex: 1; }
-    .rm-legend-item {
-      display: flex; align-items: center; gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .58rem; color: rgba(245,237,224,.5);
-      margin-bottom: 8px;
+    .rm-cv {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 20px; border-radius: 15px; text-decoration: none; color: inherit;
+      border: 1px solid rgba(14,163,148,.4);
+      background: linear-gradient(120deg, rgba(14,163,148,.18), rgba(28,93,140,.14));
+      transition: transform .22s, box-shadow .22s, border-color .22s;
     }
-    .rm-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .rm-legend-name { flex: 1; }
-    .rm-legend-count { color: rgba(245,237,224,.85); font-weight: 600; }
+    .rm-cv:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(14,163,148,.20); border-color: rgba(14,163,148,.65); }
+    .rm-cv-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      display: grid; place-items: center; font-size: 1rem;
+      background: rgba(14,163,148,.24); color: #A9EFE4;
+    }
+    .rm-cv-title { display: block; font-family: 'Fraunces', serif; font-size: 1.02rem; }
+    .rm-cv-sub { display: block; font-family: 'JetBrains Mono', monospace; font-size: .55rem; color: rgba(234,241,247,.55); margin-top: 4px; }
 
-    /* Sparkline */
-    .rm-sparkline { margin-top: 8px; }
+    @media (prefers-reduced-motion: reduce) {
+      .rm-shell, .rm-reveal, .rm-bar-fill, .rm-kpi-meter i, .rm-spark-line,
+      .rm-proj, .rm-proj-panel, .rm-contact-item, .rm-cv, .rm-kpi {
+        transition: none !important; animation: none !important;
+      }
+      .rm-reveal { opacity: 1; transform: none; }
+      .rm-shell { opacity: 1; transform: none; }
+    }
 
     /* ══ HAMBURGER MENU ══ */
     .hamburger {
@@ -1869,29 +1978,32 @@
 
       /* Hero */
       .hero {
-        grid-template-columns: 1fr;
-        padding: 120px 20px 60px;
-        gap: 40px;
+        padding: 110px 20px 48px;
         text-align: center;
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
       .hero-left { padding-right: 0; }
       .hero-vline { display: none; }
       .hero-eyebrow { justify-content: center; }
-      .hero-name { font-size: clamp(3.2rem, 14vw, 5rem); }
+      .hero-name { justify-content: center; font-size: clamp(2.2rem, 10vw, 3rem); }
+      .hero-tagline { max-width: 100%; margin-left: auto; margin-right: auto; }
       .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
       .hero-cta { justify-content: center; }
       .hero-offer-row { justify-content: center; }
       .hero-recruiter-whisper { justify-content: center; }
 
       /* Hero right — centre align */
-      .hero-right { align-items: center; gap: 24px; }
-      .hero-photo-wrap { width: min(220px, 60vw); height: auto; aspect-ratio: 4/5; }
+      .hero-right { align-items: center; gap: 20px; }
+      .hero-photo-wrap { width: min(180px, 50vw); height: auto; aspect-ratio: 4/5; }
       .hero-stats {
         display: grid; grid-template-columns: 1fr 1fr;
-        gap: 12px; width: 100%; max-width: 320px;
+        gap: 12px; width: 100%; max-width: 300px;
       }
-      .stat-card { padding: 14px; }
-      .stat-num { font-size: 2rem; }
+      .stat-card { padding: 12px; }
+      .stat-num { font-size: 1.7rem; }
       .scroll-cue { display: none; }
 
       /* Skills */
@@ -1959,24 +2071,25 @@
       footer { padding: 20px; flex-direction: column; gap: 12px; text-align: center; }
       footer p:last-child { display: none; }
 
-      /* Recruiter mode overlay */
-      .rm-overlay { overflow-y: auto; }
-      .rm-header { padding: 20px; }
-      .rm-title-row { padding: 16px 20px 20px; }
-      .rm-name { font-size: clamp(1.8rem, 7vw, 2.6rem); }
-      .rm-badge { font-size: .5rem; }
-      .rm-kpis {
-        grid-template-columns: repeat(2, 1fr);
-        overflow-x: auto;
-      }
-      .rm-kpi { padding: 16px 14px; }
-      .rm-kpi:nth-child(2n) { border-right: none; }
-      .rm-kpi:nth-child(5) { grid-column: 1 / -1; border-right: none; border-top: 1px solid rgba(14,163,148,.08); }
-      .rm-kpi-val { font-size: 1.8rem; }
-      .rm-body { grid-template-columns: 1fr; }
-      .rm-panel { border-right: none; padding: 20px; }
-      .rm-radar-wrap svg { width: 100%; height: auto; }
-      .rm-donut-wrap { flex-wrap: wrap; gap: 12px; }
+      /* Recruiter dashboard — mobile */
+      .rm-topbar { padding: 12px 16px; }
+      .rm-sec-head { flex-wrap: wrap; }
+      .rm-sec-note { margin-left: 0; }
+      .rm-logo { font-size: .8rem; }
+      .rm-scroll { padding: 18px 14px 70px; }
+      .rm-identity { grid-template-columns: 1fr; padding: 20px 18px; }
+      .rm-name { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+      .rm-role { font-size: .76rem; }
+      .rm-badge { font-size: .48rem; padding: 5px 8px; }
+      .rm-kpis { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .rm-kpis > .rm-kpi:last-child { grid-column: 1 / -1; }
+      .rm-kpi-val { font-size: 1.7rem; }
+      .rm-grid-2, .rm-grid-3 { grid-template-columns: 1fr; }
+      .rm-contact-grid { grid-template-columns: 1fr; }
+      .rm-donut-wrap { gap: 14px; justify-content: center; }
+      .rm-donut-legend { min-width: 100%; }
+      .rm-tags { padding-left: 16px; }
+      .rm-proj { grid-template-columns: auto minmax(0,1fr) auto; padding: 13px 14px; gap: 10px; }
 
       /* Recruiter tooltip — reposition on mobile */
       .rm-tooltip {
@@ -2003,9 +2116,9 @@
       .recruiter-mode-btn { padding: 6px 8px; }
       .rm-notif-dot { top: -3px; right: -3px; width: 8px; height: 8px; }
 
-      .hero { padding: 110px 16px 50px; }
-      .hero-name { font-size: clamp(2.8rem, 17vw, 4rem); }
-      .hero-tagline { font-size: .9rem; }
+      .hero { padding: 100px 16px 42px; }
+      .hero-name { font-size: clamp(2rem, 12vw, 2.6rem); }
+      .hero-tagline { font-size: 1.15rem; }
       .hero-desc { font-size: .7rem; }
       .btn-ocean, .btn-ghost { font-size: .75rem; padding: 13px 20px; }
 
@@ -2027,7 +2140,7 @@
 
       .rm-kpis { grid-template-columns: 1fr 1fr; }
       .rm-kpi-val { font-size: 1.5rem; }
-      .rm-panel { padding: 16px; }
+      .rm-card { padding: 16px; }
 
       .hero-stats { max-width: 280px; }
       .stat-num { font-size: 1.8rem; }
@@ -2118,6 +2231,238 @@
     .nav-khamsat:hover .nk-dot{ background:#fff; }
     @media (max-width:760px){ .nav-khamsat span.nk-full{ display:none; } }
   </style>
+<style id="premium-refresh">
+/* ═══════════════════════════════════════════════════════════
+   PREMIUM REFRESH LAYER — presentation only.
+   No content, data, markup or behaviour is modified here.
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --pr-radius: 14px;
+  --pr-radius-sm: 10px;
+  --pr-line: rgba(16,27,45,.09);
+  --pr-line-strong: rgba(16,27,45,.16);
+  --pr-panel: #FFFFFF;
+  --pr-panel-2: #F7F9FC;
+  --pr-shadow-1: 0 1px 2px rgba(16,27,45,.05), 0 8px 28px -18px rgba(16,27,45,.28);
+  --pr-shadow-2: 0 2px 6px rgba(16,27,45,.06), 0 26px 60px -30px rgba(16,27,45,.38);
+  --pr-ease: cubic-bezier(.22,.61,.36,1);
+}
+body.dark-mode{
+  --pr-line: rgba(255,255,255,.09);
+  --pr-line-strong: rgba(14,163,148,.30);
+  --pr-panel: #111C2C;
+  --pr-panel-2: #0F1826;
+  --pr-shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.8);
+  --pr-shadow-2: 0 2px 8px rgba(0,0,0,.45), 0 30px 70px -34px rgba(0,0,0,.9);
+}
+
+/* ── Typography rhythm ───────────────────────────────── */
+body{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; letter-spacing:-0.006em; }
+.section-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--accent2); opacity:.95;
+  display:inline-flex; align-items:center; gap:.6rem;
+}
+.section-eyebrow::before{
+  content:''; width:22px; height:1px; background:currentColor; opacity:.55;
+}
+.section-title{ letter-spacing:-0.035em; line-height:.98; }
+.section-title em{ font-style:italic; }
+.section-sub{ max-width:46ch; line-height:1.65; color:var(--text-muted); }
+
+.section-divider{
+  border:0; height:1px; margin:0;
+  background:linear-gradient(90deg,transparent, var(--pr-line-strong) 18%, var(--pr-line-strong) 82%, transparent);
+  opacity:.9;
+}
+
+/* ── Surfaces: one consistent card language ──────────── */
+.khamsat-card, .edu-card, .avail-card, .timeline, .courses-block,
+.cert-card, .stat-card, .li-widget, .proj-card, .contact-card,
+.contact-form-wrap, .khamsat-pitch{
+  background:var(--pr-panel);
+  border:1px solid var(--pr-line);
+  border-radius:var(--pr-radius);
+  box-shadow:var(--pr-shadow-1);
+  transition:transform .45s var(--pr-ease), box-shadow .45s var(--pr-ease), border-color .3s ease;
+}
+.khamsat-card:hover, .edu-card:hover, .timeline:hover, .courses-block:hover,
+.cert-card:hover, .stat-card:hover, .li-widget:hover{
+  border-color:var(--pr-line-strong);
+  box-shadow:var(--pr-shadow-2);
+  transform:translateY(-3px);
+}
+
+/* ── Chips & tags ────────────────────────────────────── */
+.tool-chip, .course-tag, .edu-chip, .hero-offer-chip{
+  border-radius:999px;
+  border:1px solid var(--pr-line);
+  background:var(--pr-panel-2);
+  color:var(--text);
+  font-size:.78rem; font-weight:500; letter-spacing:.005em;
+  padding:.42rem .9rem;
+  transition:border-color .25s ease, transform .25s var(--pr-ease), background .25s ease, color .25s ease;
+}
+.tool-chip:hover, .course-tag:hover, .hero-offer-chip:hover{
+  border-color:var(--accent2);
+  color:var(--accent2);
+  transform:translateY(-2px);
+}
+.hero-offer-chip.emph, .edu-chip.warm{
+  border-color:rgba(14,163,148,.45);
+  background:rgba(14,163,148,.10);
+  color:var(--accent2);
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn-ocean, .btn-khamsat-main, .btn-send, .cert-btn-primary{
+  border-radius:11px !important;
+  letter-spacing:.01em; font-weight:600;
+  box-shadow:0 10px 26px -14px rgba(14,163,148,.75);
+  transition:transform .3s var(--pr-ease), box-shadow .3s var(--pr-ease), filter .3s ease;
+}
+.btn-ocean:hover, .btn-khamsat-main:hover, .btn-send:hover, .cert-btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px -18px rgba(14,163,148,.85);
+  filter:saturate(1.05);
+}
+.btn-ghost, .btn-khamsat-ghost{
+  border-radius:11px !important;
+  border:1px solid var(--pr-line-strong) !important;
+  background:transparent;
+  transition:border-color .3s ease, color .3s ease, transform .3s var(--pr-ease);
+}
+.btn-ghost:hover, .btn-khamsat-ghost:hover{
+  border-color:var(--accent2) !important; color:var(--accent2);
+  transform:translateY(-2px);
+}
+
+/* ── Skills: precision meters ────────────────────────── */
+.skill-row{
+  border-bottom:1px solid var(--pr-line);
+  padding-block:1rem;
+  transition:background .3s ease, padding-inline .3s var(--pr-ease);
+}
+.skill-row:hover{ background:linear-gradient(90deg, rgba(14,163,148,.05), transparent 70%); }
+.skill-name{ font-weight:600; letter-spacing:-.01em; }
+.skill-cat{
+  font-family:'JetBrains Mono',monospace; font-size:.66rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--text-muted);
+}
+.skill-track{
+  background:var(--pr-panel-2);
+  border:1px solid var(--pr-line);
+  border-radius:999px; overflow:hidden; height:8px;
+}
+.skill-fill{ border-radius:999px; position:relative; }
+.skill-fill::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(255,255,255,.35), transparent 45%);
+  opacity:.5;
+}
+.skill-pct{
+  font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums;
+  font-weight:600; color:var(--text);
+}
+
+/* ── Projects grid ───────────────────────────────────── */
+.proj-card{ overflow:hidden; }
+.proj-card:hover{ transform:translateY(-5px); box-shadow:var(--pr-shadow-2); border-color:var(--pr-line-strong); }
+.proj-img-wrap{ overflow:hidden; }
+.proj-img-wrap img{ transition:transform .8s var(--pr-ease), filter .6s ease; }
+.proj-card:hover .proj-img-wrap img{ transform:scale(1.045); }
+.proj-cat{
+  font-family:'JetBrains Mono',monospace; font-size:.66rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent2);
+}
+.proj-num{
+  font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums;
+  color:var(--text-muted); opacity:.6;
+}
+.projects-title{ letter-spacing:-.035em; }
+.projects-meta{
+  font-family:'JetBrains Mono',monospace; font-size:.72rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--text-muted);
+}
+
+/* ── Timeline ────────────────────────────────────────── */
+.timeline-title{
+  font-family:'JetBrains Mono',monospace; font-size:.68rem;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--text-muted);
+}
+.tl-year{
+  font-family:'JetBrains Mono',monospace; font-size:.72rem;
+  letter-spacing:.1em; color:var(--accent2);
+}
+.tl-label{ font-weight:600; letter-spacing:-.01em; }
+.tl-desc{ color:var(--text-muted); line-height:1.6; }
+.tl-dot{ box-shadow:0 0 0 4px var(--pr-panel), 0 0 0 5px var(--pr-line); }
+.tl-dot.active{ box-shadow:0 0 0 4px var(--pr-panel), 0 0 0 5px rgba(14,163,148,.45); }
+
+/* ── Certifications ──────────────────────────────────── */
+.cert-serial-value{
+  font-family:'JetBrains Mono',monospace; font-size:.72rem;
+  letter-spacing:.04em; word-break:break-all;
+}
+.cert-serial{
+  background:var(--pr-panel-2);
+  border:1px solid var(--pr-line);
+  border-radius:var(--pr-radius-sm);
+}
+.cert-img-wrap{ border-radius:var(--pr-radius-sm); overflow:hidden; display:block; }
+.cert-img-wrap img{ transition:transform .7s var(--pr-ease); }
+.cert-img-wrap:hover img{ transform:scale(1.03); }
+
+/* ── Contact ─────────────────────────────────────────── */
+.form-input, .form-textarea{
+  border-radius:var(--pr-radius-sm) !important;
+  border:1px solid var(--pr-line) !important;
+  background:var(--pr-panel-2) !important;
+  transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.form-input:focus, .form-textarea:focus{
+  outline:none;
+  border-color:var(--accent2) !important;
+  box-shadow:0 0 0 3px rgba(14,163,148,.16);
+  background:var(--pr-panel) !important;
+}
+
+/* ── Hero polish ─────────────────────────────────────── */
+.hero-name{ letter-spacing:-.045em; }
+.hero-eyebrow span{
+  font-family:'JetBrains Mono',monospace; font-size:.7rem;
+  letter-spacing:.2em; text-transform:uppercase;
+}
+.stat-num{ font-variant-numeric:tabular-nums; letter-spacing:-.03em; }
+.stat-label{
+  font-family:'JetBrains Mono',monospace; font-size:.64rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--text-muted);
+}
+
+/* ── Focus visibility (a11y) ─────────────────────────── */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--accent2); outline-offset:3px; border-radius:6px;
+}
+
+/* ── Mobile safety ───────────────────────────────────── */
+@media (max-width:640px){
+  html, body{ overflow-x:hidden; }
+  .section-title{ line-height:1.02; }
+  .cert-serial-value{ font-size:.66rem; }
+  .tool-chip, .course-tag{ font-size:.72rem; padding:.36rem .72rem; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .proj-card, .proj-img-wrap img, .cert-img-wrap img,
+  .khamsat-card, .edu-card, .timeline, .courses-block, .cert-card,
+  .stat-card, .li-widget, .tool-chip, .course-tag, .hero-offer-chip,
+  .btn-ocean, .btn-ghost, .btn-khamsat-main, .btn-khamsat-ghost, .btn-send{
+    transition:none !important; transform:none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -2327,6 +2672,7 @@
     <div class="hero-geo"></div>
     <div class="hero-vline"></div>
 
+    <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow">
         <div class="hero-eyebrow-line"></div>
@@ -2389,6 +2735,7 @@
         </div>
         <div class="li-widget-list" id="liWidgetList"></div>
       </div>
+    </div>
     </div>
 
     <div class="scroll-cue">
@@ -2996,295 +3343,423 @@
   </section>
 
   <!-- RECRUITER MODE OVERLAY -->
-  <div class="rm-overlay" id="rmOverlay">
+  <!-- RECRUITER MODE OVERLAY — CANDIDATE INTELLIGENCE DASHBOARD -->
+  <div class="rm-overlay" id="rmOverlay" role="dialog" aria-modal="true" aria-label="Recruiter View — Sherif Ayman">
+    <div class="rm-shell">
 
-    <div class="rm-header">
-      <div class="rm-logo">Sherif <em>Ayman</em> — Analyst Profile</div>
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div class="rm-badge">📊 Recruiter View</div>
-        <button class="rm-close" id="rmClose">✕</button>
-      </div>
-    </div>
-
-    <div class="rm-title-row">
-      <div class="rm-name">Sherif <em>Ayman</em></div>
-      <div class="rm-role">Data Analyst · CS & AI Student · Benha, Egypt · Open to Internships & Junior Roles</div>
-    </div>
-
-    <!-- KPI Bar -->
-    <div class="rm-kpis">
-      <div class="rm-kpi">
-        <div class="rm-kpi-lbl">Training Hours</div>
-        <div class="rm-kpi-val" id="rmCount1">0</div>
-        <div class="rm-kpi-trend up">↑ Active learner</div>
-      </div>
-      <div class="rm-kpi">
-        <div class="rm-kpi-lbl">Industry Projects</div>
-        <div class="rm-kpi-val" id="rmCount2">0</div>
-        <div class="rm-kpi-trend up">↑ Real datasets</div>
-      </div>
-      <div class="rm-kpi">
-        <div class="rm-kpi-lbl">Tools Mastered</div>
-        <div class="rm-kpi-val" id="rmCount3">0</div>
-        <div class="rm-kpi-trend up">↑ BI + Excel + SQL</div>
-      </div>
-      <div class="rm-kpi">
-        <div class="rm-kpi-lbl">Availability</div>
-        <div class="rm-kpi-val" style="font-size:1.3rem;padding-top:6px;">Immediate</div>
-        <div class="rm-kpi-trend up">↑ Internship ready</div>
-      </div>
-      <div class="rm-kpi">
-        <div class="rm-kpi-lbl">Expected Graduation</div>
-        <div class="rm-kpi-val" style="font-size:1.5rem;padding-top:4px;">2028</div>
-        <div class="rm-kpi-trend neutral">Year 3 · Benha Uni</div>
-      </div>
-    </div>
-
-    <!-- Body Grid -->
-    <div class="rm-body">
-
-      <!-- Panel 1: Skills -->
-      <div class="rm-panel">
-        <div class="rm-panel-title">Core Skills <span>9 Tools</span></div>
-        <div class="rm-skill">
-          <div class="rm-skill-top"><span class="rm-skill-name">Power BI</span><span class="rm-skill-pct">90%</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="90%"></div></div>
-        </div>
-        <div class="rm-skill">
-          <div class="rm-skill-top"><span class="rm-skill-name">Excel (Advanced)</span><span class="rm-skill-pct">90%</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="90%"></div></div>
-        </div>
-        <div class="rm-skill">
-          <div class="rm-skill-top"><span class="rm-skill-name">DAX</span><span class="rm-skill-pct">80%</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="80%"></div></div>
-        </div>
-        <div class="rm-skill">
-          <div class="rm-skill-top"><span class="rm-skill-name">Power Query / ETL</span><span class="rm-skill-pct">85%</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="85%"></div></div>
-        </div>
-        <div class="rm-skill">
-          <div class="rm-skill-top"><span class="rm-skill-name">Star Schema Design</span><span class="rm-skill-pct">85%</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="85%"></div></div>
-        </div>
-        <div class="rm-skill">
-          <div class="rm-skill-top"><span class="rm-skill-name">C++</span><span class="rm-skill-pct">80%</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="80%"></div></div>
-        </div>
-        <div class="rm-skill">
-          <div class="rm-skill-top"><span class="rm-skill-name">Python (for Analysis)</span><span class="rm-skill-pct">70%</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="70%"></div></div>
+      <div class="rm-topbar">
+        <div class="rm-logo">Sherif <em>Ayman</em> — Analyst Profile</div>
+        <div class="rm-topbar-right">
+          <div class="rm-badge">📊 Recruiter View</div>
+          <button class="rm-close" id="rmClose" aria-label="Close recruiter view">✕</button>
         </div>
       </div>
 
-      <!-- Panel 2: Industry Projects -->
-      <div class="rm-panel">
-        <div class="rm-panel-title">Industry Projects <span>10 Delivered</span></div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">01</div>
-          <div><div class="rm-proj-name">RFM Customer Segmentation</div><div class="rm-proj-meta">Python · Pandas · E-commerce Analytics</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">02</div>
-          <div><div class="rm-proj-name">Vodafone Qatar — Churn Analysis</div><div class="rm-proj-meta">Power BI · DAX · Star Schema · Telecom</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">03</div>
-          <div><div class="rm-proj-name">Banque Misr — Financial Analysis</div><div class="rm-proj-meta">Power BI · Excel · Banking</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">04</div>
-          <div><div class="rm-proj-name">Uber — Ride-Sharing Analysis</div><div class="rm-proj-meta">Power BI · Time-Series · Geospatial</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">05</div>
-          <div><div class="rm-proj-name">HR Attrition — 16.12% Rate Found</div><div class="rm-proj-meta">Power BI · Star Schema · HR Analytics</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">06</div>
-          <div><div class="rm-proj-name">Automotive BI — £204M Revenue</div><div class="rm-proj-meta">Excel · Power Query · Dashboard</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">07</div>
-          <div><div class="rm-proj-name">Teen Mental Health & Social Media</div><div class="rm-proj-meta">Power BI · Health Analytics</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">08</div>
-          <div><div class="rm-proj-name">Samsung — $176.95M Executive Report</div><div class="rm-proj-meta">Power BI · Supply Chain · KPI</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">09</div>
-          <div><div class="rm-proj-name">FIFA World Cup 2026 — Analytics Dashboard</div><div class="rm-proj-meta">Power BI · DAX · Sports Analytics</div></div>
-        </div>
-        <div class="rm-proj-item">
-          <div class="rm-proj-num">10</div>
-          <div><div class="rm-proj-name">Customer Churn & Revenue-at-Risk — $2.87M Identified</div><div class="rm-proj-meta">Power BI · DAX · Telecom · Stakeholder Reporting</div></div>
-        </div>
-      </div>
+      <nav class="rm-nav" id="rmNav" aria-label="Recruiter view sections">
+        <button class="rm-nav-link active" data-rm-target="rmSecOverview">Overview</button>
+        <button class="rm-nav-link" data-rm-target="rmSecSkills">Skills</button>
+        <button class="rm-nav-link" data-rm-target="rmSecProjects">Projects</button>
+        <button class="rm-nav-link" data-rm-target="rmSecCoverage">Coverage</button>
+        <button class="rm-nav-link" data-rm-target="rmSecJourney">Journey</button>
+        <button class="rm-nav-link" data-rm-target="rmSecContact">Contact</button>
+      </nav>
 
-      <!-- Panel 3: Domain Breakdown (donut visual) -->
-      <div class="rm-panel">
-        <div class="rm-panel-title">Domain Coverage <span>8 Sectors</span></div>
-        <div class="rm-donut-wrap">
-          <svg width="110" height="110" viewBox="0 0 110 110" id="rmDonut">
-            <circle cx="55" cy="55" r="40" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="18"/>
-            <!-- E-commerce 10% -->
-            <circle cx="55" cy="55" r="40" fill="none" stroke="#06b6d4" stroke-width="18"
-              stroke-dasharray="25.12 251" stroke-dashoffset="0" transform="rotate(-90 55 55)"/>
-            <!-- Telecom 20% -->
-            <circle cx="55" cy="55" r="40" fill="none" stroke="#0EA394" stroke-width="18"
-              stroke-dasharray="50.24 251" stroke-dashoffset="-25.12" transform="rotate(-90 55 55)"/>
-            <!-- Banking 10% -->
-            <circle cx="55" cy="55" r="40" fill="none" stroke="#C98A2C" stroke-width="18"
-              stroke-dasharray="25.12 251" stroke-dashoffset="-75.36" transform="rotate(-90 55 55)"/>
-            <!-- Ride-sharing 10% -->
-            <circle cx="55" cy="55" r="40" fill="none" stroke="#5FC9BC" stroke-width="18"
-              stroke-dasharray="25.12 251" stroke-dashoffset="-100.48" transform="rotate(-90 55 55)"/>
-            <!-- HR & Health 20% -->
-            <circle cx="55" cy="55" r="40" fill="none" stroke="#1C5D8C" stroke-width="18"
-              stroke-dasharray="50.24 251" stroke-dashoffset="-125.6" transform="rotate(-90 55 55)"/>
-            <!-- Automotive & Retail BI 10% -->
-            <circle cx="55" cy="55" r="40" fill="none" stroke="#3b82f6" stroke-width="18"
-              stroke-dasharray="25.12 251" stroke-dashoffset="-175.84" transform="rotate(-90 55 55)"/>
-            <!-- Supply Chain 10% -->
-            <circle cx="55" cy="55" r="40" fill="none" stroke="#7b2d8b" stroke-width="18"
-              stroke-dasharray="25.12 251" stroke-dashoffset="-200.96" transform="rotate(-90 55 55)"/>
-            <!-- Sports Analytics 10% -->
-            <circle cx="55" cy="55" r="40" fill="none" stroke="#16a34a" stroke-width="18"
-              stroke-dasharray="25.12 251" stroke-dashoffset="-226.08" transform="rotate(-90 55 55)"/>
-            <text x="55" y="51" text-anchor="middle" font-family="Fraunces,serif" font-size="14" fill="#F2F5F9">10</text>
-            <text x="55" y="64" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(245,237,224,.4)" letter-spacing="1">PROJECTS</text>
-            <text x="93" y="43" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#F2F5F9" paint-order="stroke" stroke="rgba(0,0,0,.45)" stroke-width="2">2</text>
-            <text x="31" y="87" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="700" fill="#F2F5F9" paint-order="stroke" stroke="rgba(0,0,0,.45)" stroke-width="2">2</text>
-          </svg>
-          <div class="rm-donut-legend">
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#06b6d4"></div><span class="rm-legend-name">E-commerce</span><span class="rm-legend-count">1</span></div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#0EA394"></div><span class="rm-legend-name">Telecom</span><span class="rm-legend-count">2</span></div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#C98A2C"></div><span class="rm-legend-name">Banking</span><span class="rm-legend-count">1</span></div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#5FC9BC"></div><span class="rm-legend-name">Ride-Sharing</span><span class="rm-legend-count">1</span></div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#1C5D8C"></div><span class="rm-legend-name">HR / Health</span><span class="rm-legend-count">2</span></div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#3b82f6"></div><span class="rm-legend-name">Automotive / Retail</span><span class="rm-legend-count">1</span></div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#7b2d8b"></div><span class="rm-legend-name">Supply Chain</span><span class="rm-legend-count">1</span></div>
-            <div class="rm-legend-item"><div class="rm-legend-dot" style="background:#16a34a"></div><span class="rm-legend-name">Sports Analytics</span><span class="rm-legend-count">1</span></div>
+      <div class="rm-scroll" id="rmScroll">
+
+        <!-- ── 1. Candidate header + Executive KPIs ── -->
+        <section class="rm-section" id="rmSecOverview">
+          <div class="rm-identity rm-reveal">
+            <div class="rm-id-main">
+              <div class="rm-eyebrow">Candidate Profile</div>
+              <h2 class="rm-name">Sherif <em>Ayman</em></h2>
+              <p class="rm-role">Data Analyst · CS &amp; AI Student · Benha, Egypt · Open to Internships &amp; Junior Roles</p>
+              <div class="rm-status"><span class="rm-status-dot"></span>Open to Work — Immediately</div>
+            </div>
+            <div class="rm-id-cta">
+              <a href="Sherif_Ayman_CV.pdf" download="Sherif_Ayman_CV.pdf" class="rm-contact-item" aria-label="Download Sherif Ayman CV">
+                <span class="rm-contact-icon">↓</span>
+                <span><span class="rm-contact-lbl">Download</span><span class="rm-contact-val">Sherif_Ayman_CV.pdf</span></span>
+              </a>
+              <a href="mailto:sherifaymanazb@gmail.com" class="rm-contact-item">
+                <span class="rm-contact-icon">✉</span>
+                <span><span class="rm-contact-lbl">Email</span><span class="rm-contact-val">sherifaymanazb@gmail.com</span></span>
+              </a>
+            </div>
           </div>
-        </div>
 
-        <!-- Sparkline: Growth 2024-2026 -->
-        <div class="rm-panel-title" style="margin-top:20px;margin-bottom:10px;">Project Momentum <span>2024–26</span></div>
-        <svg class="rm-sparkline" width="100%" height="52" viewBox="0 0 260 52" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="spGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#0EA394" stop-opacity=".3"/>
-              <stop offset="100%" stop-color="#0EA394" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path d="M0,49 L33,46 L66,41 L99,33 L132,25 L165,17 L198,11 L231,6 L260,2 L260,52 L0,52 Z" fill="url(#spGrad)"/>
-          <path d="M0,49 L33,46 L66,41 L99,33 L132,25 L165,17 L198,11 L231,6 L260,2" fill="none" stroke="#0EA394" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="0" cy="49" r="3" fill="#0EA394" opacity=".5"/>
-          <circle cx="260" cy="2" r="4" fill="#5FC9BC"/>
-          <text x="4" y="48" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(245,237,224,.3)">Jan '24</text>
-          <text x="210" y="14" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(245,237,224,.4)">Now →</text>
-        </svg>
+          <div class="rm-kpis rm-reveal">
+            <div class="rm-kpi">
+              <div class="rm-kpi-lbl">Training Hours</div>
+              <div class="rm-kpi-val" id="rmCount1">0</div>
+              <div class="rm-kpi-trend up">↑ Active learner</div>
+              <div class="rm-kpi-meter"><i data-meter="92%"></i></div>
+            </div>
+            <div class="rm-kpi">
+              <div class="rm-kpi-lbl">Industry Projects</div>
+              <div class="rm-kpi-val" id="rmCount2">0</div>
+              <div class="rm-kpi-trend up">↑ Real datasets</div>
+              <div class="rm-kpi-meter"><i data-meter="80%"></i></div>
+            </div>
+            <div class="rm-kpi">
+              <div class="rm-kpi-lbl">Tools Mastered</div>
+              <div class="rm-kpi-val" id="rmCount3">0</div>
+              <div class="rm-kpi-trend up">↑ BI + Excel + SQL</div>
+              <div class="rm-kpi-meter"><i data-meter="72%"></i></div>
+            </div>
+            <div class="rm-kpi">
+              <div class="rm-kpi-lbl">Availability</div>
+              <div class="rm-kpi-val sm">Immediate</div>
+              <div class="rm-kpi-trend up">↑ Internship ready</div>
+              <div class="rm-kpi-meter"><i data-meter="100%"></i></div>
+            </div>
+            <div class="rm-kpi">
+              <div class="rm-kpi-lbl">Expected Graduation</div>
+              <div class="rm-kpi-val sm">2028</div>
+              <div class="rm-kpi-trend neutral">Year 3 · Benha Uni</div>
+              <div class="rm-kpi-meter"><i data-meter="45%"></i></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 2. Skills intelligence ── -->
+        <section class="rm-section" id="rmSecSkills">
+          <div class="rm-sec-head">
+            <span class="rm-sec-title">Skills Intelligence</span>
+            <span class="rm-sec-note">Core Skills · 9 Tools</span>
+          </div>
+          <div class="rm-grid-2">
+            <div class="rm-card rm-reveal">
+              <div class="rm-card-title">Core Skills <span>9 Tools</span></div>
+              <div class="rm-skill">
+                <div class="rm-skill-top"><span class="rm-skill-name">Power BI</span><span class="rm-skill-pct">90%</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="90%"></div></div>
+              </div>
+              <div class="rm-skill">
+                <div class="rm-skill-top"><span class="rm-skill-name">Excel (Advanced)</span><span class="rm-skill-pct">90%</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="90%"></div></div>
+              </div>
+              <div class="rm-skill">
+                <div class="rm-skill-top"><span class="rm-skill-name">DAX</span><span class="rm-skill-pct">80%</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="80%"></div></div>
+              </div>
+              <div class="rm-skill">
+                <div class="rm-skill-top"><span class="rm-skill-name">Power Query / ETL</span><span class="rm-skill-pct">85%</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="85%"></div></div>
+              </div>
+              <div class="rm-skill">
+                <div class="rm-skill-top"><span class="rm-skill-name">Star Schema Design</span><span class="rm-skill-pct">85%</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="85%"></div></div>
+              </div>
+              <div class="rm-skill">
+                <div class="rm-skill-top"><span class="rm-skill-name">C++</span><span class="rm-skill-pct">80%</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="80%"></div></div>
+              </div>
+              <div class="rm-skill">
+                <div class="rm-skill-top"><span class="rm-skill-name">Python (for Analysis)</span><span class="rm-skill-pct">70%</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="70%"></div></div>
+              </div>
+            </div>
+
+            <div class="rm-card rm-reveal">
+              <div class="rm-card-title">Languages &amp; Profile</div>
+              <div class="rm-skill" style="margin-bottom:18px;">
+                <div class="rm-skill-top"><span class="rm-skill-name">🇪🇬 Arabic</span><span class="rm-skill-pct">Native</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="100%"></div></div>
+              </div>
+              <div class="rm-skill" style="margin-bottom:24px;">
+                <div class="rm-skill-top"><span class="rm-skill-name">🇺🇸 English</span><span class="rm-skill-pct">B2</span></div>
+                <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="68%"></div></div>
+              </div>
+              <div class="rm-card-title">Coursework <span>Core</span></div>
+              <div class="rm-course-wrap">
+                <span class="rm-tag">Algorithms</span>
+                <span class="rm-tag">Data Structures</span>
+                <span class="rm-tag">OOP · C++</span>
+                <span class="rm-tag">Statistics</span>
+                <span class="rm-tag">Machine Learning</span>
+                <span class="rm-tag">Database Systems</span>
+                <span class="rm-tag">Systems Analysis</span>
+                <span class="rm-tag">AI Principles</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 3. Projects intelligence ── -->
+        <section class="rm-section" id="rmSecProjects">
+          <div class="rm-sec-head">
+            <span class="rm-sec-title">Projects Intelligence</span>
+            <span class="rm-sec-note">Industry Projects · 10 Delivered</span>
+          </div>
+          <div class="rm-proj-list rm-reveal" id="rmProjList">
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel1">
+                <span class="rm-proj-num">01</span>
+                <span><span class="rm-proj-name">RFM Customer Segmentation</span><span class="rm-proj-meta">Python · Pandas · E-commerce Analytics</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel1"><div><div class="rm-tags">
+                <span class="rm-tag">Python</span><span class="rm-tag">Pandas</span><span class="rm-tag">E-commerce Analytics</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel2">
+                <span class="rm-proj-num">02</span>
+                <span><span class="rm-proj-name">Vodafone Qatar — Churn Analysis</span><span class="rm-proj-meta">Power BI · DAX · Star Schema · Telecom</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel2"><div><div class="rm-tags">
+                <span class="rm-tag">Power BI</span><span class="rm-tag">DAX</span><span class="rm-tag">Star Schema</span><span class="rm-tag">Telecom</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel3">
+                <span class="rm-proj-num">03</span>
+                <span><span class="rm-proj-name">Banque Misr — Financial Analysis</span><span class="rm-proj-meta">Power BI · Excel · Banking</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel3"><div><div class="rm-tags">
+                <span class="rm-tag">Power BI</span><span class="rm-tag">Excel</span><span class="rm-tag">Banking</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel4">
+                <span class="rm-proj-num">04</span>
+                <span><span class="rm-proj-name">Uber — Ride-Sharing Analysis</span><span class="rm-proj-meta">Power BI · Time-Series · Geospatial</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel4"><div><div class="rm-tags">
+                <span class="rm-tag">Power BI</span><span class="rm-tag">Time-Series</span><span class="rm-tag">Geospatial</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel5">
+                <span class="rm-proj-num">05</span>
+                <span><span class="rm-proj-name">HR Attrition — 16.12% Rate Found</span><span class="rm-proj-meta">Power BI · Star Schema · HR Analytics</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel5"><div><div class="rm-tags">
+                <span class="rm-tag">Power BI</span><span class="rm-tag">Star Schema</span><span class="rm-tag">HR Analytics</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel6">
+                <span class="rm-proj-num">06</span>
+                <span><span class="rm-proj-name">Automotive BI — £204M Revenue</span><span class="rm-proj-meta">Excel · Power Query · Dashboard</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel6"><div><div class="rm-tags">
+                <span class="rm-tag">Excel</span><span class="rm-tag">Power Query</span><span class="rm-tag">Dashboard</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel7">
+                <span class="rm-proj-num">07</span>
+                <span><span class="rm-proj-name">Teen Mental Health &amp; Social Media</span><span class="rm-proj-meta">Power BI · Health Analytics</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel7"><div><div class="rm-tags">
+                <span class="rm-tag">Power BI</span><span class="rm-tag">Health Analytics</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel8">
+                <span class="rm-proj-num">08</span>
+                <span><span class="rm-proj-name">Samsung — $176.95M Executive Report</span><span class="rm-proj-meta">Power BI · Supply Chain · KPI</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel8"><div><div class="rm-tags">
+                <span class="rm-tag">Power BI</span><span class="rm-tag">Supply Chain</span><span class="rm-tag">KPI</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel9">
+                <span class="rm-proj-num">09</span>
+                <span><span class="rm-proj-name">FIFA World Cup 2026 — Analytics Dashboard</span><span class="rm-proj-meta">Power BI · DAX · Sports Analytics</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel9"><div><div class="rm-tags">
+                <span class="rm-tag">Power BI</span><span class="rm-tag">DAX</span><span class="rm-tag">Sports Analytics</span>
+              </div></div></div>
+            </div>
+            <div>
+              <button class="rm-proj" type="button" aria-expanded="false" aria-controls="rmProjPanel10">
+                <span class="rm-proj-num">10</span>
+                <span><span class="rm-proj-name">Customer Churn &amp; Revenue-at-Risk — $2.87M Identified</span><span class="rm-proj-meta">Power BI · DAX · Telecom · Stakeholder Reporting</span></span>
+                <span class="rm-proj-chev" aria-hidden="true">›</span>
+              </button>
+              <div class="rm-proj-panel" id="rmProjPanel10"><div><div class="rm-tags">
+                <span class="rm-tag">Power BI</span><span class="rm-tag">DAX</span><span class="rm-tag">Telecom</span><span class="rm-tag">Stakeholder Reporting</span>
+              </div></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 4. Domain coverage + momentum ── -->
+        <section class="rm-section" id="rmSecCoverage">
+          <div class="rm-sec-head">
+            <span class="rm-sec-title">Domain &amp; Momentum</span>
+            <span class="rm-sec-note">Domain Coverage · 8 Sectors</span>
+          </div>
+          <div class="rm-grid-2">
+            <div class="rm-card rm-reveal">
+              <div class="rm-card-title">Domain Coverage <span>8 Sectors</span></div>
+              <div class="rm-donut-wrap">
+                <svg width="132" height="132" viewBox="0 0 110 110" id="rmDonut" class="rm-donut-ring" role="img" aria-label="Project distribution across 8 domains, 10 projects total">
+                  <circle cx="55" cy="55" r="40" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="14"/>
+                  <!-- E-commerce 10% -->
+                  <circle data-arc cx="55" cy="55" r="40" fill="none" stroke="#06b6d4" stroke-width="14" stroke-linecap="butt"
+                    stroke-dasharray="25.12 251" stroke-dashoffset="0" transform="rotate(-90 55 55)"/>
+                  <!-- Telecom 20% -->
+                  <circle data-arc cx="55" cy="55" r="40" fill="none" stroke="#0EA394" stroke-width="14"
+                    stroke-dasharray="50.24 251" stroke-dashoffset="-25.12" transform="rotate(-90 55 55)"/>
+                  <!-- Banking 10% -->
+                  <circle data-arc cx="55" cy="55" r="40" fill="none" stroke="#C98A2C" stroke-width="14"
+                    stroke-dasharray="25.12 251" stroke-dashoffset="-75.36" transform="rotate(-90 55 55)"/>
+                  <!-- Ride-sharing 10% -->
+                  <circle data-arc cx="55" cy="55" r="40" fill="none" stroke="#5FC9BC" stroke-width="14"
+                    stroke-dasharray="25.12 251" stroke-dashoffset="-100.48" transform="rotate(-90 55 55)"/>
+                  <!-- HR & Health 20% -->
+                  <circle data-arc cx="55" cy="55" r="40" fill="none" stroke="#1C5D8C" stroke-width="14"
+                    stroke-dasharray="50.24 251" stroke-dashoffset="-125.6" transform="rotate(-90 55 55)"/>
+                  <!-- Automotive & Retail BI 10% -->
+                  <circle data-arc cx="55" cy="55" r="40" fill="none" stroke="#3b82f6" stroke-width="14"
+                    stroke-dasharray="25.12 251" stroke-dashoffset="-175.84" transform="rotate(-90 55 55)"/>
+                  <!-- Supply Chain 10% -->
+                  <circle data-arc cx="55" cy="55" r="40" fill="none" stroke="#7b2d8b" stroke-width="14"
+                    stroke-dasharray="25.12 251" stroke-dashoffset="-200.96" transform="rotate(-90 55 55)"/>
+                  <!-- Sports Analytics 10% -->
+                  <circle data-arc cx="55" cy="55" r="40" fill="none" stroke="#16a34a" stroke-width="14"
+                    stroke-dasharray="25.12 251" stroke-dashoffset="-226.08" transform="rotate(-90 55 55)"/>
+                  <text x="55" y="52" text-anchor="middle" font-family="Fraunces,serif" font-size="16" fill="#EAF1F7">10</text>
+                  <text x="55" y="65" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(234,241,247,.45)" letter-spacing="1">PROJECTS</text>
+                </svg>
+                <div class="rm-donut-legend">
+                  <div class="rm-legend-item"><span class="rm-legend-dot" style="background:#06b6d4"></span><span class="rm-legend-name">E-commerce</span><span class="rm-legend-count">1</span></div>
+                  <div class="rm-legend-item"><span class="rm-legend-dot" style="background:#0EA394"></span><span class="rm-legend-name">Telecom</span><span class="rm-legend-count">2</span></div>
+                  <div class="rm-legend-item"><span class="rm-legend-dot" style="background:#C98A2C"></span><span class="rm-legend-name">Banking</span><span class="rm-legend-count">1</span></div>
+                  <div class="rm-legend-item"><span class="rm-legend-dot" style="background:#5FC9BC"></span><span class="rm-legend-name">Ride-Sharing</span><span class="rm-legend-count">1</span></div>
+                  <div class="rm-legend-item"><span class="rm-legend-dot" style="background:#1C5D8C"></span><span class="rm-legend-name">HR / Health</span><span class="rm-legend-count">2</span></div>
+                  <div class="rm-legend-item"><span class="rm-legend-dot" style="background:#3b82f6"></span><span class="rm-legend-name">Automotive / Retail</span><span class="rm-legend-count">1</span></div>
+                  <div class="rm-legend-item"><span class="rm-legend-dot" style="background:#7b2d8b"></span><span class="rm-legend-name">Supply Chain</span><span class="rm-legend-count">1</span></div>
+                  <div class="rm-legend-item"><span class="rm-legend-dot" style="background:#16a34a"></span><span class="rm-legend-name">Sports Analytics</span><span class="rm-legend-count">1</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rm-card rm-reveal">
+              <div class="rm-card-title">Project Momentum <span>2024–26</span></div>
+              <svg class="rm-sparkline" height="150" viewBox="0 0 260 110" preserveAspectRatio="none" role="img" aria-label="Project momentum from January 2024 to now">
+                <defs>
+                  <linearGradient id="spGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0EA394" stop-opacity=".32"/>
+                    <stop offset="100%" stop-color="#0EA394" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <g stroke="rgba(255,255,255,.05)" stroke-width="1">
+                  <line x1="0" y1="26" x2="260" y2="26"/>
+                  <line x1="0" y1="55" x2="260" y2="55"/>
+                  <line x1="0" y1="84" x2="260" y2="84"/>
+                </g>
+                <path d="M0,104 L33,97 L66,86 L99,70 L132,53 L165,36 L198,23 L231,13 L260,5 L260,110 L0,110 Z" fill="url(#spGrad)"/>
+                <path class="rm-spark-line" d="M0,104 L33,97 L66,86 L99,70 L132,53 L165,36 L198,23 L231,13 L260,5" fill="none" stroke="#0EA394" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="0" cy="104" r="3" fill="#0EA394" opacity=".5"/>
+                <circle cx="260" cy="5" r="4.5" fill="#5FC9BC"/>
+                <text x="4" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(234,241,247,.35)">Jan '24</text>
+                <text x="206" y="18" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(234,241,247,.45)">Now →</text>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 5. Education & journey ── -->
+        <section class="rm-section" id="rmSecJourney">
+          <div class="rm-sec-head">
+            <span class="rm-sec-title">Education &amp; Journey</span>
+          </div>
+          <div class="rm-card rm-reveal">
+            <div class="rm-card-title">Education &amp; Journey</div>
+            <div class="rm-timeline">
+              <div class="rm-tl-item">
+                <div class="rm-tl-dot"></div>
+                <div class="rm-tl-year">2024 — Present</div>
+                <div class="rm-tl-label">B.Sc. Computer Science &amp; AI</div>
+                <div class="rm-tl-sub">Benha University · Year 3 Ongoing · Expected 2028</div>
+              </div>
+              <div class="rm-tl-item">
+                <div class="rm-tl-dot"></div>
+                <div class="rm-tl-year">2024</div>
+                <div class="rm-tl-label">3 Capstone Projects Delivered</div>
+                <div class="rm-tl-sub">Vodafone Qatar · Banque Misr · Uber — all with real industry data</div>
+              </div>
+              <div class="rm-tl-item">
+                <div class="rm-tl-dot"></div>
+                <div class="rm-tl-year">2024–2025</div>
+                <div class="rm-tl-label">4 Additional Projects</div>
+                <div class="rm-tl-sub">HR · Automotive · Mental Health · Samsung Supply Chain</div>
+              </div>
+              <div class="rm-tl-item">
+                <div class="rm-tl-dot"></div>
+                <div class="rm-tl-year">2026</div>
+                <div class="rm-tl-label">FIFA World Cup 2026 Dashboard</div>
+                <div class="rm-tl-sub">Sports analytics — player &amp; team performance, Power BI + DAX</div>
+              </div>
+              <div class="rm-tl-item">
+                <div class="rm-tl-dot"></div>
+                <div class="rm-tl-year">2026</div>
+                <div class="rm-tl-label">Customer Churn &amp; Revenue-at-Risk Analytics</div>
+                <div class="rm-tl-sub">$2.87M revenue at risk quantified, telecom, Power BI + DAX + stakeholder briefing</div>
+              </div>
+              <div class="rm-tl-item">
+                <div class="rm-tl-dot" style="background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.14)"></div>
+                <div class="rm-tl-year">2025 →</div>
+                <div class="rm-tl-label">150+ Hours Self-Training</div>
+                <div class="rm-tl-sub">Advanced DAX · ETL Design · SQL · Data Storytelling</div>
+              </div>
+            </div>
+            <div class="rm-avail">
+              <div class="rm-avail-dot"></div>
+              <div>
+                <div class="rm-avail-text">Open to Work — Immediately</div>
+                <div class="rm-avail-sub">Internships · Junior Analyst · BI · Data Analytics · Python</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 6. Direct contact ── -->
+        <section class="rm-section" id="rmSecContact">
+          <div class="rm-sec-head">
+            <span class="rm-sec-title">Direct Contact</span>
+          </div>
+          <div class="rm-contact-grid rm-reveal">
+            <a href="Sherif_Ayman_CV.pdf" download="Sherif_Ayman_CV.pdf" class="rm-cv">
+              <span class="rm-cv-icon">↓</span>
+              <span>
+                <span class="rm-cv-title">Download CV</span>
+                <span class="rm-cv-sub">Sherif_Ayman_CV.pdf</span>
+              </span>
+            </a>
+            <a href="mailto:sherifaymanazb@gmail.com" class="rm-contact-item">
+              <span class="rm-contact-icon">✉</span>
+              <span><span class="rm-contact-lbl">Email</span><span class="rm-contact-val">sherifaymanazb@gmail.com</span></span>
+            </a>
+            <a href="tel:+201141129696" class="rm-contact-item">
+              <span class="rm-contact-icon">☎</span>
+              <span><span class="rm-contact-lbl">Phone</span><span class="rm-contact-val">+20 1141129696</span></span>
+            </a>
+            <a href="https://www.linkedin.com/in/sherifazb/" target="_blank" rel="noopener" class="rm-contact-item">
+              <span class="rm-contact-icon">in</span>
+              <span><span class="rm-contact-lbl">LinkedIn</span><span class="rm-contact-val">linkedin.com/in/sherifAzb</span></span>
+            </a>
+            <a href="https://github.com/SherifAzb" target="_blank" rel="noopener" class="rm-contact-item">
+              <span class="rm-contact-icon">⌥</span>
+              <span><span class="rm-contact-lbl">GitHub</span><span class="rm-contact-val">github.com/SherifAzb</span></span>
+            </a>
+          </div>
+        </section>
+
       </div>
-
-      <!-- Panel 4: Education & Timeline -->
-      <div class="rm-panel">
-        <div class="rm-panel-title">Education & Journey</div>
-        <div class="rm-timeline">
-          <div class="rm-tl-item">
-            <div class="rm-tl-dot"></div>
-            <div class="rm-tl-year">2024 — Present</div>
-            <div class="rm-tl-label">B.Sc. Computer Science & AI</div>
-            <div class="rm-tl-sub">Benha University · Year 3 Ongoing · Expected 2028</div>
-          </div>
-          <div class="rm-tl-item">
-            <div class="rm-tl-dot"></div>
-            <div class="rm-tl-year">2024</div>
-            <div class="rm-tl-label">3 Capstone Projects Delivered</div>
-            <div class="rm-tl-sub">Vodafone Qatar · Banque Misr · Uber — all with real industry data</div>
-          </div>
-          <div class="rm-tl-item">
-            <div class="rm-tl-dot"></div>
-            <div class="rm-tl-year">2024–2025</div>
-            <div class="rm-tl-label">4 Additional Projects</div>
-            <div class="rm-tl-sub">HR · Automotive · Mental Health · Samsung Supply Chain</div>
-          </div>
-          <div class="rm-tl-item">
-            <div class="rm-tl-dot"></div>
-            <div class="rm-tl-year">2026</div>
-            <div class="rm-tl-label">FIFA World Cup 2026 Dashboard</div>
-            <div class="rm-tl-sub">Sports analytics — player & team performance, Power BI + DAX</div>
-          </div>
-          <div class="rm-tl-item">
-            <div class="rm-tl-dot"></div>
-            <div class="rm-tl-year">2026</div>
-            <div class="rm-tl-label">Customer Churn & Revenue-at-Risk Analytics</div>
-            <div class="rm-tl-sub">$2.87M revenue at risk quantified, telecom, Power BI + DAX + stakeholder briefing</div>
-          </div>
-          <div class="rm-tl-item">
-            <div class="rm-tl-dot" style="background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.6)"></div>
-            <div class="rm-tl-year">2025 →</div>
-            <div class="rm-tl-label">150+ Hours Self-Training</div>
-            <div class="rm-tl-sub">Advanced DAX · ETL Design · SQL · Data Storytelling</div>
-          </div>
-        </div>
-        <div class="rm-avail">
-          <div class="rm-avail-dot"></div>
-          <div>
-            <div class="rm-avail-text">Open to Work — Immediately</div>
-            <div class="rm-avail-sub">Internships · Junior Analyst · BI · Data Analytics · Python</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 5: Languages & Soft profile -->
-      <div class="rm-panel">
-        <div class="rm-panel-title">Languages & Profile</div>
-        <div class="rm-skill" style="margin-bottom:20px;">
-          <div class="rm-skill-top"><span class="rm-skill-name">🇪🇬 Arabic</span><span class="rm-skill-pct">Native</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="100%"></div></div>
-        </div>
-        <div class="rm-skill" style="margin-bottom:24px;">
-          <div class="rm-skill-top"><span class="rm-skill-name">🇺🇸 English</span><span class="rm-skill-pct">B2</span></div>
-          <div class="rm-bar-bg"><div class="rm-bar-fill" data-w="68%"></div></div>
-        </div>
-        <div class="rm-panel-title" style="margin-bottom:12px;">Coursework <span>Core</span></div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.54rem;padding:3px 9px;border:1px solid rgba(14,163,148,.15);border-radius:3px;color:rgba(245,237,224,.4);">Algorithms</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.54rem;padding:3px 9px;border:1px solid rgba(14,163,148,.15);border-radius:3px;color:rgba(245,237,224,.4);">Data Structures</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.54rem;padding:3px 9px;border:1px solid rgba(14,163,148,.15);border-radius:3px;color:rgba(245,237,224,.4);">OOP · C++</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.54rem;padding:3px 9px;border:1px solid rgba(14,163,148,.15);border-radius:3px;color:rgba(245,237,224,.4);">Statistics</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.54rem;padding:3px 9px;border:1px solid rgba(14,163,148,.15);border-radius:3px;color:rgba(245,237,224,.4);">Machine Learning</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.54rem;padding:3px 9px;border:1px solid rgba(14,163,148,.15);border-radius:3px;color:rgba(245,237,224,.4);">Database Systems</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.54rem;padding:3px 9px;border:1px solid rgba(14,163,148,.15);border-radius:3px;color:rgba(245,237,224,.4);">Systems Analysis</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:.54rem;padding:3px 9px;border:1px solid rgba(14,163,148,.15);border-radius:3px;color:rgba(245,237,224,.4);">AI Principles</span>
-        </div>
-      </div>
-
-      <!-- Panel 6: Contact -->
-      <div class="rm-panel">
-        <div class="rm-panel-title">Direct Contact</div>
-        <a href="mailto:sherifaymanazb@gmail.com" class="rm-contact-item">
-          <div class="rm-contact-icon">✉</div>
-          <div><span class="rm-contact-lbl">Email</span><span class="rm-contact-val">sherifaymanazb@gmail.com</span></div>
-        </a>
-        <a href="tel:+201141129696" class="rm-contact-item">
-          <div class="rm-contact-icon">☎</div>
-          <div><span class="rm-contact-lbl">Phone</span><span class="rm-contact-val">+20 1141129696</span></div>
-        </a>
-        <a href="https://www.linkedin.com/in/sherifazb/" target="_blank" class="rm-contact-item">
-          <div class="rm-contact-icon">in</div>
-          <div><span class="rm-contact-lbl">LinkedIn</span><span class="rm-contact-val">linkedin.com/in/sherifAzb</span></div>
-        </a>
-        <a href="https://github.com/SherifAzb" target="_blank" class="rm-contact-item">
-          <div class="rm-contact-icon">⌥</div>
-          <div><span class="rm-contact-lbl">GitHub</span><span class="rm-contact-val">github.com/SherifAzb</span></div>
-        </a>
-        <a href="Sherif_Ayman_CV.pdf" download="Sherif_Ayman_CV.pdf" class="rm-contact-item" style="margin-top:14px;background:rgba(14,163,148,.08);border-color:rgba(14,163,148,.25);">
-          <div class="rm-contact-icon" style="background:rgba(14,163,148,.18);">↓</div>
-          <div><span class="rm-contact-lbl">Download</span><span class="rm-contact-val" style="color:var(--glow);">Sherif_Ayman_CV.pdf</span></div>
-        </a>
-      </div>
-
     </div>
   </div>
 
@@ -3592,31 +4067,94 @@
     })(start);
   }
 
+  const rmReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let rmObserver = null;
+
+  function rmAnimateBars() {
+    document.querySelectorAll('.rm-bar-fill[data-w]').forEach(bar => { bar.style.width = bar.dataset.w; });
+    document.querySelectorAll('.rm-kpi-meter i[data-meter]').forEach(m => { m.style.width = m.dataset.meter; });
+  }
+  function rmResetBars() {
+    document.querySelectorAll('.rm-bar-fill[data-w]').forEach(bar => { bar.style.width = '0'; });
+    document.querySelectorAll('.rm-kpi-meter i[data-meter]').forEach(m => { m.style.width = '0'; });
+  }
+
+  // Scroll reveal inside the dashboard
+  function rmInitReveal() {
+    const scroller = document.getElementById('rmScroll');
+    if (!scroller) return;
+    const items = rmOverlay.querySelectorAll('.rm-reveal');
+    if (rmReduceMotion) { items.forEach(el => el.classList.add('in')); return; }
+    if (rmObserver) rmObserver.disconnect();
+    rmObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rmObserver.unobserve(e.target); } });
+    }, { root: scroller, threshold: .12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => { el.classList.remove('in'); rmObserver.observe(el); });
+  }
+
+  // Section nav (scroll + active state)
+  (function rmNavSetup() {
+    const scroller = document.getElementById('rmScroll');
+    const links = Array.from(document.querySelectorAll('.rm-nav-link'));
+    if (!scroller || !links.length) return;
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        const target = document.getElementById(link.dataset.rmTarget);
+        if (!target) return;
+        scroller.scrollTo({ top: target.offsetTop - 12, behavior: rmReduceMotion ? 'auto' : 'smooth' });
+      });
+    });
+    scroller.addEventListener('scroll', () => {
+      const pos = scroller.scrollTop + 80;
+      let current = links[0];
+      links.forEach(link => {
+        const sec = document.getElementById(link.dataset.rmTarget);
+        if (sec && sec.offsetTop <= pos) current = link;
+      });
+      links.forEach(l => l.classList.toggle('active', l === current));
+    }, { passive: true });
+  })();
+
+  // Expandable project details
+  document.querySelectorAll('.rm-proj').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      if (panel) panel.classList.toggle('open', !open);
+    });
+  });
+
   function openRM() {
     rmOpen = true;
     rmOverlay.classList.add('open');
     rmModeBtn.classList.add('active');
     document.body.style.overflow = 'hidden';
     hideTooltip();
+    const scroller = document.getElementById('rmScroll');
+    if (scroller) scroller.scrollTop = 0;
+    rmInitReveal();
     setTimeout(() => {
       rmCounter(document.getElementById('rmCount1'), 150, '+');
       rmCounter(document.getElementById('rmCount2'), 10, '');
       rmCounter(document.getElementById('rmCount3'), 9, '');
+      rmOverlay.classList.add('rm-anim');
     }, 200);
-    setTimeout(() => {
-      document.querySelectorAll('.rm-bar-fill[data-w]').forEach(bar => {
-        bar.style.width = bar.dataset.w;
-      });
-    }, 400);
+    setTimeout(rmAnimateBars, 400);
+    setTimeout(() => { if (rmCloseBtn) rmCloseBtn.focus({ preventScroll: true }); }, 420);
   }
 
   function closeRM() {
     rmOpen = false;
     rmOverlay.classList.remove('open');
+    rmOverlay.classList.remove('rm-anim');
     rmModeBtn.classList.remove('active');
     document.body.style.overflow = '';
-    document.querySelectorAll('.rm-bar-fill[data-w]').forEach(bar => {
-      bar.style.width = '0';
+    rmResetBars();
+    document.querySelectorAll('.rm-proj[aria-expanded="true"]').forEach(btn => {
+      btn.setAttribute('aria-expanded', 'false');
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (panel) panel.classList.remove('open');
     });
   }
 
@@ -4085,5 +4623,184 @@
 <a href="https://khamsat.com/data/data-dashboards/4405435-%D8%AA%D9%82%D8%AF%D9%8A%D9%85-dashboard-%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="fab-khamsat" id="fabKhamsat">
   <span class="fab-dot"></span><span class="fab-label">Hire me on Khamsat</span>
 </a>
+<!-- ══════════════ PREMIUM MOTION LAYER ══════════════ -->
+<style>
+  :root { --mo-ease: cubic-bezier(.22,1,.36,1); }
+
+  /* Intro curtain */
+  #moIntro{
+    position:fixed; inset:0; z-index:12000;
+    background:#0a1628;
+    display:flex; align-items:center; justify-content:center;
+    transition:opacity .7s var(--mo-ease), visibility .7s;
+  }
+  #moIntro::after{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(60% 60% at 50% 50%, rgba(64,224,208,.10), transparent 70%);
+  }
+  #moIntro .mo-brand{
+    position:relative; z-index:2; text-align:center;
+    font-family:'Fraunces',serif; color:#f5ede0;
+    font-size:clamp(1.6rem,5vw,2.6rem); letter-spacing:.01em;
+    opacity:0; transform:translateY(14px);
+    animation:moBrandIn .9s var(--mo-ease) .1s forwards;
+  }
+  #moIntro .mo-brand em{ color:#40e0d0; font-style:italic; }
+  #moIntro .mo-track{
+    position:relative; z-index:2;
+    margin:18px auto 0; width:min(220px,50vw); height:2px;
+    background:rgba(245,237,224,.14); overflow:hidden; border-radius:2px;
+  }
+  #moIntro .mo-track i{
+    position:absolute; inset:0; display:block; transform-origin:left center;
+    transform:scaleX(0); background:linear-gradient(90deg,#40e0d0,#e8715a);
+    animation:moTrack 1.05s var(--mo-ease) .15s forwards;
+  }
+  @keyframes moBrandIn{ to{ opacity:1; transform:none; } }
+  @keyframes moTrack{ to{ transform:scaleX(1); } }
+  body.mo-intro-done #moIntro{ opacity:0; visibility:hidden; pointer-events:none; }
+  body.mo-loading{ overflow:hidden; }
+
+  /* Scroll progress */
+  #moProgress{
+    position:fixed; top:0; left:0; height:2px; width:100%;
+    transform:scaleX(0); transform-origin:left center;
+    background:linear-gradient(90deg,#40e0d0,#2eb8a6,#e8715a);
+    z-index:11000; pointer-events:none;
+    box-shadow:0 0 12px rgba(64,224,208,.35);
+  }
+
+  /* Auto scroll reveal (gentle) */
+  [data-mo]{
+    opacity:0;
+    transition:opacity .85s var(--mo-ease), transform .85s var(--mo-ease), filter .85s var(--mo-ease);
+    will-change:opacity, transform;
+  }
+  [data-mo="up"]{ transform:translate3d(0,26px,0); }
+  [data-mo="left"]{ transform:translate3d(-24px,0,0); }
+  [data-mo="right"]{ transform:translate3d(24px,0,0); }
+  [data-mo="zoom"]{ transform:scale(.97); filter:blur(4px); }
+  [data-mo].mo-in{ opacity:1; transform:none; filter:none; }
+
+  /* Hero entrance stagger */
+  body.mo-intro-done .hero-eyebrow,
+  body.mo-intro-done .hero-name,
+  body.mo-intro-done .hero-tagline,
+  body.mo-intro-done .hero-desc,
+  body.mo-intro-done .hero-offer-row,
+  body.mo-intro-done .hero-cta,
+  body.mo-intro-done .hero-recruiter-whisper,
+  body.mo-intro-done .hero-right{
+    animation:moHeroIn .95s var(--mo-ease) both;
+  }
+  body.mo-intro-done .hero-eyebrow{ animation-delay:.05s }
+  body.mo-intro-done .hero-name{ animation-delay:.14s }
+  body.mo-intro-done .hero-tagline{ animation-delay:.22s }
+  body.mo-intro-done .hero-desc{ animation-delay:.30s }
+  body.mo-intro-done .hero-offer-row{ animation-delay:.38s }
+  body.mo-intro-done .hero-cta{ animation-delay:.46s }
+  body.mo-intro-done .hero-recruiter-whisper{ animation-delay:.60s }
+  body.mo-intro-done .hero-right{ animation-delay:.30s }
+  @keyframes moHeroIn{ from{ opacity:0; transform:translate3d(0,22px,0); } to{ opacity:1; transform:none; } }
+
+  /* Parallax layers */
+  .hero-waves,.hero-geo{ will-change:transform; }
+
+  @media (prefers-reduced-motion: reduce){
+    #moIntro{ display:none; }
+    #moProgress{ display:none; }
+    [data-mo]{ opacity:1 !important; transform:none !important; filter:none !important; transition:none !important; }
+    body.mo-intro-done .hero-eyebrow, body.mo-intro-done .hero-name, body.mo-intro-done .hero-tagline,
+    body.mo-intro-done .hero-desc, body.mo-intro-done .hero-offer-row, body.mo-intro-done .hero-cta,
+    body.mo-intro-done .hero-recruiter-whisper, body.mo-intro-done .hero-right{ animation:none !important; }
+  }
+</style>
+
+<div id="moIntro" aria-hidden="true">
+  <div>
+    <div class="mo-brand">Sherif <em>Ayman</em></div>
+    <div class="mo-track"><i></i></div>
+  </div>
+</div>
+<div id="moProgress" aria-hidden="true"></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var intro = document.getElementById('moIntro');
+  var bar = document.getElementById('moProgress');
+
+  /* ── Intro ── */
+  document.body.classList.add('mo-loading');
+  function finishIntro(){
+    document.body.classList.remove('mo-loading');
+    document.body.classList.add('mo-intro-done');
+    setTimeout(function(){ if(intro && intro.parentNode) intro.parentNode.removeChild(intro); }, 900);
+  }
+  if (reduce){ finishIntro(); }
+  else { setTimeout(finishIntro, 1250); }
+
+  /* ── Scroll progress + parallax (rAF throttled) ── */
+  var waves = document.querySelector('.hero-waves');
+  var geo = document.querySelector('.hero-geo');
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY || 0;
+      var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      if (bar) bar.style.transform = 'scaleX(' + Math.min(1, y / max) + ')';
+      if (!reduce && y < window.innerHeight * 1.2){
+        if (waves) waves.style.transform = 'translate3d(0,' + (y * 0.12) + 'px,0)';
+        if (geo) geo.style.transform = 'translate3d(0,' + (y * -0.06) + 'px,0)';
+      }
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Gentle auto scroll-reveal for content not already animated ── */
+  if (!reduce){
+    var sel = [
+      'section .section-head', 'section h2', 'section .section-label',
+      '.khamsat-card', '.skill-row', '.tool-chip', '.stat-card',
+      '.proj-card', '.edu-card', '.cert-card', '.timeline-item',
+      '.contact-links a', '.avail-card', '.courses-block'
+    ].join(',');
+
+    var nodes = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function(el){
+      if (el.closest('#recruiterOverlay, .rm-shell, .modal-overlay, nav, header, .hero')) return false;
+      if (el.classList.contains('reveal') || el.closest('.reveal')) return false;
+      if (el.hasAttribute('data-mo')) return false;
+      return true;
+    });
+
+    nodes.forEach(function(el, i){
+      var dir = 'up';
+      if (el.matches('.skill-row, .timeline-item')) dir = (i % 2 === 0) ? 'left' : 'right';
+      else if (el.matches('.proj-card, .stat-card, .khamsat-card')) dir = 'zoom';
+      el.setAttribute('data-mo', dir);
+      el.style.transitionDelay = Math.min(i % 6, 5) * 60 + 'ms';
+    });
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('mo-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(function(el){ io.observe(el); });
+
+    /* safety: if anything never intersects, show it */
+    setTimeout(function(){
+      nodes.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight) el.classList.add('mo-in');
+      });
+    }, 1600);
+  }
+})();
+</script>
+
 </body>
 </html>
