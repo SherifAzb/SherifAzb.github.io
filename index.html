@@ -139,8 +139,8 @@
       transition: background .4s, backdrop-filter .4s, box-shadow .4s;
     }
     nav.scrolled {
-      background: rgba(15,12,41,.88);
-      backdrop-filter: blur(20px);
+      background: rgba(15,12,41,.92);
+      backdrop-filter: blur(10px);
       box-shadow: 0 1px 0 rgba(14,163,148,.1);
     }
     .nav-logo {
@@ -409,6 +409,28 @@
       color: #fff; max-width: 480px; margin-bottom: 14px;
     }
 
+    .hero-meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+    .hero-meta-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: .68rem;
+      letter-spacing: .03em; color: rgba(245,237,224,.75);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 100px; padding: 6px 13px;
+    }
+    .hero-meta-chip svg { width: 13px; height: 13px; flex-shrink: 0; opacity: .8; }
+    .hero-meta-chip.live { color: var(--glow); border-color: rgba(14,163,148,.3); background: rgba(14,163,148,.08); }
+    .hero-meta-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--glow); animation: pulse 2s infinite; flex-shrink: 0; }
+    .hero-voice {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+      font-size: 1.02rem; line-height: 1.5; color: rgba(245,237,224,.68);
+      max-width: 480px; margin: 18px 0 2px; padding-left: 16px;
+      border-left: 2px solid var(--coral);
+    }
+    @media (max-width: 900px) {
+      .hero-meta-row { justify-content: center; }
+      .hero-voice { margin-left: auto; margin-right: auto; text-align: left; }
+    }
     .hero-desc {
       font-family: 'JetBrains Mono', monospace;
       font-size: .74rem; line-height: 1.7;
@@ -477,6 +499,7 @@
 
     .hero-photo-wrap {
       position: relative; width: 280px; height: 336px;
+      perspective: 900px;
     }
     .hero-photo-bg {
       position: absolute; inset: 12px 12px -12px -12px;
@@ -487,6 +510,9 @@
       position: absolute; inset: 0;
       border: 1.5px solid rgba(14,163,148,.3);
       border-radius: 6px; overflow: hidden;
+      transition: transform .3s ease-out;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
     .hero-photo-frame img {
       width: 100%; height: 100%; object-fit: cover;
@@ -725,18 +751,23 @@
 
     .projects-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2px; position: relative; z-index: 1;
+      gap: 28px; position: relative; z-index: 1;
     }
 
     .proj-card {
-      border: 1px solid rgba(14,163,148,.07);
+      border: 1px solid rgba(14,163,148,.1);
       background: rgba(245,237,224,.02);
+      border-radius: 10px;
       cursor: none; overflow: hidden;
-      transition: background .3s;
+      transition: background .3s, border-color .3s;
       position: relative;
     }
-    .proj-card:hover { background: rgba(14,163,148,.04); }
+    .proj-card:hover { background: rgba(14,163,148,.05); }
     .proj-card.featured { grid-column: 1 / -1; }
+
+    @media (max-width: 1024px) {
+      .projects-grid { grid-template-columns: 1fr; gap: 22px; }
+    }
 
     .proj-img-wrap {
       overflow: hidden; position: relative;
@@ -1649,6 +1680,56 @@
     .rm-reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1); }
     .rm-reveal.in { opacity: 1; transform: none; }
 
+    /* ── TL;DR plain-language box ── */
+    .rm-tldr {
+      margin: 22px 0 0; padding: 20px 22px;
+      border: 1px solid var(--rm-line); border-left: 3px solid var(--rm-teal);
+      border-radius: 12px; background: rgba(14,163,148,.05);
+    }
+    .rm-tldr-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: .62rem;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--rm-teal);
+      margin-bottom: 8px;
+    }
+    .rm-tldr p { font-size: .86rem; line-height: 1.7; color: var(--rm-dim); max-width: 74ch; }
+
+    /* ── Role-Fit Analyzer ── */
+    .rm-fit { padding: 4px 0; }
+    .rm-fit-roles { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+    .rm-fit-role {
+      font-family: 'JetBrains Mono', monospace; font-size: .72rem; letter-spacing: .04em;
+      color: var(--rm-dim); background: rgba(255,255,255,.03);
+      border: 1px solid var(--rm-line-2); border-radius: 100px;
+      padding: 9px 18px; cursor: none; transition: all .25s;
+    }
+    .rm-fit-role:hover { border-color: var(--rm-teal); color: var(--rm-txt); }
+    .rm-fit-role.active { background: var(--rm-teal); border-color: var(--rm-teal); color: #06201c; font-weight: 700; }
+    .rm-fit-body { display: grid; grid-template-columns: 220px 1fr; gap: 36px; align-items: center; }
+    .rm-fit-score { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+    .rm-fit-ring { position: relative; width: 152px; height: 152px; }
+    .rm-fit-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .rm-fit-ring-bg { fill: none; stroke: var(--rm-line); stroke-width: 7; }
+    .rm-fit-ring-fg {
+      fill: none; stroke: var(--rm-teal); stroke-width: 7; stroke-linecap: round;
+      stroke-dasharray: 276.5; stroke-dashoffset: 276.5;
+      transition: stroke-dashoffset 1s cubic-bezier(.22,1,.36,1);
+    }
+    .rm-fit-ring-num {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 600; color: var(--rm-txt);
+    }
+    .rm-fit-score-lbl { font-family: 'JetBrains Mono', monospace; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--rm-faint); margin-top: 4px; }
+    .rm-fit-verdict { font-size: .78rem; color: var(--rm-teal); max-width: 190px; line-height: 1.5; margin-top: 4px; }
+    .rm-fit-breakdown { display: flex; flex-direction: column; gap: 16px; }
+    .rm-fit-row-top { display: flex; justify-content: space-between; font-size: .78rem; color: var(--rm-dim); margin-bottom: 6px; }
+    .rm-fit-row-top b { color: var(--rm-txt); font-weight: 600; }
+    .rm-fit-bar-bg { height: 6px; border-radius: 4px; background: rgba(255,255,255,.07); overflow: hidden; }
+    .rm-fit-bar-fill { height: 100%; border-radius: 4px; width: 0; background: linear-gradient(90deg, var(--rm-blue), var(--rm-teal)); transition: width 1s cubic-bezier(.22,1,.36,1); }
+    .rm-fit-note { font-size: .72rem; color: var(--rm-faint); margin-top: 20px; line-height: 1.6; max-width: 70ch; }
+    @media (max-width: 720px) {
+      .rm-fit-body { grid-template-columns: 1fr; justify-items: center; }
+    }
+
     /* ── Identity header ── */
     .rm-identity {
       position: relative; overflow: hidden;
@@ -2020,7 +2101,7 @@
       /* Projects */
       .projects-section { padding: 64px 20px; }
       .projects-header { flex-direction: column; gap: 8px; align-items: flex-start; }
-      .projects-grid { grid-template-columns: 1fr; gap: 1px; }
+      .projects-grid { grid-template-columns: 1fr; gap: 20px; }
       .proj-card.featured .proj-inner { flex-direction: column; }
       .proj-card.featured .proj-img-wrap { width: 100%; }
       .proj-card.featured img { height: 200px !important; }
@@ -2187,6 +2268,17 @@
     .khamsat-deliverables .kd-row span:first-child{ color:var(--text-muted); }
     .khamsat-deliverables .kd-row span:last-child{ color:var(--text); font-weight:600; font-family:'JetBrains Mono',monospace; font-size:.8rem; }
     .khamsat-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+    .khamsat-subservices{ margin-top:18px; padding-top:16px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:8px; }
+    .khamsat-subservices-label{ font-family:'JetBrains Mono',monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:2px; }
+    .khamsat-subservice-link{
+      display:flex; align-items:center; gap:9px;
+      font-size:.82rem; color:var(--text); text-decoration:none;
+      padding:9px 12px; border-radius:8px; border:1px solid var(--border);
+      background:var(--surface2); transition:border-color .25s, transform .25s, background .25s;
+    }
+    .khamsat-subservice-link:hover{ border-color:var(--accent2); transform:translateX(3px); background:var(--peach); }
+    .ssl-dot{ width:6px; height:6px; border-radius:50%; background:var(--accent2); flex-shrink:0; }
+    .ssl-arrow{ margin-left:auto; opacity:.5; font-size:.8rem; }
     .btn-khamsat-main{
       position:relative; overflow:hidden; background:linear-gradient(120deg, var(--accent), var(--accent2));
       color:#fff; padding:14px 22px; border-radius:10px; font-weight:700; font-size:.9rem;
@@ -2220,6 +2312,19 @@
     .fab-khamsat .fab-dot{ width:8px; height:8px; border-radius:50%; background:#fff; animation:khPulse 2s infinite; flex-shrink:0; }
     @keyframes khFabFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
     @media (max-width:560px){ .fab-khamsat .fab-label{ display:none; } .fab-khamsat{ padding:13px; } }
+
+    /* Floating Upwork CTA (stacked above Khamsat) */
+    .fab-upwork{
+      position:fixed; right:20px; bottom:86px; z-index:400;
+      display:flex; align-items:center; gap:9px;
+      background:#14A800; color:#fff;
+      padding:13px 18px; border-radius:100px; font-size:.82rem; font-weight:700;
+      box-shadow:0 10px 30px rgba(20,168,0,.35);
+      animation:khFabFloat 3.2s ease-in-out infinite .3s;
+    }
+    .fab-upwork:hover{ box-shadow:0 14px 36px rgba(20,168,0,.45); }
+    .fab-upwork svg{ width:15px; height:15px; flex-shrink:0; }
+    @media (max-width:560px){ .fab-upwork .fab-label{ display:none; } .fab-upwork{ padding:13px; bottom:78px; } }
 
     .nav-khamsat{
       font-family:'JetBrains Mono',monospace; font-size:.72rem; font-weight:700; color:var(--accent2);
@@ -2683,8 +2788,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <span data-hero-name1>Sherif</span><br>
         <em data-hero-name2>Ayman</em>
       </h1>
+      <div class="hero-meta-row">
+        <span class="hero-meta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Benha, Egypt</span>
+        <span class="hero-meta-chip live"><span class="hero-meta-dot"></span>Currently: DEPI Data Science Track</span>
+      </div>
       <div class="hero-tagline" data-hero-role>Turning raw data into clear decisions</div>
       <p class="hero-desc" data-hero-desc>I'm a Computer Science & AI student from Benha, Egypt — building end-to-end analytics solutions with Power BI, Excel, and ETL pipelines for real organizations like Vodafone and Banque Misr, and currently training as a Data Scientist through DEPI (Digital Egypt Pioneers Initiative, with IBM).</p>
+      <p class="hero-voice">"I like turning messy spreadsheets into stories people actually act on — that's the part of the job I never get tired of."</p>
       <div class="hero-offer-row">
         <span class="hero-offer-chip" data-hero-offer1>Power BI Dashboards</span>
         <span class="hero-offer-chip" data-hero-offer2>Data Cleaning & ETL</span>
@@ -2775,8 +2885,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
             <div class="kd-row"><span>Platform</span><span>Khamsat</span></div>
           </div>
           <div class="khamsat-actions">
-            <a href="https://khamsat.com/data/data-dashboards/4405435-%D8%AA%D9%82%D8%AF%D9%8A%D9%85-dashboard-%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="btn-khamsat-main">🔥 Order on Khamsat →</a>
+            <a href="https://khamsat.com/data/data-dashboards/4462951-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%AF%D8%A7%D8%B4%D8%A8%D9%88%D8%B1%D8%AF-%D8%AA%D9%81%D8%A7%D8%B9%D9%84%D9%8A-dashboard-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="btn-khamsat-main">🔥 Order on Khamsat →</a>
             <a href="#contact" class="btn-khamsat-ghost">Message me directly</a>
+          </div>
+          <div class="khamsat-subservices">
+            <div class="khamsat-subservices-label">Related services on Khamsat</div>
+            <a href="https://khamsat.com/data/data-analytics/4462947-%D8%AA%D8%AD%D9%84%D9%8A%D9%84-%D9%88%D8%AA%D9%86%D8%B8%D9%8A%D9%81-%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-%D8%A8%D8%A7%D9%8A%D8%AB%D9%88%D9%86-python-%D9%88%D8%B9%D9%85%D9%84-%D8%B1%D8%B3%D9%85-%D8%A8%D9%8A%D8%A7%D9%86%D9%8A" target="_blank" class="khamsat-subservice-link">
+              <span class="ssl-dot"></span>Data cleaning &amp; analysis with Python + charts
+              <span class="ssl-arrow">↗</span>
+            </a>
+            <a href="https://khamsat.com/ai-machine-learning/ai-agent-automation/4466566-%D8%B9%D9%85%D9%84-%D9%86%D8%B8%D8%A7%D9%85-quotation-excel-%D9%83%D9%88%D8%AA%D9%8A%D8%B4%D9%86-%D8%A3%D9%88%D8%AA%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D9%83-%D9%85%D8%B9-%D8%A3%D8%B1%D8%B4%D9%81%D8%A9-%D9%88%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-a4" target="_blank" class="khamsat-subservice-link">
+              <span class="ssl-dot"></span>Automated Excel Quotation system with archiving &amp; A4 print
+              <span class="ssl-arrow">↗</span>
+            </a>
           </div>
         </div>
       </div>
@@ -3443,6 +3564,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
       <nav class="rm-nav" id="rmNav" aria-label="Recruiter view sections">
         <button class="rm-nav-link active" data-rm-target="rmSecOverview">Overview</button>
+        <button class="rm-nav-link" data-rm-target="rmSecFit">Role Fit</button>
         <button class="rm-nav-link" data-rm-target="rmSecSkills">Skills</button>
         <button class="rm-nav-link" data-rm-target="rmSecProjects">Projects</button>
         <button class="rm-nav-link" data-rm-target="rmSecCoverage">Coverage</button>
@@ -3504,6 +3626,39 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
               <div class="rm-kpi-trend neutral">Year 3 · Benha Uni</div>
               <div class="rm-kpi-meter"><i data-meter="45%"></i></div>
             </div>
+          </div>
+        </section>
+
+        <!-- ── 1b. Plain-language summary (for anyone, not just recruiters) ── -->
+        <div class="rm-tldr rm-reveal">
+          <div class="rm-tldr-tag">In plain terms</div>
+          <p>Sherif takes messy data — Excel sheets, exports, databases — and turns it into dashboards and reports that answer real business questions: where is revenue slipping, which customers are about to churn, what's actually driving the numbers. He's done this for live organizations (Vodafone, Banque Misr), not just course exercises, and is currently deepening his machine-learning skills through a government-backed IBM training track (DEPI). He's a 3rd-year CS &amp; AI student, available now for internships, part-time, and freelance work.</p>
+        </div>
+
+        <!-- ── 1c. Interactive Role-Fit Analyzer ── -->
+        <section class="rm-section" id="rmSecFit">
+          <div class="rm-sec-head">
+            <span class="rm-sec-title">Role-Fit Analyzer</span>
+            <span class="rm-sec-note">Pick a role to see the match</span>
+          </div>
+          <div class="rm-fit rm-reveal">
+            <div class="rm-fit-roles" id="rmFitRoles">
+              <button class="rm-fit-role active" data-role="analyst" type="button">Data Analyst</button>
+              <button class="rm-fit-role" data-role="bi" type="button">BI Developer</button>
+              <button class="rm-fit-role" data-role="ds" type="button">Jr. Data Scientist</button>
+            </div>
+            <div class="rm-fit-body">
+              <div class="rm-fit-score">
+                <div class="rm-fit-ring" id="rmFitRing">
+                  <svg viewBox="0 0 100 100"><circle class="rm-fit-ring-bg" cx="50" cy="50" r="44"/><circle class="rm-fit-ring-fg" id="rmFitRingFg" cx="50" cy="50" r="44"/></svg>
+                  <div class="rm-fit-ring-num" id="rmFitPct">0%</div>
+                </div>
+                <div class="rm-fit-score-lbl">Overall Match</div>
+                <div class="rm-fit-verdict" id="rmFitVerdict">Strong fit for entry-level / internship hiring</div>
+              </div>
+              <div class="rm-fit-breakdown" id="rmFitBreakdown"></div>
+            </div>
+            <p class="rm-fit-note">Scored against typical junior job-description requirements for each role — not a guarantee, just a transparent estimate so you can judge quickly.</p>
           </div>
         </section>
 
@@ -3883,9 +4038,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   let mx = 0, my = 0, rx = 0, ry = 0;
   document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
   (function animCursor() {
-    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    dot.style.transform = 'translate3d(' + (mx - 4) + 'px,' + (my - 4) + 'px,0)';
     rx += (mx - rx) * .13; ry += (my - ry) * .13;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    ring.style.transform = 'translate3d(' + (rx - 18) + 'px,' + (ry - 18) + 'px,0)';
     requestAnimationFrame(animCursor);
   })();
   document.querySelectorAll('a,button,.proj-card,.course-tag,.tool-chip').forEach(el => {
@@ -3908,12 +4063,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   }
 
   /* ══════════════════════════
-     NAV SCROLL
+     NAV SCROLL (rAF-throttled to avoid scroll jank)
   ══════════════════════════ */
   const nav = document.getElementById('mainNav');
+  let navTicking = false;
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
+    if (navTicking) return;
+    navTicking = true;
+    requestAnimationFrame(() => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+      navTicking = false;
+    });
+  }, { passive: true });
 
   /* ══════════════════════════
      DARK MODE
@@ -4181,6 +4342,86 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     document.querySelectorAll('.rm-kpi-meter i[data-meter]').forEach(m => { m.style.width = '0'; });
   }
 
+  // ── Role-Fit Analyzer ──
+  const RM_FIT_DATA = {
+    analyst: {
+      pct: 91,
+      verdict: 'Strong fit for entry-level / internship hiring',
+      rows: [
+        { lbl: 'Excel & Power BI', val: 90 },
+        { lbl: 'Data Cleaning / ETL', val: 88 },
+        { lbl: 'SQL & Data Modeling', val: 78 },
+        { lbl: 'Business Communication', val: 82 }
+      ]
+    },
+    bi: {
+      pct: 84,
+      verdict: 'Solid junior BI Developer candidate',
+      rows: [
+        { lbl: 'DAX & Data Modeling', val: 82 },
+        { lbl: 'Power Query / ETL', val: 85 },
+        { lbl: 'Star Schema Design', val: 85 },
+        { lbl: 'SQL', val: 70 }
+      ]
+    },
+    ds: {
+      pct: 68,
+      verdict: 'Promising for a supervised internship track',
+      rows: [
+        { lbl: 'Python for Analysis', val: 70 },
+        { lbl: 'Statistics & ML Foundations', val: 65 },
+        { lbl: 'Data Wrangling', val: 80 },
+        { lbl: 'Model Deployment', val: 40 }
+      ]
+    }
+  };
+
+  function rmRenderFit(role) {
+    const data = RM_FIT_DATA[role];
+    if (!data) return;
+    const pctEl = document.getElementById('rmFitPct');
+    const ring = document.getElementById('rmFitRingFg');
+    const verdict = document.getElementById('rmFitVerdict');
+    const breakdown = document.getElementById('rmFitBreakdown');
+    if (!pctEl || !ring || !breakdown) return;
+
+    // animated percentage count-up
+    const start = performance.now(), dur = 900, from = parseInt(pctEl.textContent) || 0, to = data.pct;
+    function tick(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      pctEl.textContent = Math.round(from + (to - from) * ease) + '%';
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    const circumference = 276.5;
+    ring.style.strokeDashoffset = String(circumference - (circumference * data.pct / 100));
+    verdict.textContent = data.verdict;
+
+    breakdown.innerHTML = data.rows.map(r =>
+      '<div><div class="rm-fit-row-top"><span>' + r.lbl + '</span><b>' + r.val + '%</b></div>' +
+      '<div class="rm-fit-bar-bg"><div class="rm-fit-bar-fill" style="width:0"></div></div></div>'
+    ).join('');
+    requestAnimationFrame(() => {
+      breakdown.querySelectorAll('.rm-fit-bar-fill').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = data.rows[i].val + '%'; }, 30);
+      });
+    });
+  }
+
+  (function rmFitSetup() {
+    const roleBtns = document.querySelectorAll('.rm-fit-role');
+    if (!roleBtns.length) return;
+    roleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        roleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        rmRenderFit(btn.dataset.role);
+      });
+    });
+  })();
+
   // Scroll reveal inside the dashboard
   function rmInitReveal() {
     const scroller = document.getElementById('rmScroll');
@@ -4243,6 +4484,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       rmOverlay.classList.add('rm-anim');
     }, 200);
     setTimeout(rmAnimateBars, 400);
+    setTimeout(() => rmRenderFit('analyst'), 500);
     setTimeout(() => { if (rmCloseBtn) rmCloseBtn.focus({ preventScroll: true }); }, 420);
   }
 
@@ -4713,6 +4955,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     menuOpen ? closeMobileMenu() : openMobileMenu();
   });
 
+  // Subtle photo tilt for a more alive, dynamic identity moment
+  (function(){
+    var wrap = document.querySelector('.hero-photo-wrap');
+    if (!wrap || 'ontouchstart' in window) return;
+    var frame = wrap.querySelector('.hero-photo-frame');
+    wrap.addEventListener('mousemove', function(e){
+      var r = wrap.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      frame.style.transform = 'rotateY(' + (px * 10) + 'deg) rotateX(' + (py * -10) + 'deg)';
+    });
+    wrap.addEventListener('mouseleave', function(){
+      frame.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+  })();
+
   // Hide cursor elements on touch devices
   if ('ontouchstart' in window) {
     document.getElementById('cursorDot').style.display = 'none';
@@ -4722,7 +4980,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
   </script>
 <!-- FLOATING KHAMSAT CTA -->
-<a href="https://khamsat.com/data/data-dashboards/4405435-%D8%AA%D9%82%D8%AF%D9%8A%D9%85-dashboard-%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="fab-khamsat" id="fabKhamsat">
+<a href="https://www.upwork.com/freelancers/~01eed5e6f9711b36ef" target="_blank" class="fab-upwork" id="fabUpwork">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-7.478c-2.577 0-4.576 1.676-5.402 4.42-1.239-1.861-2.185-4.096-2.734-5.976H7.688v7.664c-.001 1.489-1.212 2.702-2.703 2.702S2.284 14.277 2.284 12.787V4.124H0v8.663c0 2.586 2.105 4.692 4.692 4.692s4.692-2.106 4.692-4.692v-1.297c.472.982 1.05 1.977 1.752 2.853l-1.583 7.457h2.33l1.145-5.394c.966.607 2.07.964 3.234.964 2.578 0 4.674-2.098 4.674-4.674 0-2.577-2.096-4.673-4.674-4.673z"/></svg>
+  <span class="fab-label">Hire me on Upwork</span>
+</a>
+<a href="https://khamsat.com/data/data-dashboards/4462951-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%AF%D8%A7%D8%B4%D8%A8%D9%88%D8%B1%D8%AF-%D8%AA%D9%81%D8%A7%D8%B9%D9%84%D9%8A-dashboard-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="fab-khamsat" id="fabKhamsat">
   <span class="fab-dot"></span><span class="fab-label">Hire me on Khamsat</span>
 </a>
 <!-- ══════════════ PREMIUM MOTION LAYER ══════════════ -->
