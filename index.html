@@ -1443,36 +1443,25 @@
 
     /* Smart tooltip */
     .rm-tooltip {
-      position: absolute;
-      top: calc(100% + 14px);
-      right: 0;
+      position: fixed;
+      left: 20px;
+      bottom: 100px;
       width: 230px;
-      background: linear-gradient(135deg, #1a1040 0%, #0f0c29 100%);
-      border: 1px solid rgba(74,222,128,.35);
+      background: linear-gradient(135deg, var(--surface2) 0%, var(--surface) 100%);
+      border: 1px solid var(--border-md);
       border-radius: 12px;
       padding: 16px 18px;
-      box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 0 1px rgba(74,222,128,.1);
+      box-shadow: 0 16px 48px rgba(0,0,0,.35), 0 0 0 1px rgba(14,163,148,.12);
       opacity: 0;
-      transform: translateY(-6px) scale(.96);
+      transform: translateY(10px) scale(.96);
       pointer-events: none;
       transition: opacity .3s cubic-bezier(.4,0,.2,1), transform .3s cubic-bezier(.4,0,.2,1);
-      z-index: 600;
+      z-index: 390;
     }
     .rm-tooltip.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
       pointer-events: all;
-    }
-    /* Arrow */
-    .rm-tooltip::before {
-      content: '';
-      position: absolute;
-      top: -6px; right: 22px;
-      width: 10px; height: 10px;
-      background: #1a1040;
-      border-left: 1px solid rgba(74,222,128,.35);
-      border-top: 1px solid rgba(74,222,128,.35);
-      transform: rotate(45deg);
     }
     .rm-tooltip-header {
       display: flex; align-items: center; gap: 8px;
@@ -1480,46 +1469,46 @@
     }
     .rm-tooltip-dot {
       width: 8px; height: 8px; border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 8px rgba(74,222,128,.9);
+      background: var(--glow);
+      box-shadow: 0 0 8px rgba(14,163,148,.9);
       animation: notif-ping 1.8s ease-in-out infinite;
       flex-shrink: 0;
     }
     .rm-tooltip-title {
       font-family: 'JetBrains Mono', monospace;
       font-size: .62rem; letter-spacing: .12em;
-      text-transform: uppercase; color: #4ade80;
+      text-transform: uppercase; color: var(--glow);
       font-weight: 700;
     }
     .rm-tooltip-body {
       font-family: 'JetBrains Mono', monospace;
       font-size: .61rem; line-height: 1.75;
-      color: rgba(245,237,224,.55);
+      color: var(--text); opacity: .65;
       margin-bottom: 12px;
     }
-    .rm-tooltip-body strong { color: var(--glow); }
+    .rm-tooltip-body strong { color: var(--glow); opacity: 1; }
     .rm-tooltip-cta {
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(74,222,128,.08);
-      border: 1px solid rgba(74,222,128,.2);
+      background: rgba(14,163,148,.08);
+      border: 1px solid rgba(14,163,148,.25);
       border-radius: 6px; padding: 8px 12px;
       font-family: 'JetBrains Mono', monospace;
       font-size: .58rem; letter-spacing: .1em;
-      text-transform: uppercase; color: #4ade80;
+      text-transform: uppercase; color: var(--glow);
       cursor: none;
       transition: background .2s;
     }
-    .rm-tooltip-cta:hover { background: rgba(74,222,128,.15); }
+    .rm-tooltip-cta:hover { background: rgba(14,163,148,.18); }
     .rm-tooltip-dismiss {
       font-family: 'JetBrains Mono', monospace;
-      font-size: .54rem; color: rgba(245,237,224,.25);
+      font-size: .54rem; color: var(--text); opacity: .35;
       letter-spacing: .08em; text-transform: uppercase;
       background: none; border: none; cursor: none;
       margin-top: 8px; width: 100%; text-align: center;
       padding: 4px;
-      transition: color .2s;
+      transition: opacity .2s;
     }
-    .rm-tooltip-dismiss:hover { color: rgba(245,237,224,.5); }
+    .rm-tooltip-dismiss:hover { opacity: .6; }
 
     /* Hero whisper bubble — "Recruiter?" subtle text */
     .hero-recruiter-whisper {
@@ -2172,18 +2161,12 @@
       .rm-tags { padding-left: 16px; }
       .rm-proj { grid-template-columns: auto minmax(0,1fr) auto; padding: 13px 14px; gap: 10px; }
 
-      /* Recruiter tooltip — reposition on mobile */
+      /* Recruiter tooltip — mobile width */
       .rm-tooltip {
-        position: fixed;
-        top: auto;
-        bottom: 80px;
         right: 12px;
         left: 12px;
         width: auto;
-        transform: translateY(10px) scale(.97);
       }
-      .rm-tooltip.visible { transform: translateY(0) scale(1); }
-      .rm-tooltip::before { display: none; }
     }
 
     /* ══ SMALL PHONE (max 480px) ══ */
@@ -2299,32 +2282,43 @@
     }
     .btn-khamsat-ghost:hover{ background:var(--surface2); transform:translateY(-2px); }
 
-    /* Floating Khamsat CTA */
-    .fab-khamsat{
-      position:fixed; right:20px; bottom:26px; z-index:400;
+    /* Floating "Hire Me" CTAs — liquid glass style */
+    .fab-glass{
+      position:fixed; right:20px; z-index:400;
       display:flex; align-items:center; gap:9px;
-      background:linear-gradient(120deg, var(--accent), var(--accent2));
-      color:#fff; padding:13px 18px; border-radius:100px; font-size:.82rem; font-weight:700;
-      box-shadow:0 10px 30px rgba(28,93,140,.35);
+      padding:13px 18px; border-radius:100px; font-size:.82rem; font-weight:700;
+      color:#fff; -webkit-backdrop-filter:blur(18px) saturate(180%); backdrop-filter:blur(18px) saturate(180%);
+      background:linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.35);
+      box-shadow:0 8px 26px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -6px 14px rgba(0,0,0,.12);
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
       animation:khFabFloat 3.2s ease-in-out infinite;
     }
-    .fab-khamsat:hover{ box-shadow:0 14px 36px rgba(28,93,140,.45); }
-    .fab-khamsat .fab-dot{ width:8px; height:8px; border-radius:50%; background:#fff; animation:khPulse 2s infinite; flex-shrink:0; }
-    @keyframes khFabFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
-    @media (max-width:560px){ .fab-khamsat .fab-label{ display:none; } .fab-khamsat{ padding:13px; } }
-
-    /* Floating Upwork CTA (stacked above Khamsat) */
-    .fab-upwork{
-      position:fixed; right:20px; bottom:86px; z-index:400;
-      display:flex; align-items:center; gap:9px;
-      background:#14A800; color:#fff;
-      padding:13px 18px; border-radius:100px; font-size:.82rem; font-weight:700;
-      box-shadow:0 10px 30px rgba(20,168,0,.35);
-      animation:khFabFloat 3.2s ease-in-out infinite .3s;
+    .fab-glass::before{
+      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+      background:linear-gradient(120deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 35%);
+      opacity:.7;
     }
-    .fab-upwork:hover{ box-shadow:0 14px 36px rgba(20,168,0,.45); }
-    .fab-upwork svg{ width:15px; height:15px; flex-shrink:0; }
-    @media (max-width:560px){ .fab-upwork .fab-label{ display:none; } .fab-upwork{ padding:13px; bottom:78px; } }
+    .fab-glass:hover{
+      transform:translateY(-3px);
+      background:linear-gradient(135deg, rgba(255,255,255,.32), rgba(255,255,255,.1));
+      box-shadow:0 14px 34px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.5), inset 0 -6px 14px rgba(0,0,0,.14);
+    }
+    .fab-glass svg{ width:15px; height:15px; flex-shrink:0; position:relative; z-index:1; }
+    .fab-glass .fab-label{ position:relative; z-index:1; }
+    .fab-glass .fab-dot{ width:8px; height:8px; border-radius:50%; background:#fff; animation:khPulse 2s infinite; flex-shrink:0; position:relative; z-index:1; }
+
+    .fab-khamsat{ bottom:26px; animation-delay:.15s; }
+    .fab-upwork{ bottom:86px; animation-delay:.3s; }
+    .fab-linkedin{ bottom:146px; animation-delay:0s; }
+
+    @keyframes khFabFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+    @media (max-width:560px){
+      .fab-glass .fab-label{ display:none; }
+      .fab-glass{ padding:13px; }
+      .fab-upwork{ bottom:78px; }
+      .fab-linkedin{ bottom:130px; }
+    }
 
     .nav-khamsat{
       font-family:'JetBrains Mono',monospace; font-size:.72rem; font-weight:700; color:var(--accent2);
@@ -2886,6 +2880,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
           </div>
           <div class="khamsat-actions">
             <a href="https://khamsat.com/data/data-dashboards/4462951-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%AF%D8%A7%D8%B4%D8%A8%D9%88%D8%B1%D8%AF-%D8%AA%D9%81%D8%A7%D8%B9%D9%84%D9%8A-dashboard-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="btn-khamsat-main">🔥 Order on Khamsat →</a>
+            <a href="https://www.linkedin.com/services/page/055265347541762354/" target="_blank" class="btn-khamsat-ghost">View Services on LinkedIn</a>
             <a href="#contact" class="btn-khamsat-ghost">Message me directly</a>
           </div>
           <div class="khamsat-subservices">
@@ -4602,6 +4597,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   // date: اكتبها زي ما تحب (مثلاً "يوليو 2026")
   // ═══════════════════════════════════════════════════════
   const LINKEDIN_POSTS = [
+    { title: 'دراسة حالة B2B SaaS: ليه فريق المنتج بيتخذ قرارات على بيانات ناقصة', date: 'سبتمبر 2026', url: 'https://lnkd.in/p/e3zfPQc4' },
+    { title: 'إزاي تكتب برومبت للـ AI يحلل بياناتك صح من أول مرة (مش تخمين)', date: 'أغسطس 2026', url: 'https://lnkd.in/p/eNzAQgGF' },
+    { title: 'إزاي تستخدم الـ AI في تنظيف البيانات صح — خطوة بخطوة', date: 'أغسطس 2026', url: 'https://lnkd.in/p/ewacTXMA' },
     { title: 'رحلة الـ Data Analysis Diploma كاملة — Instant Software Solutions', date: 'أغسطس 2026', url: 'https://www.linkedin.com/posts/sherifazb_dataanalysis-powerbi-instant-ugcPost-7489038932182024192-tEJC' },
     { title: 'تحليل نتائج الثانوية العامة بالأرقام (Python)', date: 'يوليو 2026', url: 'https://www.linkedin.com/posts/sherifazb_aesaevaesaeyaesabraepaesaeqaeyaepaeuaepaes-ugcPost-7488092648537518080-HJfk' },
     { title: 'المركز الأول في Data Analysis Challenge', date: 'يوليو 2026', url: 'https://www.linkedin.com/posts/sherifazb_dataanalysis-datascience-instantsoftwaresolutions-share-7484689582769307648-M1xd' },
@@ -4979,12 +4977,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   }
 
   </script>
-<!-- FLOATING KHAMSAT CTA -->
-<a href="https://www.upwork.com/freelancers/~01eed5e6f9711b36ef" target="_blank" class="fab-upwork" id="fabUpwork">
+<!-- FLOATING HIRE-ME CTAs (liquid glass) -->
+<a href="https://www.linkedin.com/services/page/055265347541762354/" target="_blank" class="fab-glass fab-linkedin" id="fabLinkedin">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.114 20.452H3.558V9h3.556v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+  <span class="fab-label">View Services on LinkedIn</span>
+</a>
+<a href="https://www.upwork.com/freelancers/~01eed5e6f9711b36ef" target="_blank" class="fab-glass fab-upwork" id="fabUpwork">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-7.478c-2.577 0-4.576 1.676-5.402 4.42-1.239-1.861-2.185-4.096-2.734-5.976H7.688v7.664c-.001 1.489-1.212 2.702-2.703 2.702S2.284 14.277 2.284 12.787V4.124H0v8.663c0 2.586 2.105 4.692 4.692 4.692s4.692-2.106 4.692-4.692v-1.297c.472.982 1.05 1.977 1.752 2.853l-1.583 7.457h2.33l1.145-5.394c.966.607 2.07.964 3.234.964 2.578 0 4.674-2.098 4.674-4.674 0-2.577-2.096-4.673-4.674-4.673z"/></svg>
   <span class="fab-label">Hire me on Upwork</span>
 </a>
-<a href="https://khamsat.com/data/data-dashboards/4462951-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%AF%D8%A7%D8%B4%D8%A8%D9%88%D8%B1%D8%AF-%D8%AA%D9%81%D8%A7%D8%B9%D9%84%D9%8A-dashboard-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="fab-khamsat" id="fabKhamsat">
+<a href="https://khamsat.com/data/data-dashboards/4462951-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%AF%D8%A7%D8%B4%D8%A8%D9%88%D8%B1%D8%AF-%D8%AA%D9%81%D8%A7%D8%B9%D9%84%D9%8A-dashboard-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="fab-glass fab-khamsat" id="fabKhamsat">
   <span class="fab-dot"></span><span class="fab-label">Hire me on Khamsat</span>
 </a>
 <!-- ══════════════ PREMIUM MOTION LAYER ══════════════ -->
