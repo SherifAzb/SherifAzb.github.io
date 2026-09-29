@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <link rel="icon" type="image/png" href="https://github.com/SherifAzb/SherifAzb.github.io/edit/main/mysite-logo.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315102A'/%3E%3Ctext x='14' y='42' font-family='Inter,Arial,sans-serif' font-weight='700' font-size='30' fill='%23EEE9FA'%3ES%3C/text%3E%3Ctext x='33' y='42' font-family='Georgia,serif' font-style='italic' font-weight='600' font-size='30' fill='%2300D9C0'%3EA%3C/text%3E%3C/svg%3E">
   <title>Sherif Ayman — Data Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,6 +99,10 @@
     }
     body.hovering .cursor-dot { width: 16px; height: 16px; background: var(--glow); opacity: .8; }
     body.hovering .cursor-ring { width: 48px; height: 48px; border-color: var(--coral); }
+    .form-input, .form-textarea, input, textarea {
+      cursor: text;
+    }
+    body.text-hover .cursor-dot, body.text-hover .cursor-ring { opacity: 0; }
 
     /* ══ NOISE OVERLAY ══ */
     body::before {
@@ -754,7 +758,7 @@
 
     .projects-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 28px; position: relative; z-index: 1;
+      gap: 20px; position: relative; z-index: 1;
     }
 
     .proj-card {
@@ -785,21 +789,21 @@
       filter: grayscale(25%) contrast(1.1);
       transition: filter .5s, transform .7s cubic-bezier(.4,0,.2,1);
     }
-    .proj-card.featured img { height: 260px; object-fit: cover; object-position: top; }
-    .proj-card:not(.featured) img { height: 180px; object-fit: cover; object-position: top; }
+    .proj-card.featured img { height: 200px; object-fit: cover; object-position: top; }
+    .proj-card:not(.featured) img { height: 140px; object-fit: cover; object-position: top; }
     .proj-card:hover img { filter: grayscale(0%) contrast(1.05); transform: scale(1.04); }
 
-    .proj-body { padding: 32px 36px; }
+    .proj-body { padding: 22px 26px; }
     .proj-card.featured .proj-inner {
-      display: flex; gap: 48px; align-items: center;
+      display: flex; gap: 32px; align-items: center;
     }
-    .proj-card.featured .proj-img-wrap { width: 380px; flex-shrink: 0; }
-    .proj-card.featured .proj-img-wrap img { height: 100% !important; min-height: 240px; }
+    .proj-card.featured .proj-img-wrap { width: 300px; flex-shrink: 0; }
+    .proj-card.featured .proj-img-wrap img { height: 100% !important; min-height: 190px; }
     .proj-card.featured .proj-body { flex: 1; }
 
     .proj-meta-row {
       display: flex; justify-content: space-between;
-      align-items: center; margin-bottom: 14px;
+      align-items: center; margin-bottom: 10px;
     }
     .proj-cat {
       font-family: 'JetBrains Mono', monospace;
@@ -812,18 +816,18 @@
     }
     .proj-title {
       font-family: 'Fraunces', serif;
-      font-size: 1.85rem; font-weight: 400;
+      font-size: 1.5rem; font-weight: 400;
       line-height: 1.15; letter-spacing: -.02em;
-      color: var(--sand); margin-bottom: 16px;
+      color: var(--sand); margin-bottom: 10px;
     }
-    .proj-card.featured .proj-title { font-size: 2.4rem; }
+    .proj-card.featured .proj-title { font-size: 1.9rem; }
     .proj-metric {
       display: flex; align-items: baseline; gap: 8px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
     .metric-big {
       font-family: 'Fraunces', serif;
-      font-size: 2rem; font-weight: 300;
+      font-size: 1.7rem; font-weight: 300;
       color: var(--coral); line-height: 1;
     }
     .metric-label {
@@ -833,10 +837,10 @@
     }
     .proj-desc {
       font-family: 'JetBrains Mono', monospace;
-      font-size: .7rem; line-height: 1.85;
-      color: rgba(238,233,250,.4); margin-bottom: 18px;
+      font-size: .7rem; line-height: 1.75;
+      color: rgba(238,233,250,.4); margin-bottom: 14px;
     }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
     .proj-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: .58rem; letter-spacing: .08em;
@@ -921,6 +925,18 @@
       background: rgba(0,217,192,.12);
       display: flex; align-items: center; justify-content: center;
       font-size: 1.2rem; flex-shrink: 0;
+      position: relative;
+    }
+    .avail-icon-wrap .avail-pulse-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent2);
+      box-shadow: 0 0 0 0 rgba(0,217,192,.55);
+      animation: availPulse 2.2s ease-out infinite;
+    }
+    @keyframes availPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(0,217,192,.55); }
+      70%  { box-shadow: 0 0 0 12px rgba(0,217,192,0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,217,192,0); }
     }
     .avail-title { font-weight: 700; font-size: .9rem; color: var(--accent2); margin-bottom: 4px; }
     .avail-sub {
@@ -930,7 +946,7 @@
     }
 
     /* Courses */
-    .courses-block { margin-top: 32px; }
+    .courses-block { margin-top: 32px; padding: 36px 40px; }
     .courses-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: .6rem; letter-spacing: .18em;
@@ -950,7 +966,7 @@
     .course-tag:hover { background: var(--ocean); color: var(--sand); border-color: var(--ocean); }
 
     /* ══ TIMELINE (new addition) ══ */
-    .timeline { margin-top: 48px; }
+    .timeline { margin-top: 48px; padding: 36px 40px; }
     .timeline-title {
       font-family: 'JetBrains Mono', monospace;
       font-size: .6rem; letter-spacing: .18em;
@@ -989,17 +1005,18 @@
       background: var(--surface);
       border: 2px solid var(--border-md);
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: .75rem;
+      flex-shrink: 0; font-size: .75rem; color: var(--text-muted);
       position: relative; z-index: 1;
       transform: scale(.5); opacity: .3;
       transition: transform .6s cubic-bezier(.34,1.56,.26,1), opacity .4s ease,
-                  background .35s ease, border-color .35s ease, box-shadow .5s ease;
+                  background .35s ease, border-color .35s ease, box-shadow .5s ease, color .35s ease;
     }
+    .tl-dot svg { flex-shrink: 0; }
     .timeline-item.tl-in .tl-dot { transform: scale(1); opacity: 1; }
     .timeline-item.tl-in .tl-dot.active {
       box-shadow: 0 0 0 7px rgba(0,217,192,.14), 0 0 18px rgba(0,217,192,.35);
     }
-    .tl-dot.active { border-color: var(--accent2); background: rgba(0,217,192,.1); }
+    .tl-dot.active { border-color: var(--accent2); background: rgba(0,217,192,.1); color: var(--accent2); }
     .tl-content { flex: 1; padding-top: 4px; }
     .tl-year {
       font-family: 'JetBrains Mono', monospace;
@@ -1414,6 +1431,7 @@
       white-space: nowrap;
     }
     .recruiter-mode-btn:hover { background: rgba(0,217,192,.2); transform: scale(1.04); }
+    .rm-icon { display: inline-flex; }
     .recruiter-mode-btn.active {
       background: var(--grad-glow);
       color: #fff; border-color: transparent;
@@ -2143,6 +2161,7 @@
         gap: 40px;
       }
       .edu-card { padding: 28px 20px; }
+      .timeline, .courses-block { padding: 24px 20px; }
 
       /* Certifications */
       .certifications-section {
@@ -2594,6 +2613,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .btn-ocean, .btn-ghost, .btn-khamsat-main, .btn-khamsat-ghost, .btn-send{
     transition:none !important; transform:none !important;
   }
+  .avail-pulse-dot{ animation:none !important; box-shadow:0 0 0 3px rgba(0,217,192,.35) !important; }
 }
 </style>
 
@@ -2879,7 +2899,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       <div class="recruiter-btn-wrap" id="recruiterBtnWrap">
         <div class="rm-notif-dot" id="rmNotifDot"></div>
         <button class="recruiter-mode-btn" id="recruiterModeBtn" title="Switch to Recruiter View">
-          <span class="rm-icon">👔</span>
+          <span class="rm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span>
           <span class="rm-label">Recruiter Mode</span>
         </button>
         <!-- Smart tooltip -->
@@ -2889,7 +2909,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
             <span class="rm-tooltip-title">Are you a recruiter?</span>
           </div>
           <div class="rm-tooltip-body">
-            هل أنت recruiter؟ 👀<br>
+            هل أنت recruiter؟<br>
             <strong>Recruiter Mode</strong> gives you a clean, focused snapshot — skills, projects & availability in one view.
           </div>
           <div class="rm-tooltip-cta" id="rmTooltipCta">
@@ -3098,7 +3118,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
             <div class="kd-row"><span>Platform</span><span>Khamsat</span></div>
           </div>
           <div class="khamsat-actions">
-            <a href="https://khamsat.com/data/data-dashboards/4462951-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%AF%D8%A7%D8%B4%D8%A8%D9%88%D8%B1%D8%AF-%D8%AA%D9%81%D8%A7%D8%B9%D9%84%D9%8A-dashboard-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="btn-khamsat-main">🔥 Order on Khamsat →</a>
+            <a href="https://khamsat.com/data/data-dashboards/4462951-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%AF%D8%A7%D8%B4%D8%A8%D9%88%D8%B1%D8%AF-%D8%AA%D9%81%D8%A7%D8%B9%D9%84%D9%8A-dashboard-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-power-bi" target="_blank" class="btn-khamsat-main">Order on Khamsat →</a>
             <a href="https://www.linkedin.com/services/page/055265347541762354/" target="_blank" class="btn-khamsat-ghost">View Services on LinkedIn</a>
             <a href="#contact" class="btn-khamsat-ghost">Message me directly</a>
           </div>
@@ -3539,54 +3559,16 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
         <div class="edu-uni" data-edu-uni>Benha University</div>
         <div class="edu-degree" data-edu-degree>Bachelor of Science<br>Computer Science & Artificial Intelligence<br>Faculty of Computer Science & AI</div>
         <div class="edu-chips">
-          <span class="edu-chip" data-chip>Expected Graduation 2028</span>
-          <span class="edu-chip" data-chip>Year 3 Ongoing</span>
+          <span class="edu-chip" data-chip>2024 – Present</span>
           <span class="edu-chip warm" data-chip>Active Learner</span>
         </div>
       </div>
 
       <div class="avail-card reveal reveal-delay-1">
-        <div class="avail-icon-wrap">🟢</div>
+        <div class="avail-icon-wrap"><span class="avail-pulse-dot"></span></div>
         <div>
           <div class="avail-title" data-avail-title>Open to Opportunities</div>
           <div class="avail-sub" data-avail-sub>Internships · Junior Roles · Data Analytics · BI · Python</div>
-        </div>
-      </div>
-
-      <!-- Timeline — new addition -->
-      <div class="timeline reveal reveal-delay-2">
-        <div class="timeline-title">Journey</div>
-        <div class="timeline-item">
-          <div class="tl-dot active">🎓</div>
-          <div class="tl-content">
-            <div class="tl-year">2024 – Present</div>
-            <div class="tl-label">B.Sc. Computer Science & AI</div>
-            <div class="tl-desc">Benha University, Egypt · Year 3 Ongoing · Expected 2028</div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="tl-dot active">📊</div>
-          <div class="tl-content">
-            <div class="tl-year">2024</div>
-            <div class="tl-label">Power BI Capstone Projects</div>
-            <div class="tl-desc">Built dashboards for Vodafone Qatar, Banque Misr, and Uber — 3 full industry-scale analyses</div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="tl-dot">🚀</div>
-          <div class="tl-content">
-            <div class="tl-year">2025</div>
-            <div class="tl-label">Growing Analyst — 150+ Hours Training</div>
-            <div class="tl-desc">Advanced DAX, ETL pipeline design, SQL, and data storytelling — actively seeking internships</div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="tl-dot active">🧠</div>
-          <div class="tl-content">
-            <div class="tl-year">Jul – Dec 2026</div>
-            <div class="tl-label">DEPI AI & Data Science Track (with IBM)</div>
-            <div class="tl-desc">21-week Data Scientist program — Python, SQL, ML & MLOps; English (Berlitz) and soft-skills tracks completed with strong results, now in Freelancing & Coaching sessions</div>
-          </div>
         </div>
       </div>
 
@@ -3603,6 +3585,37 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
           <span class="course-tag">AI Principles</span>
           <span class="course-tag">Linear Algebra</span>
           <span class="course-tag">Computer Architecture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="education-section">
+    <div class="section-sticky">
+      <div class="section-eyebrow">02.2 — Experience</div>
+      <h2 class="section-title">Hands-on<br><em>Experience</em></h2>
+      <p class="section-sub">Structured training and internships with industry partners.</p>
+    </div>
+
+    <div>
+      <div class="timeline reveal" style="margin-top:0 !important">
+        <div class="timeline-title">Experience</div>
+        <div class="timeline-item">
+          <div class="tl-dot active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M3 3v18h18"/><path d="M7 16l4-6 3 3 5-8"/></svg></div>
+          <div class="tl-content">
+            <div class="tl-year">2026</div>
+            <div class="tl-label">Instant Software Solutions Internship — Data Analysis Diploma</div>
+            <div class="tl-desc">130 training hours in Data Analysis &amp; Power BI, including capstone dashboards for Vodafone Qatar, Banque Misr, and Uber</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M9.5 2a4.5 4.5 0 00-4.5 4.5v.09A3.5 3.5 0 003 10v.5A3.5 3.5 0 004.5 13.4V14a4 4 0 004 4h.5V2z"/></svg></div>
+          <div class="tl-content">
+            <div class="tl-year">Jul 2026 – Present</div>
+            <div class="tl-label">DEPI Internship — AI &amp; Data Science Track (with IBM)</div>
+            <div class="tl-desc">21-week Data Scientist program — Python, SQL, ML &amp; MLOps; English (Berlitz) and soft-skills tracks completed with strong results, now in Freelancing &amp; Coaching sessions</div>
+          </div>
         </div>
       </div>
     </div>
@@ -3669,8 +3682,8 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
             <span class="cert-serial-value">0A584ABE-C92C-43E5-8CB8-36B54E85BA82</span>
           </div>
           <div class="cert-actions">
-            <a href="https://certification.instanteg.com/certificates/check/0a584abe-c92c-43e5-8cb8-36b54e85ba82" target="_blank" rel="noopener" class="cert-btn cert-btn-primary" data-cert-verify>🔒 Verify Authenticity</a>
-            <a href="https://www.linkedin.com/posts/sherifazb_dataanalysis-powerbi-instant-activity-7489038933356441600-Lpwz?utm_source=share&utm_medium=member_ios&rcm=ACoAAFaw-6sBoNmsNGRgLjvZC5mN8dfPAUW_iTQ" target="_blank" rel="noopener" class="cert-btn cert-btn-secondary" data-cert-linkedin">💼 View LinkedIn Post</a>
+            <a href="https://certification.instanteg.com/certificates/check/0a584abe-c92c-43e5-8cb8-36b54e85ba82" target="_blank" rel="noopener" class="cert-btn cert-btn-primary" data-cert-verify>Verify Authenticity</a>
+            <a href="https://www.linkedin.com/posts/sherifazb_dataanalysis-powerbi-instant-activity-7489038933356441600-Lpwz?utm_source=share&utm_medium=member_ios&rcm=ACoAAFaw-6sBoNmsNGRgLjvZC5mN8dfPAUW_iTQ" target="_blank" rel="noopener" class="cert-btn cert-btn-secondary" data-cert-linkedin">View LinkedIn Post</a>
           </div>
         </div>
       </div>
@@ -3678,9 +3691,9 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       <div class="edu-card reveal reveal-delay-1">
         <div class="edu-card-accent"></div>
         <div class="edu-uni">AI & Data Science Track — DEPI (Digital Egypt Pioneers Initiative)</div>
-        <div class="edu-degree">Ministry of Communications & IT, Egypt, in partnership with IBM · Data Scientist profile · 17 Jul – 10 Dec 2026 (21 weeks, Round 5)<br>Curriculum: Prompt Engineering, What is Data Science, Tools for Data Science, Data Science Methodology, Python for Data Science AI & Development, Python Project for Data Science, Databases & SQL for Data Science with Python, Data Analysis with Python, Data Visualization with Python, Machine Learning with Python, MLOps Tools (MLflow & Hugging Face), and a Capstone Project.<br>Completed the English for Freelancing track with Berlitz and the Skills for Freelancing (soft skills) track — both with strong results. Currently in the Freelancing sessions, followed by Coaching for Hunting Opportunities before the final project discussion in December.</div>
+        <div class="edu-degree">Ministry of Communications & IT, Egypt, in partnership with IBM · Data Scientist profile · 17 Jul 2026 – Present (Round 5)<br>Curriculum: Prompt Engineering, What is Data Science, Tools for Data Science, Data Science Methodology, Python for Data Science AI & Development, Python Project for Data Science, Databases & SQL for Data Science with Python, Data Analysis with Python, Data Visualization with Python, Machine Learning with Python, MLOps Tools (MLflow & Hugging Face), and a Capstone Project.<br>Completed the English for Freelancing track with Berlitz and the Skills for Freelancing (soft skills) track — both with strong results. Currently in the Freelancing sessions, followed by Coaching for Hunting Opportunities before the final project discussion in December.</div>
         <div class="edu-chips">
-          <span class="edu-chip warm">In Progress — Exp. Dec 2026</span>
+          <span class="edu-chip warm">In Progress — Present</span>
           <span class="edu-chip">Python for Data Science</span>
           <span class="edu-chip">Machine Learning</span>
           <span class="edu-chip">SQL</span>
@@ -3717,7 +3730,8 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
             <div class="contact-icon">☏</div>
             <div>
               <span class="contact-link-lbl">WhatsApp</span>
-              <span class="contact-link-val">Chat with me directly</span>
+              <span class="contact-link-val">https://wa.me/message/5TM5VPPVLT6RO1</span>
+              <span class="contact-link-user">+20 01558032223</span>
             </div>
             <span class="contact-arrow">→</span>
           </a>
@@ -3725,7 +3739,8 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
             <div class="contact-icon">in</div>
             <div>
               <span class="contact-link-lbl">LinkedIn</span>
-              <span class="contact-link-val">linkedin.com/in/sherifAzb</span>
+              <span class="contact-link-val">https://www.linkedin.com/in/sherifazb/</span>
+              <span class="contact-link-user">@sherifAzb</span>
             </div>
             <span class="contact-arrow">→</span>
           </a>
@@ -3733,7 +3748,8 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
             <div class="contact-icon">⌥</div>
             <div>
               <span class="contact-link-lbl">GitHub</span>
-              <span class="contact-link-val">github.com/SherifAzb</span>
+              <span class="contact-link-val">https://github.com/SherifAzb</span>
+              <span class="contact-link-user">@SherifAzb</span>
             </div>
             <span class="contact-arrow">→</span>
           </a>
@@ -3757,7 +3773,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
             <label class="form-label" data-f-subject>Subject</label>
             <input class="form-input" type="text" name="subject" placeholder="Data Analyst opportunity / Project inquiry" id="inp-subject">
           </div>
-          <div class="form-group">
+          <div class="form-group form-grow">
             <label class="form-label" data-f-msg>Message</label>
             <textarea class="form-textarea" name="message" rows="5" placeholder="Hi Sherif, I'd like to discuss..." id="inp-msg" required></textarea>
           </div>
@@ -3765,7 +3781,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
           <button type="submit" class="btn-send" id="btn-send">
             <span id="btn-text">Send Message →</span>
           </button>
-          <div class="form-success" id="form-success">✅ Message sent! I'll get back to you shortly.</div>
+          <div class="form-success" id="form-success">Message sent! I'll get back to you shortly.</div>
         </form>
       </div>
     </div>
@@ -3779,7 +3795,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       <div class="rm-topbar">
         <div class="rm-logo">Sherif <em>Ayman</em> — Analyst Profile</div>
         <div class="rm-topbar-right">
-          <div class="rm-badge">📊 Recruiter View</div>
+          <div class="rm-badge">Recruiter View</div>
           <button class="rm-close" id="rmClose" aria-label="Close recruiter view">✕</button>
         </div>
       </div>
@@ -3843,10 +3859,10 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
               <div class="rm-kpi-meter"><i data-meter="100%"></i></div>
             </div>
             <div class="rm-kpi">
-              <div class="rm-kpi-lbl">Expected Graduation</div>
-              <div class="rm-kpi-val sm">2028</div>
-              <div class="rm-kpi-trend neutral">Year 3 · Benha Uni</div>
-              <div class="rm-kpi-meter"><i data-meter="45%"></i></div>
+              <div class="rm-kpi-lbl">Education</div>
+              <div class="rm-kpi-val sm">Benha Uni</div>
+              <div class="rm-kpi-trend neutral">2024 – Present</div>
+              <div class="rm-kpi-meter"><i data-meter="100%"></i></div>
             </div>
           </div>
         </section>
@@ -4157,7 +4173,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
                 <div class="rm-tl-dot"></div>
                 <div class="rm-tl-year">2024 — Present</div>
                 <div class="rm-tl-label">B.Sc. Computer Science &amp; AI</div>
-                <div class="rm-tl-sub">Benha University · Year 3 Ongoing · Expected 2028</div>
+                <div class="rm-tl-sub">Benha University · 2024 – Present</div>
               </div>
               <div class="rm-tl-item">
                 <div class="rm-tl-dot"></div>
@@ -4268,6 +4284,10 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
   document.querySelectorAll('a,button,.proj-card,.course-tag,.tool-chip').forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+  });
+  document.querySelectorAll('input,textarea,.form-input,.form-textarea').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('text-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('text-hover'));
   });
 
   /* ══════════════════════════
@@ -4854,7 +4874,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       certSub:"Industry-issued certifications, independently verifiable through the issuer's official authentication system.",
       certStamp:'✓ VERIFIED', certIssuer:'Instant Software Solutions', certTitle:'Data Analysis Diploma',
       certHours:'130 Training Hours · Data Analysis & Power BI', certSerialLabel:'SERIAL',
-      certVerify:'🔒 Verify Authenticity', certLinkedin:'💼 View LinkedIn Post',
+      certVerify:'Verify Authenticity', certLinkedin:'View LinkedIn Post',
       heroEyebrow:'Data Analyst · CS & AI Student',
       heroName1:'Sherif', heroName2:'Ayman',
       heroRole:'I build Power BI dashboards that turn raw data into clear business decisions',
@@ -4869,7 +4889,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       eduSub:'Deep academic foundation in CS, algorithms, and AI paired with practical data analytics.',
       eduUni:'Benha University',
       eduDegree:'Bachelor of Science\nComputer Science & Artificial Intelligence\nFaculty of Computer Science & AI',
-      chip1:'Expected Graduation 2028', chip2:'Year 3 Ongoing', chip3:'Active Learner',
+      chip1:'2024 – Present', chip3:'Active Learner',
       availTitle:'Open to Opportunities', availSub:'Internships · Junior Roles · Data Analytics · BI · Python',
       coursesLabel:'Key Coursework',
       contactH:'Let\'s', contactH2:'work together',
@@ -4878,7 +4898,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       fName:'Your Name', fEmail:'Email', fSubject:'Subject', fMsg:'Message',
       pName:'Ahmed Mohamed', pSubject:'Data Analyst position / Project inquiry', pMsg:"Hi Sherif, I'd like to discuss...",
       btnSend:'Send Message →',
-      successMsg:'✅ Message sent! I\'ll get back to you shortly.',
+      successMsg:'Message sent! I\'ll get back to you shortly.',
       footerRight:'CS & AI Student · Open to Work',
       liLabel:'Latest on LinkedIn', liSeeAll:'View profile ↗',
     },
@@ -4889,7 +4909,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       certSub:'شهادات صادرة من جهات معتمدة، يمكن التحقق منها مباشرة عبر نظام التوثيق الرسمي للجهة المانحة.',
       certStamp:'✓ موثّقة', certIssuer:'Instant Software Solutions', certTitle:'دبلومة تحليل البيانات',
       certHours:'130 ساعة تدريبية · تحليل البيانات و Power BI', certSerialLabel:'الرقم التسلسلي',
-      certVerify:'🔒 التحقق من الشهادة', certLinkedin:'💼 عرض منشور لينكدإن',
+      certVerify:'التحقق من الشهادة', certLinkedin:'عرض منشور لينكدإن',
       heroEyebrow:'محلل بيانات · طالب CS & AI',
       heroName1:'شريف', heroName2:'أيمن',
       heroRole:'أبني لوحات Power BI تحوّل البيانات الخام إلى قرارات عمل واضحة',
@@ -4904,7 +4924,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       eduSub:'أساس أكاديمي راسخ في علوم الحاسب والخوارزميات والذكاء الاصطناعي.',
       eduUni:'جامعة بنها',
       eduDegree:'بكالوريوس العلوم\nعلوم الحاسب والذكاء الاصطناعي\nكلية الحاسبات والذكاء الاصطناعي',
-      chip1:'التخرج المتوقع 2028', chip2:'السنة الثانية مكتملة', chip3:'متعلم نشط',
+      chip1:'2024 – الآن', chip3:'متعلم نشط',
       availTitle:'متاح للفرص', availSub:'تدريب · وظائف مبتدئة · تحليل البيانات · BI · Python',
       coursesLabel:'المقررات الأساسية',
       contactH:'لنعمل', contactH2:'معاً',
@@ -4913,7 +4933,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       fName:'اسمك', fEmail:'البريد الإلكتروني', fSubject:'الموضوع', fMsg:'الرسالة',
       pName:'أحمد محمد', pSubject:'وظيفة محلل بيانات / استفسار مشروع', pMsg:'مرحباً شريف، أودّ مناقشة...',
       btnSend:'إرسال الرسالة →',
-      successMsg:'✅ تم الإرسال! سأرد عليك قريباً.',
+      successMsg:'تم الإرسال! سأرد عليك قريباً.',
       footerRight:'طالب CS & AI · متاح للعمل',
       liLabel:'آخر منشوراتي على لينكدإن', liSeeAll:'عرض البروفايل ↗',
     },
@@ -4924,7 +4944,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       certSub:"Certifications délivrées par l'industrie, vérifiables indépendamment via le système d'authentification officiel de l'organisme émetteur.",
       certStamp:'✓ VÉRIFIÉ', certIssuer:'Instant Software Solutions', certTitle:'Diplôme en analyse de données',
       certHours:'130 heures de formation · Analyse de données & Power BI', certSerialLabel:'N° DE SÉRIE',
-      certVerify:"🔒 Vérifier l'authenticité", certLinkedin:'💼 Voir le post LinkedIn',
+      certVerify:"Vérifier l'authenticité", certLinkedin:'Voir le post LinkedIn',
       heroEyebrow:'Analyste de données · Étudiant CS & IA',
       heroName1:'Sherif', heroName2:'Ayman',
       heroRole:'Je construis des tableaux de bord Power BI qui transforment les données brutes en décisions claires',
@@ -4939,7 +4959,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       eduSub:"Solide base académique en informatique, algorithmes et IA couplée à la pratique.",
       eduUni:'Université de Benha',
       eduDegree:"Licence en Sciences\nInformatique & Intelligence Artificielle\nFaculté Informatique & IA",
-      chip1:'Diplôme prévu 2028', chip2:'2e année terminée', chip3:'Apprenant actif',
+      chip1:'2024 – Présent', chip3:'Apprenant actif',
       availTitle:'Disponible', availSub:'Stages · Postes juniors · Data Analytics · BI · Python',
       coursesLabel:'Cours clés',
       contactH:'Travaillons', contactH2:'ensemble',
@@ -4948,7 +4968,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       fName:'Votre nom', fEmail:'Email', fSubject:'Sujet', fMsg:'Message',
       pName:'Jean Dupont', pSubject:'Poste analyste / Demande projet', pMsg:'Bonjour Sherif, je voudrais discuter de...',
       btnSend:'Envoyer →',
-      successMsg:'✅ Message envoyé ! Je vous répondrai bientôt.',
+      successMsg:'Message envoyé ! Je vous répondrai bientôt.',
       footerRight:'Étudiant CS & IA · Disponible',
       liLabel:'Derniers posts LinkedIn', liSeeAll:'Voir le profil ↗',
     },
@@ -4959,7 +4979,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       certSub:'Von der Branche ausgestellte Zertifikate, unabhängig überprüfbar über das offizielle Authentifizierungssystem des Ausstellers.',
       certStamp:'✓ VERIFIZIERT', certIssuer:'Instant Software Solutions', certTitle:'Diplom in Datenanalyse',
       certHours:'130 Trainingsstunden · Datenanalyse & Power BI', certSerialLabel:'SERIENNUMMER',
-      certVerify:'🔒 Echtheit prüfen', certLinkedin:'💼 LinkedIn-Beitrag ansehen',
+      certVerify:'Echtheit prüfen', certLinkedin:'LinkedIn-Beitrag ansehen',
       heroEyebrow:'Datenanalyst · CS & KI-Student',
       heroName1:'Sherif', heroName2:'Ayman',
       heroRole:'Ich baue Power BI Dashboards, die Rohdaten in klare Geschäftsentscheidungen verwandeln',
@@ -4974,7 +4994,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       eduSub:'Starke akademische Grundlage in Informatik und KI.',
       eduUni:'Universität Benha',
       eduDegree:'B.Sc. Wissenschaften\nInformatik & Künstliche Intelligenz\nFakultät für Informatik & KI',
-      chip1:'Abschluss 2028 erwartet', chip2:'2. Jahr abgeschlossen', chip3:'Aktiver Lerner',
+      chip1:'2024 – Heute', chip3:'Aktiver Lerner',
       availTitle:'Verfügbar', availSub:'Praktika · Einstiegsstellen · Data Analytics · BI · Python',
       coursesLabel:'Relevante Kurse',
       contactH:'Lass uns', contactH2:'zusammenarbeiten',
@@ -4983,7 +5003,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       fName:'Ihr Name', fEmail:'E-Mail', fSubject:'Betreff', fMsg:'Nachricht',
       pName:'Hans Müller', pSubject:'Datenanalyst-Stelle', pMsg:'Hallo Sherif, ich möchte über ... sprechen.',
       btnSend:'Nachricht senden →',
-      successMsg:'✅ Nachricht gesendet!',
+      successMsg:'Nachricht gesendet!',
       footerRight:'CS & KI Student · Verfügbar',
       liLabel:'Neueste auf LinkedIn', liSeeAll:'Profil ansehen ↗',
     },
@@ -4994,7 +5014,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       certSub:'Сертификаты, выданные отраслевыми организациями и проверяемые через официальную систему аутентификации эмитента.',
       certStamp:'✓ ПОДТВЕРЖДЕНО', certIssuer:'Instant Software Solutions', certTitle:'Диплом по анализу данных',
       certHours:'130 часов обучения · Анализ данных & Power BI', certSerialLabel:'СЕРИЙНЫЙ №',
-      certVerify:'🔒 Проверить подлинность', certLinkedin:'💼 Смотреть пост в LinkedIn',
+      certVerify:'Проверить подлинность', certLinkedin:'Смотреть пост в LinkedIn',
       heroEyebrow:'Аналитик данных · Студент CS & ИИ',
       heroName1:'Шериф', heroName2:'Айман',
       heroRole:'Создаю дашборды Power BI, которые превращают сырые данные в чёткие бизнес-решения',
@@ -5009,7 +5029,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       eduSub:'Глубокая академическая база в информатике и ИИ.',
       eduUni:'Университет Бенха',
       eduDegree:'Бакалавр наук\nИнформатика & Искусственный интеллект\nФакультет CS & ИИ',
-      chip1:'Окончание 2028', chip2:'2-й курс завершён', chip3:'Активный студент',
+      chip1:'2024 – наст. время', chip3:'Активный студент',
       availTitle:'Открыт к работе', availSub:'Стажировки · Junior · Data Analytics · BI · Python',
       coursesLabel:'Ключевые курсы',
       contactH:'Давайте', contactH2:'работать вместе',
@@ -5018,7 +5038,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       fName:'Ваше имя', fEmail:'E-mail', fSubject:'Тема', fMsg:'Сообщение',
       pName:'Иван Иванов', pSubject:'Вакансия аналитика', pMsg:'Привет, Шериф! Хочу обсудить...',
       btnSend:'Отправить →',
-      successMsg:'✅ Сообщение отправлено!',
+      successMsg:'Сообщение отправлено!',
       footerRight:'Студент CS & ИИ · Открыт к работе',
       liLabel:'Последние записи в LinkedIn', liSeeAll:'Смотреть профиль ↗',
     }
@@ -5093,8 +5113,7 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
       if (dg) dg.innerHTML = t.eduDegree.split('\n').join('<br>');
       const chips = document.querySelectorAll('[data-chip]');
       if (chips[0]) chips[0].textContent = t.chip1;
-      if (chips[1]) chips[1].textContent = t.chip2;
-      if (chips[2]) chips[2].textContent = t.chip3;
+      if (chips[1]) chips[1].textContent = t.chip3;
       ss('[data-avail-title]', t.availTitle); ss('[data-avail-sub]', t.availSub);
       ss('[data-courses-label]', t.coursesLabel);
 
@@ -5308,6 +5327,171 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
     body.mo-intro-done .hero-recruiter-whisper, body.mo-intro-done .hero-right{ animation:none !important; }
   }
 </style>
+<style id="compact-pass">
+/* ═══ COMPACT PASS — tighter spacing, modern small project cards ═══ */
+
+/* Hero */
+.hero{ padding:92px 32px 20px !important; gap:28px !important; min-height:0 !important; }
+
+/* Section rhythm: 130px → 60px, big gaps → 44px */
+.skills-section, .education-section, .certifications-section, .contact-section{
+  padding:60px 56px !important; gap:44px !important;
+}
+.projects-section{ padding:60px 56px !important; }
+.khamsat-section{ padding:44px 0 !important; }
+.skills-section .tools-cloud, .tools-cloud{ margin-top:24px !important; }
+.section-sub{ margin-top:12px !important; }
+.section-sticky{ top:96px !important; }
+.skill-item, .skill-row{ padding-top:12px; padding-bottom:12px; }
+.edu-card{ padding:28px !important; }
+.avail-card{ margin-top:16px !important; padding:18px 22px !important; }
+.courses-block{ margin-top:16px !important; padding:24px 28px !important; }
+.timeline{ margin-top:16px !important; padding:24px 28px !important; }
+.timeline-item{ padding-bottom:18px; }
+.contact-inner{ gap:44px !important; }
+.contact-links{ gap:8px !important; }
+.contact-link, .contact-card{ padding-top:14px; padding-bottom:14px; }
+.cert-info{ padding:28px 32px !important; }
+footer{ padding-top:24px !important; padding-bottom:24px !important; }
+
+/* ═══ Khamsat / Freelance — fix pitch padding (was 0) ═══ */
+.khamsat-sub{ margin-bottom:24px !important; }
+.khamsat-layout{ gap:28px !important; align-items:stretch !important; }
+.khamsat-pitch{ padding:28px 32px !important; display:flex; flex-direction:column; justify-content:center; }
+.khamsat-pitch h3{ margin-bottom:10px; }
+.khamsat-pitch p{ margin-bottom:14px; }
+.khamsat-points li{ margin-bottom:9px; }
+.khamsat-points li:last-child{ margin-bottom:0; }
+.khamsat-card{ padding:28px 30px !important; }
+.khamsat-badge{ margin-bottom:14px; }
+.khamsat-desc{ margin-bottom:14px; }
+.khamsat-deliverables{ padding-top:12px; margin-bottom:16px; }
+.khamsat-deliverables .kd-row{ padding:5px 0; }
+.khamsat-subservices{ margin-top:14px; padding-top:12px; gap:6px; }
+
+/* ═══ Projects — small, sleek grid ═══ */
+.projects-header{ margin-bottom:28px !important; align-items:flex-end; }
+.projects-title{ font-size:clamp(2rem,3.6vw,3rem) !important; line-height:1 !important; }
+.projects-title br{ display:none; }
+.projects-title em{ margin-left:.25em; }
+.projects-section::after{ display:none; }
+.projects-footer{ margin-top:28px !important; }
+
+.projects-grid{
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr)) !important;
+  gap:14px !important;
+}
+.proj-card, .proj-card.featured{
+  grid-column:auto !important;
+  display:flex; flex-direction:column;
+  border-radius:14px !important;
+  cursor:pointer;
+}
+.proj-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(0,217,192,.45) !important;
+  box-shadow:0 18px 40px -18px rgba(0,217,192,.35);
+}
+.proj-card.featured{ border-color:rgba(0,217,192,.3) !important; }
+.proj-card.featured::after{
+  content:'NEW'; position:absolute; top:10px; left:10px; z-index:3;
+  font:700 .56rem/1 'JetBrains Mono',monospace; letter-spacing:.12em;
+  padding:5px 8px; border-radius:100px; color:#06131a;
+  background:linear-gradient(135deg,#00d9c0,#8f83ff);
+}
+
+/* unify featured + normal structure */
+.proj-card.featured .proj-inner{ display:flex !important; flex-direction:column !important; gap:0 !important; flex:1; }
+.proj-card.featured .proj-img-wrap{ width:100% !important; }
+.proj-card.featured .proj-body{ flex:1; }
+
+/* thumbnail */
+.proj-card img,
+.proj-card.featured img,
+.proj-card:not(.featured) img,
+.proj-card.featured .proj-img-wrap img{
+  height:118px !important; min-height:0 !important; width:100%;
+  object-fit:cover; object-position:top;
+  filter:grayscale(10%) contrast(1.05);
+}
+.proj-card > img{ border-bottom:1px solid rgba(255,255,255,.06); }
+
+/* body */
+.proj-body{ padding:14px 16px 16px !important; display:flex; flex-direction:column; flex:1; }
+.proj-meta-row{ margin-bottom:6px !important; }
+.proj-cat{ font-size:.56rem !important; }
+.proj-title, .proj-card.featured .proj-title{
+  font-size:1.05rem !important; line-height:1.2 !important;
+  margin-bottom:8px !important; letter-spacing:-.01em;
+}
+.proj-title br{ display:none; }
+.proj-metric{ margin-bottom:8px !important; gap:6px !important; flex-wrap:wrap; }
+.metric-big{ font-size:1.05rem !important; font-weight:500 !important; }
+.metric-label{ font-size:.56rem !important; }
+.proj-desc{
+  font-family:'Inter',sans-serif !important; font-size:.76rem !important; line-height:1.55 !important;
+  color:rgba(238,233,250,.55) !important; margin-bottom:10px !important;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+}
+.proj-tags{ gap:4px !important; margin-bottom:12px !important; }
+.proj-tag{ font-size:.52rem !important; padding:3px 8px !important; }
+.proj-tags .proj-tag:nth-child(n+4){ display:none; }
+.proj-links{ margin-top:auto; gap:6px !important; flex-wrap:wrap; }
+.proj-link, .proj-study-btn{
+  font-size:.54rem !important; padding:5px 10px !important; border-radius:100px !important;
+}
+
+/* Center the last (incomplete) row of projects */
+.projects-grid{ display:flex !important; flex-wrap:wrap; justify-content:center; gap:14px !important; }
+.projects-grid .proj-card, .projects-grid .proj-card.featured{ flex:0 0 calc((100% - 3*14px)/4); max-width:calc((100% - 3*14px)/4); }
+@media (max-width:1100px){
+  .projects-grid .proj-card, .projects-grid .proj-card.featured{ flex-basis:calc((100% - 2*14px)/3); max-width:calc((100% - 2*14px)/3); }
+}
+@media (max-width:760px){
+  .projects-grid{ gap:10px !important; }
+  .projects-grid .proj-card, .projects-grid .proj-card.featured{ flex-basis:calc((100% - 10px)/2); max-width:calc((100% - 10px)/2); }
+}
+@media (max-width:480px){
+  .projects-grid .proj-card, .projects-grid .proj-card.featured{ flex-basis:100%; max-width:100%; }
+}
+
+
+/* ═══ Stacked cards spacing + contact links + experience ═══ */
+.education-section > div > * + *,
+.certifications-section > div > * + *{ margin-top:16px !important; }
+.contact-link{ align-items:center; }
+.contact-link > div:nth-child(2){ min-width:0; flex:1; }
+.contact-link-val{ display:block; font-size:.8rem !important; word-break:break-all; }
+.contact-link-user{ display:block; font-family:'JetBrains Mono',monospace; font-size:.66rem; color:var(--glow); margin-top:2px; opacity:.85; }
+
+
+/* Contact: form fills the column height — no dead space */
+.contact-inner{ align-items:stretch !important; }
+.contact-inner > div:last-child{ display:flex; flex-direction:column; }
+#contactForm{ flex:1; display:flex; flex-direction:column; }
+#contactForm .form-grow{ flex:1; margin-bottom:14px; }
+#contactForm .form-grow .form-textarea{ flex:1; min-height:120px; resize:none; }
+
+/* Tablet / mobile */
+@media (max-width:1024px){
+  .skills-section, .education-section, .certifications-section, .contact-section{ padding:48px 28px !important; gap:32px !important; }
+  .projects-section{ padding:48px 28px !important; }
+}
+@media (max-width:700px){
+  .hero{ padding:88px 16px 16px !important; }
+  .skills-section, .education-section, .certifications-section, .contact-section, .projects-section{ padding:36px 16px !important; gap:24px !important; }
+  .khamsat-section{ padding:32px 0 !important; }
+  .khamsat-pitch, .khamsat-card{ padding:20px !important; }
+  .projects-grid{ grid-template-columns:1fr 1fr !important; gap:10px !important; }
+  .proj-card img, .proj-card.featured img, .proj-card:not(.featured) img{ height:92px !important; }
+  .proj-desc{ -webkit-line-clamp:2; }
+  .proj-body{ padding:12px !important; }
+}
+@media (max-width:480px){
+  .projects-grid{ grid-template-columns:1fr !important; }
+}
+</style>
+
 
 <div id="moIntro" aria-hidden="true">
   <div>
