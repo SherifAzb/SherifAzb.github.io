@@ -3106,7 +3106,14 @@ body:not(.dark-mode) nav, body:not(.dark-mode) nav.scrolled{
             <li>Interactive visuals, slicers, and drill-through pages</li>
             <li>Delivered as a ready-to-use PBIX + PDF export</li>
           </ul>
-        </div>
+          <div class="kp-steps-label">How it works</div>
+          <ol class="kp-steps">
+            <li><b>Brief</b><span>You share the file and your goals</span></li>
+            <li><b>Clean &amp; model</b><span>Power Query prep, star schema, DAX</span></li>
+            <li><b>Build</b><span>KPIs, visuals, slicers, drill-through</span></li>
+            <li><b>Deliver</b><span>PBIX + PDF, with revisions to polish</span></li>
+          </ol>
+</div>
         <div class="khamsat-card">
           <div class="khamsat-badge"><span class="sq"></span>Available on Khamsat</div>
           <div class="khamsat-name">Professional Power BI Dashboard</div>
@@ -5525,6 +5532,31 @@ footer{ padding-top:24px !important; padding-bottom:24px !important; }
   .modal-metrics{ grid-template-columns:1fr !important; }
   .modal-img{ max-height:150px; }
 }
+
+
+/* Khamsat pitch — fill the card with useful content */
+.khamsat-pitch{ justify-content:space-between !important; gap:16px; }
+.khamsat-pitch > *{ margin-bottom:0 !important; }
+.khamsat-pitch .kp-extra{ color:var(--text-muted); font-size:.92rem; line-height:1.7; }
+.kp-steps-label{ font-family:'JetBrains Mono',monospace; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent2); }
+.kp-steps{ list-style:none; counter-reset:kp; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:-6px; }
+.kp-steps li{ counter-increment:kp; position:relative; padding:12px 12px 12px 42px; border:1px solid rgba(255,255,255,.09); border-radius:12px; background:rgba(255,255,255,.03); display:flex; flex-direction:column; gap:2px; }
+.kp-steps li::before{ content:counter(kp); position:absolute; left:12px; top:12px; width:22px; height:22px; border-radius:50%; display:grid; place-items:center; font:700 .68rem 'JetBrains Mono',monospace; color:#06131a; background:linear-gradient(135deg,#00d9c0,#8f83ff); }
+.kp-steps b{ font-size:.86rem; color:var(--text); font-weight:600; }
+.kp-steps span{ font-size:.76rem; color:var(--text-muted); line-height:1.45; }
+.kp-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding-top:14px; border-top:1px dashed rgba(255,255,255,.14); }
+.kp-stats div{ display:flex; flex-direction:column; gap:2px; }
+.kp-stats b{ font-family:'Fraunces',serif; font-size:1.25rem; font-weight:500; color:var(--accent2); line-height:1.1; }
+.kp-stats span{ font-family:'JetBrains Mono',monospace; font-size:.56rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); }
+@media (max-width:520px){ .kp-steps{ grid-template-columns:1fr; } .kp-stats b{ font-size:1.05rem; } }
+
+
+/* Khamsat: two cards, same width & same height */
+.khamsat-layout{ grid-template-columns:1fr 1fr !important; align-items:stretch !important; }
+.khamsat-pitch, .khamsat-card{ height:100%; }
+.kp-steps{ margin-top:0; }
+.kp-steps li{ padding:10px 10px 10px 40px; }
+@media (max-width:900px){ .khamsat-layout{ grid-template-columns:1fr !important; } }
 
 /* Tablet / mobile */
 @media (max-width:1024px){
